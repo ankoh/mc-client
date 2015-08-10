@@ -11,7 +11,7 @@ exports.config = {
 
   baseUrl: 'http://localhost:8080',
 
-  seleniumAddress:'http://selenium__standalone-firefox:4444/wd/hub',
+  seleniumAddress:'http://localhost:4444/wd/hub',
 
   framework: 'jasmine',
 

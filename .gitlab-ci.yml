@@ -1,12 +1,16 @@
 before_script:
   - npm update
+  - webdriver-manager update
+  - webdriver-manager start &
+  - sleep 1
 
 test:
   script:
+    - cd ./app
+    - http-server -p8080 &
+    - sleep 1
     - protractor e2e/protractor.conf.js --browser=firefox
   tags:
     - node
     - karma
     - protractor
-    - selenium
-    - firefox
