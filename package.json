@@ -6,16 +6,15 @@
   "repository": "https://github.com/angular/material-start",
   "license": "MIT",
   "devDependencies": {
-    "bower": "^1.3.1",
-    "jasmine": "^2.3.2",
-    "karma": "^0.12.16",
-    "karma-chrome-launcher": "^0.1.4",
-    "karma-cli": "0.0.4",
-    "karma-firefox-launcher": "^0.1.3",
-    "karma-jasmine": "^0.1.5",
-    "protractor": "^2.0.0",
-    "selenium-webdriver": "^2.45.1",
-    "shelljs": "^0.2.6"
+    "bower": "*",
+    "jasmine": "*",
+    "karma": "*",
+    "karma-cli": "*",
+    "karma-firefox-launcher": "*",
+    "karma-jasmine": "*",
+    "protractor": "*",
+    "selenium-webdriver": "*",
+    "shelljs": "*"
   },
   "scripts": {
     "postinstall": "bower update",
