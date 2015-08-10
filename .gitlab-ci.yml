@@ -3,7 +3,7 @@ before_script:
 
 test:
   script:
-    - protractor e2e-tests/protractor.conf.js --browser=firefox
+    - protractor e2e/protractor.conf.js --browser=firefox
   tags:
     - node
     - karma
