@@ -6,5 +6,12 @@ before_script:
   - sleep 1 # give server time to start
 
 test:
-  - karma start karma.conf.js --no-auto-watch --single-run --reporters=dots --browsers=Firefox
-  - protractor e2e-tests/protractor.conf.js --browser=firefox
+  script:
+    - karma start karma.conf.js --no-auto-watch --single-run --reporters=dots --browsers=Firefox
+    - protractor e2e-tests/protractor.conf.js --browser=firefox
+  tags:
+    - plain
+    - node
+    - karma
+    - protractor
+    - xvfb
