@@ -6,12 +6,12 @@ exports.config = {
   ],
 
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'firefox'
   },
 
   baseUrl: 'http://localhost:8080',
 
-  seleniumAddress:'http://127.0.0.1:4444/wd/hub',
+  seleniumAddress:'http://selenium_standalone-firefox:4444/wd/hub',
 
   framework: 'jasmine',
 
