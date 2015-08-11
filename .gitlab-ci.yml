@@ -7,7 +7,7 @@ protractor:
     - http-server -p8080 > /dev/null 2>&1 &
     - cd ../
     - /etc/init.d/xvfb start
-    - sleep 1
+    - java -jar /opt/selenium/selenium-server-standalone.jar &
     - protractor ./e2e/protractor.conf.js --browser=chrome
     - /etc/init.d/xvfb stop
   tags:
