@@ -1,17 +1,17 @@
 before_script:
   - npm set registry http://192.168.78.59:4873
   - npm install --silent
-  - bower install --allow-root
+  - ./node_modules/.bin/bower install --allow-root
 
 protractor:
   script:
     - cd ./app
-    - http-server -p 8080 --silent &
+    - ../node_modules/.bin/http-server -p 8080 --silent &
     - cd ../
     - service xvfb start
     - run-selenium
     - sleep 3
-    - protractor ./e2e/protractor.conf.js
+    - ./node_modules/.bin/protractor ./e2e/protractor.conf.js
     - service xvfb stop
   tags:
     - plain
