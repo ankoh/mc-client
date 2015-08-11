@@ -9,7 +9,7 @@ test:
     - http-server -p8080 > /dev/null 2>&1 &
     - sleep 1
     - cd ../
-    - protractor ./e2e/protractor.conf.js --browser=firefox
+    - protractor ./e2e/protractor.conf.js --browser=chrome
   tags:
     - plain
     - node
