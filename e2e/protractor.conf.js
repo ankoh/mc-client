@@ -13,7 +13,7 @@ exports.config = {
 
   seleniumAddress:'http://0.0.0.0:4444/wd/hub',
 
-  framework: 'jasmine',
+  framework: 'jasmine2',
 
 
   jasmineNodeOpts: {
