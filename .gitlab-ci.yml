@@ -17,4 +17,5 @@ protractor:
     - plain
     - node
     - karma
-    - protractor
+    - xvfb
+    - selenium
