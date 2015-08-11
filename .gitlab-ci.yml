@@ -5,14 +5,10 @@ protractor:
   script:
     - cd ./app
     - http-server -p8080 > http.log &
-    - sleep 1
     - cat http.log
-    - curl http://0.0.0.0:8080
     - cd ../
     - /etc/init.d/xvfb start
-    - java -jar /opt/selenium/selenium-server-standalone.jar &
-    - sleep 1
-    - curl http://0.0.0.0:4444
+    - java -jar /opt/selenium/selenium-server-standalone.jar > selenium.log &
     - protractor ./e2e/protractor.conf.js --browser=chrome
     - /etc/init.d/xvfb stop
   tags:
