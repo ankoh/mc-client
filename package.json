@@ -19,7 +19,7 @@
     "shelljs": "^0.5.3"
   },
   "scripts": {
-    "postinstall": "bower update",
+    "postinstall": "bower update --allow-root",
     "prestart": "npm update",
     "test": "protractor ./e2e/protractor.conf.js"
   }
