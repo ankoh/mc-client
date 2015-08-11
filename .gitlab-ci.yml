@@ -3,6 +3,7 @@ before_script:
 
 protractor:
   script:
+    - webdriver-manager update
     - cd ./app
     - http-server -p8080 > http.log &
     - cat http.log
