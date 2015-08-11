@@ -3,6 +3,7 @@ before_script:
 
 protractor:
   script:
+    - bower update
     - cd ./app
     - http-server -p8080 > ../http.log &
     - cat ../http.log
@@ -10,9 +11,6 @@ protractor:
     - /etc/init.d/xvfb start
     - java -jar /opt/selenium/selenium-server-standalone.jar > selenium.log &
     - sleep 1
-    - cat http.log
-    - curl http://0.0.0.0:8080
-    - curl http://0.0.0.0:8080/#
     - protractor ./e2e/protractor.conf.js
     - /etc/init.d/xvfb stop
   tags:
