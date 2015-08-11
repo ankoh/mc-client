@@ -14,8 +14,7 @@ protractor:
     - ./node_modules/.bin/protractor ./e2e/protractor.conf.js
     - service xvfb stop
   tags:
-    - plain
+  	- plain
     - node
-    - karma
     - xvfb
     - selenium
