@@ -5,9 +5,6 @@ exports.config = {
       jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: true}));
    },
 
-  // remove the dots completely
-  print: function() {},
-
   allScriptsTimeout: 11000,
 
   specs: [
@@ -26,6 +23,7 @@ exports.config = {
 
 
   jasmineNodeOpts: {
+    silent: true,
     showColors: true,
     defaultTimeoutInterval: 30000
   }
