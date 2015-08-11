@@ -4,7 +4,9 @@ before_script:
 protractor:
   script:
     - cd ./app
-    - http-server -p8080 > /dev/null 2>&1 &
+    - http-server -p8080 > http.log &
+    - sleep 1
+    - cat http.log
     - curl http://0.0.0.0:8080
     - cd ../
     - /etc/init.d/xvfb start
