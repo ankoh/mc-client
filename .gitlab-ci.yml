@@ -1,15 +1,15 @@
 before_script:
   - npm update
-  - webdriver-manager start > /dev/null 2>&1 &
-  - sleep 1
 
-test:
+protractor:
   script:
     - cd ./app
     - http-server -p8080 > /dev/null 2>&1 &
-    - sleep 1
     - cd ../
+    - sleep 1
+    - /etc/init.d/xvfb start
     - protractor ./e2e/protractor.conf.js --browser=chrome
+    - /etc/init.d/xvfb stop
   tags:
     - plain
     - node
