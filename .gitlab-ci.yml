@@ -10,7 +10,7 @@ protractor:
     - cd ../
     - service xvfb start
     - run-selenium
-    - sleep 1
+    - sleep 3
     - protractor ./e2e/protractor.conf.js
     - service xvfb stop
   tags:
