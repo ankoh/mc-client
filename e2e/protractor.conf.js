@@ -9,9 +9,9 @@ exports.config = {
     'browserName': 'chrome'
   },
 
-  baseUrl: 'http://localhost:8080',
+  baseUrl: 'http://0.0.0.0:8080',
 
-  seleniumAddress:'http://localhost:4444/wd/hub',
+  seleniumAddress:'http://0.0.0.0:4444/wd/hub',
 
   framework: 'jasmine',
 
