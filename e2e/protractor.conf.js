@@ -13,13 +13,11 @@ exports.config = {
 
   seleniumAddress:'http://0.0.0.0:4444/wd/hub',
 
-  framework: 'jasmine2',
+  framework: 'jasmine',
 
 
   jasmineNodeOpts: {
-    isVerbose: true,
     showColors: true,
-    includeStackTrace: true,
     defaultTimeoutInterval: 30000
   }
 };

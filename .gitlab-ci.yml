@@ -1,18 +1,17 @@
 before_script:
   - npm update
+  - bower update --allow-root
 
 protractor:
   script:
-    - bower update --allow-root
     - cd ./app
-    - http-server -p8080 > ../http.log &
-    - cat ../http.log
+    - http-server -p 8080 > ../http.log &
     - cd ../
-    - /etc/init.d/xvfb start
-    - java -jar /opt/selenium/selenium-server-standalone.jar > selenium.log &
+    - service xvfb start
+    - run-selenium
     - sleep 1
     - protractor ./e2e/protractor.conf.js
-    - /etc/init.d/xvfb stop
+    - service xvfb stop
   tags:
     - plain
     - node
