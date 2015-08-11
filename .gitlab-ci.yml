@@ -10,7 +10,7 @@ protractor:
     - /etc/init.d/xvfb start
     - java -jar /opt/selenium/selenium-server-standalone.jar > selenium.log &
     - sleep 1
-    - protractor ./e2e/protractor.conf.js --browser=chrome
+    - protractor ./e2e/protractor.conf.js
     - /etc/init.d/xvfb stop
   tags:
     - plain
