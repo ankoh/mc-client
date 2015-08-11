@@ -5,6 +5,7 @@ protractor:
   script:
     - cd ./app
     - http-server -p8080 > /dev/null 2>&1 &
+    - apt-get install curl
     - curl http://localhost:8080
     - cd ../
     - /etc/init.d/xvfb start
