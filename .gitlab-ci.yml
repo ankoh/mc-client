@@ -5,12 +5,11 @@ protractor:
   script:
     - cd ./app
     - http-server -p8080 > /dev/null 2>&1 &
-    - apt-get update -qq
-    - apt-get install -qqy curl
     - curl http://localhost:8080
     - cd ../
     - /etc/init.d/xvfb start
-    - java -jar /opt/selenium/selenium-server-standalone.jar
+    - java -jar /opt/selenium/selenium-server-standalone.jar &
+    - sleep 1
     - curl http://localhost:4444
     - protractor ./e2e/protractor.conf.js --browser=chrome
     - /etc/init.d/xvfb stop
