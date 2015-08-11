@@ -1,6 +1,5 @@
 before_script:
-  - npm update
-  - bower update --allow-root
+  - npm install
 
 protractor:
   script:
