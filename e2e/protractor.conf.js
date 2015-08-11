@@ -3,7 +3,12 @@ exports.config = {
   onPrepare: function() {
       var SpecReporter = require('jasmine-spec-reporter');
       jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: true}));
-   }
+   },
+
+  // remove the dots completely
+  print: function() {},
+
+  allScriptsTimeout: 11000,
 
   specs: [
     './**/*.js'
@@ -17,7 +22,8 @@ exports.config = {
 
   seleniumAddress:'http://0.0.0.0:4444/wd/hub',
 
-  framework: 'jasmine2',
+  framework: 'jasmine',
+
 
   jasmineNodeOpts: {
     showColors: true,
