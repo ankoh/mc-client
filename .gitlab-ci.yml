@@ -1,4 +1,5 @@
 before_script:
+  - npm set registry http://192.168.78.59:4873
   - npm install --silent
   - bower install --allow-root
 
