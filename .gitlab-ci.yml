@@ -1,6 +1,5 @@
 before_script:
   - npm update
-  - webdriver-manager update
   - webdriver-manager start > /dev/null 2>&1 &
   - sleep 1
 
@@ -12,7 +11,7 @@ test:
     - cd ../
     - protractor ./e2e/protractor.conf.js --browser=firefox
   tags:
+    - plain
     - node
     - karma
     - protractor
-    - httpserver

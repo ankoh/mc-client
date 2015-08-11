@@ -11,7 +11,7 @@
     "http-server": "*",
     "karma": "*",
     "karma-cli": "*",
-    "karma-firefox-launcher": "*",
+    "karma-chrome-launcher": "*",
     "karma-jasmine": "*",
     "protractor": "*",
     "selenium-webdriver": "*",
