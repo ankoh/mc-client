@@ -4,8 +4,8 @@ before_script:
 protractor:
   script:
     - cd ./app
-    - http-server -p8080 > http.log &
-    - cat http.log
+    - http-server -p8080 > ../http.log &
+    - cat ../http.log
     - cd ../
     - /etc/init.d/xvfb start
     - java -jar /opt/selenium/selenium-server-standalone.jar > selenium.log &
