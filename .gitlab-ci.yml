@@ -5,7 +5,7 @@ before_script:
 protractor:
   script:
     - cd ./app
-    - http-server -p 8080 > ../http.log &
+    - http-server -p 8080 &
     - cd ../
     - service xvfb start
     - run-selenium
