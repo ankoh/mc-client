@@ -27,7 +27,7 @@ module.exports = function(config){
             browserName: 'Chrome',
             getDriver: function(){
               // example from https://www.npmjs.com/package/selenium-webdriver#usage 
-              var driver = new firefox.Driver();
+              var driver = new chrome.Driver();
               return driver;
             }
         },
