@@ -1,10 +1,10 @@
 module.exports = function(config){
-  config.set({
-    var webdriverConfig = {
+  var webdriverConfig = {
       hostname: '0.0.0.0',
       port: 4444
     }
 
+  config.set({
     basePath : './',
 
     files : [
