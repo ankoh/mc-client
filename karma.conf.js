@@ -1,5 +1,9 @@
 module.exports = function(config){
   config.set({
+    var webdriverConfig = {
+      hostname: '0.0.0.0',
+      port: 4444
+    }
 
     basePath : './',
 
@@ -17,10 +21,17 @@ module.exports = function(config){
 
     frameworks: ['jasmine'],
 
-    browsers : ['Firefox'],
+    browsers : ['ChromeSelenium'],
+
+    customLaunchers: {
+        'ChromeSelenium': {
+            base: 'WebDriver',
+            config: webdriverConfig,
+            browserName: 'Chrome',
+        }
+    },
 
     plugins : [
-            'karma-chrome-launcher',
             'karma-jasmine',
             'karma-junit-reporter'
             ],

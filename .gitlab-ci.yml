@@ -10,8 +10,26 @@ protractor:
     - cd ../
     - service xvfb start
     - run-selenium
-    - sleep 3
+    - sleep 5
     - ./node_modules/.bin/protractor ./e2e/protractor.conf.js
+    - service xvfb stop
+  tags:
+    - plain
+    - node
+    - xvfb
+    - selenium
+    - chrome
+
+
+karma:
+  script:
+    - cd ./app
+    - ../node_modules/.bin/http-server -p 8080 --silent &
+    - cd ../
+    - service xvfb start
+    - run-selenium
+    - sleep 5
+    - node_modules/.bin/karma start karma.conf.js --no-auto-watch --single-run
     - service xvfb stop
   tags:
     - plain
