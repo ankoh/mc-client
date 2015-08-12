@@ -20,12 +20,8 @@ protractor:
     - selenium
     - chrome
 
-
 karma:
   script:
-    - cd ./app
-    - ../node_modules/.bin/http-server -p 8080 --silent &
-    - cd ../
     - service xvfb start
     - run-selenium
     - sleep 5
