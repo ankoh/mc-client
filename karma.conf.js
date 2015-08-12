@@ -1,3 +1,5 @@
+var webdriver = require('selenium-webdriver');
+
 module.exports = function(config){
   config.set({
     basePath : './',
