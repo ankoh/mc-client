@@ -1,8 +1,3 @@
-var By = require('selenium-webdriver').By,
-    until = require('selenium-webdriver').until,
-    chrome = require('selenium-webdriver/chrome');
- 
-
 module.exports = function(config){
   config.set({
     basePath : './',
@@ -27,7 +22,10 @@ module.exports = function(config){
             browserName: 'Chrome',
             getDriver: function(){
               // example from https://www.npmjs.com/package/selenium-webdriver#usage 
-              var driver = new chrome.Driver();
+              var driver = new webdriver.Builder()
+                      .forBrowser('chrome')
+                      .usingServer('http://0.0.0.0:4444/wd/hub')
+                      .build();
               return driver;
             }
         },
