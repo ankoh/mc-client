@@ -1,9 +1,9 @@
-module.exports = function(config){
-  var webdriverConfig = {
-      hostname: '0.0.0.0',
-      port: 4444
-    }
+var By = require('selenium-webdriver').By,
+    until = require('selenium-webdriver').until,
+    chrome = require('selenium-webdriver/chrome');
+ 
 
+module.exports = function(config){
   config.set({
     basePath : './',
 
@@ -17,21 +17,23 @@ module.exports = function(config){
       'app/view*/**/*.js'
     ],
 
-    autoWatch : true,
-
     frameworks: ['jasmine'],
 
-    browsers : ['ChromeSelenium'],
+    browsers : ['swd_chrome'],
 
     customLaunchers: {
-        'ChromeSelenium': {
-            base: 'WebDriver',
-            config: webdriverConfig,
+        swd_chrome: {
+            base: 'SeleniumWebDriver',
             browserName: 'Chrome',
-        }
+            getDriver: function(){
+              // example from https://www.npmjs.com/package/selenium-webdriver#usage 
+              var driver = new firefox.Driver();
+              return driver;
+            }
+        },
     },
 
-    plugins : [
+    /*plugins : [
             'karma-jasmine',
             'karma-junit-reporter'
             ],
@@ -39,7 +41,7 @@ module.exports = function(config){
     junitReporter : {
       outputFile: 'test_out/unit.xml',
       suite: 'unit'
-    }
+    }*/
 
   });
 };
