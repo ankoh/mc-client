@@ -18,3 +18,4 @@ protractor:
     - node
     - xvfb
     - selenium
+    - chrome
