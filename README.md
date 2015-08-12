@@ -1,0 +1,1 @@
+[![build status](https://gitlab-ci.kohn.io/projects/16/status.png?ref=master)](https://gitlab-ci.kohn.io/projects/16?ref=master)
