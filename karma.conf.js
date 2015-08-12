@@ -7,6 +7,9 @@ module.exports = function(config){
   config.set({
     basePath : './',
 
+    hostname : '0.0.0.0',
+    port: '9876',
+
     files : [
       'app/bower_components/angular/angular.js',
       'app/bower_components/angular-route/angular-route.js',
