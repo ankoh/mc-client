@@ -1,5 +1,5 @@
 before_script:
-  - npm set registry http://192.168.78.59:4873
+  - npm set registry http://npm-cache:4873
   - npm install --silent
   - ./node_modules/.bin/bower install --allow-root
 
