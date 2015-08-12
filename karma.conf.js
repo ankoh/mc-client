@@ -1,6 +1,9 @@
-var webdriver = require('selenium-webdriver');
-
 module.exports = function(config){
+  var webDriverConfig = {
+        hostname: "0.0.0.0",
+        port: 4444
+    }
+
   config.set({
     basePath : './',
 
@@ -16,32 +19,14 @@ module.exports = function(config){
 
     frameworks: ['jasmine'],
 
-    browsers : ['swd_chrome'],
+    browsers : ['WDChrome'],
 
     customLaunchers: {
-        swd_chrome: {
-            base: 'SeleniumWebDriver',
-            browserName: 'Chrome',
-            getDriver: function(){
-              // example from https://www.npmjs.com/package/selenium-webdriver#usage 
-              var driver = new webdriver.Builder()
-                      .forBrowser('chrome')
-                      .usingServer('http://0.0.0.0:4444/wd/hub')
-                      .build();
-              return driver;
-            }
+        'WDChrome': {
+            base: 'WebDriver',
+            config: webDriverConfig,
+            browserName: 'chrome'
         },
-    },
-
-    /*plugins : [
-            'karma-jasmine',
-            'karma-junit-reporter'
-            ],
-
-    junitReporter : {
-      outputFile: 'test_out/unit.xml',
-      suite: 'unit'
-    }*/
-
+    }
   });
 };
