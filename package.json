@@ -1,9 +1,9 @@
 {
-  "name": "material-start",
+  "name": "mendeley-cache",
   "private": true,
   "version": "0.0.2",
-  "description": "A starter project for AngularJS Material",
-  "repository": "https://github.com/angular/material-start",
+  "description": "A client for the mendeley-cache api",
+  "repository": "https://gitlab.kohn.io/ankoh/mendeley-cache-client",
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.4.1",

@@ -1,22 +1,11 @@
 {
-  "name": "angular-material-starter",
-  "description": "A starter project for AngularJS Material",
+  "name": "mendeley-cache-client",
+  "description": "A client for the mendeley-cache api",
   "version": "0.0.2",
-  "homepage": "https://github.com/angular/material-start",
+  "homepage": "https://gitlab.kohn.io/ankoh/mendeley-cache-client",
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "angular": "^1.4.x",
-    "angular-animate": "^1.4.x",
-    "angular-aria": "^1.4.x",
-    "angular-material": "~0.10.1",
-    "angular-route": "~1.4.3",
-    "angular-mocks": "~1.4.3"
-  },
-  "devDependencies": {
-    "angular-material": "~0.9.4"
-  },
-  "resolutions": {
-    "angular-material": "~0.10.1"
+    "angular-material": "0.10.0"
   }
 }
