@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" >
   <head>
-    <title>Angular Material - Starter App</title>
+    <title>Publication Cache</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,11 +13,13 @@
     <link rel="stylesheet" href="assets/app.css"/>
   </head>
 
-  <body ng-app="publicationCache" layout="column" ng-controller="UserController as ul">
+  <body ng-app="publicationCache" layout="column">
 
+    <!-- Toolbar BEGIN -->
     <md-toolbar layout="row" layout-align="center end" class="md-tall md-whiteframe-z2">
+      <!-- Center Container BEGIN -->
       <div flex flex-sm="100" flex-gt-sm="95" flex-gt-md="80" layout="column">
-        <!-- Top Row -->
+        <!-- Top Row BEGIN -->
         <span layout="row" class="md-toolbar-tools">
           <md-icon md-svg-icon="assets/svg/logo_chair.svg" id="chair-logo" ></md-icon>
           <h2>
@@ -28,11 +30,12 @@
             <md-icon md-svg-icon="assets/svg/more_vert.svg"></md-icon>
           </md-button>
         </span>
+        <!-- Top Row END -->
 
         <!-- Flex space -->
         <span flex></span>
 
-        <!-- Bottom Row -->
+        <!-- Bottom Row BEGIN -->
         <md-tabs md-stretch-tabs="always" class="md-primary" md-selected="tabs.selectedIndex">
           <md-tab id="tab1">
             <md-tab-label>System</md-tab-label>
@@ -47,10 +50,13 @@
             <md-tab-label>Docs</md-tab-label>
           </md-tab>
         </md-tabs>
-
+        <!-- Bottom Row END -->
       </div>
+      <!-- Center Container END -->
     </md-toolbar>
+    <!-- Toolbar END -->
 
+    <!-- TabContent BEGIN -->
     <md-content layout-padding flex>
       <ng-switch on="tabs.selectedIndex">
         <div ng-switch-when="0">
@@ -74,49 +80,34 @@
         </div>
       </ng-switch>
     </md-content>
+    <!-- TabContent END -->
 
 
     <script src="./bower_components/angular/angular.js"></script>
     <script src="./bower_components/angular-animate/angular-animate.js"></script>
     <script src="./bower_components/angular-aria/angular-aria.js"></script>
-    <script type="text/javascript" src="./bower_components/angular-material/angular-material.js"></script>
+    <script src="./bower_components/angular-material/angular-material.js"></script>
 
-    <script src="./src/users/Users.js"></script>
-    <script src="./src/users/UserController.js"></script>
-    <script src="./src/users/UserService.js"></script>
 
     <script type="text/javascript">
-          angular
-              .module('publicationCache', ['ngMaterial', 'users'])
-              .config(function($mdThemingProvider, $mdIconProvider){
+      angular
+        .module('publicationCache', ['ngMaterial'])
+        .config(function($mdThemingProvider){
+          // Extend the red theme with a few different colors
+          var mendeleyRedMap = $mdThemingProvider.extendPalette('red', {
+            '500': '9D1620'
+          });
 
-                // Extend the red theme with a few different colors
-                var mendeleyRedMap = $mdThemingProvider.extendPalette('red', {
-                  '500': '9D1620'
-                });
+          // Register the new color palette map with the name mendeleyRedMap
+          $mdThemingProvider.definePalette('red', mendeleyRedMap);
+          // Use that theme for the primary intentions
+          $mdThemingProvider.theme('default')
+            .primaryPalette('red')
 
-                // Register the new color palette map with the name <code>mendeleyRedMap</code>
-                $mdThemingProvider.definePalette('red', mendeleyRedMap);
-                // Use that theme for the primary intentions
-                $mdThemingProvider.theme('default')
-                  .primaryPalette('red')
-
-                $mdThemingProvider.theme('default')
-                  .primaryPalette('red')
-                  .accentPalette('grey');
-
-                /*$mdIconProvider
-                    .defaultIconSet("./assets/svg/avatars.svg", 128)
-                    .icon("menu"       , "./assets/svg/menu.svg"        , 24)
-                    .icon("share"      , "./assets/svg/share.svg"       , 24)
-                    .icon("google_plus", "./assets/svg/google_plus.svg" , 512)
-                    .icon("hangouts"   , "./assets/svg/hangouts.svg"    , 512)
-                    .icon("twitter"    , "./assets/svg/twitter.svg"     , 512)
-                    .icon("phone"      , "./assets/svg/phone.svg"       , 512);*/
-
-              });
-
+          $mdThemingProvider.theme('default')
+            .primaryPalette('red')
+            .accentPalette('grey');
+        });
     </script>
-
   </body>
 </html>
