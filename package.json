@@ -22,6 +22,8 @@
   },
   "scripts": {
     "prestart": "npm update",
-    "test": "protractor ./e2e/protractor.conf.js"
+    "protractor": "node_modules/.bin/protractor ./e2e/protractor.conf.js",
+    "karma": "node_modules/.bin/karma start karma.conf.js --no-auto-watch --single-run",
+    "serve": "node_modules/.bin/http-server ./app"
   }
 }
