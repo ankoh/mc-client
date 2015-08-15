@@ -9,6 +9,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
     <link rel="stylesheet" href="assets/app.css"/>
   </head>
@@ -17,7 +18,7 @@
     <!-- Toolbar BEGIN -->
     <md-toolbar layout="row" layout-align="center end" class="md-tall md-whiteframe-z2">
       <!-- Center Container BEGIN -->
-      <div flex flex-sm="100" flex-gt-sm="95" flex-gt-md="80" layout="column">
+      <div flex flex-sm="100" flex-gt-sm="95" flex-gt-md="75" layout="column">
         <!-- Top Row BEGIN -->
         <span layout="row" class="md-toolbar-tools">
           <md-icon md-svg-icon="assets/svg/logo_chair.svg" id="chair-logo" ></md-icon>
@@ -26,7 +27,7 @@
           </h2>
           <span flex></span>
           <md-button class="md-icon-button" aria-label="More">
-            <md-icon md-svg-icon="assets/svg/more_vert.svg"></md-icon>
+            <md-icon md-svg-icon="assets/svg/material-icons/ic_more_vert_white_24px.svg"></md-icon>
           </md-button>
         </span>
         <!-- Top Row END -->
@@ -56,10 +57,18 @@
     <!-- Toolbar END -->
 
     <!-- TabContent BEGIN -->
-    <md-content layout-padding flex>
-      <div ui-view></div>
+    <md-content flex class="content" layout="row" layout-align="center start" layout-padding>
+        <div ui-view flex flex-sm="100" flex-gt-sm="95" flex-gt-md="75"></div>
     </md-content>
     <!-- TabContent END -->
+
+    <!-- Footer BEGIN -->
+    <div class="footer" layout="row" layout-align="center center" layout-padding>
+      <div flex-sm="100" flex-gt-sm="95" flex-gt-md="75">
+        <p>Made with <i class="material-icons">favorite</i> by the LS1 ITG</p>
+      </div>
+    </div>
+    <!-- Footer END -->
 
     <!-- Imports -->
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
