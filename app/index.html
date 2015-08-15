@@ -9,7 +9,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
-    <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
     <link rel="stylesheet" href="assets/app.css"/>
   </head>
 
@@ -37,16 +37,16 @@
 
         <!-- Bottom Row BEGIN -->
         <md-tabs md-stretch-tabs="always" class="md-primary" md-selected="tabs.selectedIndex">
-          <md-tab id="tab1">
+          <md-tab ui-sref="system">
             <md-tab-label>System</md-tab-label>
           </md-tab>
-          <md-tab id="tab2">
+          <md-tab ui-sref="client">
             <md-tab-label>Client</md-tab-label>
           </md-tab>
-          <md-tab id="tab3">
+          <md-tab ui-sref="generator">
             <md-tab-label>Generator</md-tab-label>
           </md-tab>
-          <md-tab id="tab3">
+          <md-tab ui-sref="docs">
             <md-tab-label>Docs</md-tab-label>
           </md-tab>
         </md-tabs>
@@ -58,50 +58,30 @@
 
     <!-- TabContent BEGIN -->
     <md-content layout-padding flex>
-      <ng-switch on="tabs.selectedIndex">
-        <div ng-switch-when="0">
-            View for Item #1<br />
-            data.selectedIndex = 0
-        </div>
-
-        <div ng-switch-when="1">
-            View for Item #2<br />
-            data.selectedIndex = 1
-        </div>
-
-        <div ng-switch-when="2">
-            View for Item #3<br />
-            data.selectedIndex = 2
-        </div>
-
-        <div ng-switch-when="3">
-            View for Item #4<br />
-            data.selectedIndex = 3
-        </div>
-      </ng-switch>
+      <div ui-view></div>
     </md-content>
     <!-- TabContent END -->
 
 
     <!-- Angular Material -->
-    <script src="./bower_components/angular/angular.min.js"></script>
-    <script src="./bower_components/angular-animate/angular-animate.min.js"></script>
-    <script src="./bower_components/angular-aria/angular-aria.min.js"></script>
-    <script src="./bower_components/angular-material/angular-material.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
 
     <!-- Utils -->
-    <script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
 
     <script type="text/javascript">
       angular
-        .module('publicationCache', ['ngMaterial'])
+        .module('publicationCache', ['ngMaterial', 'ui.router'])
+        // Configure theme
         .config(function($mdThemingProvider){
           // Extend the red theme with a few different colors
           var mendeleyRedMap = $mdThemingProvider.extendPalette('red', {
             '500': '9D1620'
           });
-
           // Register the new color palette map with the name mendeleyRedMap
           $mdThemingProvider.definePalette('red', mendeleyRedMap);
           // Use that theme for the primary intentions
@@ -111,6 +91,30 @@
           $mdThemingProvider.theme('default')
             .primaryPalette('red')
             .accentPalette('grey');
+        })
+        // Configure routing
+        .config(function($stateProvider, $urlRouterProvider) {
+          // For any unmatched url, redirect to /system
+          $urlRouterProvider.otherwise("/");
+
+          // Define the different routing states of the web app
+          $stateProvider
+            .state('system', {
+              url: "/",
+              templateUrl: "partials/system.html"
+            })
+            .state('client', {
+              url: "/client",
+              templateUrl: "partials/client.html"
+            })
+            .state('generator', {
+              url: "/generator",
+              templateUrl: "partials/generator.html"
+            })
+            .state('docs', {
+              url: "/docs",
+              templateUrl: "partials/docs.html"
+            })
         });
     </script>
   </body>
