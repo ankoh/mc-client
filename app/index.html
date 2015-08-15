@@ -14,7 +14,6 @@
   </head>
 
   <body ng-app="publicationCache" layout="column">
-
     <!-- Toolbar BEGIN -->
     <md-toolbar layout="row" layout-align="center end" class="md-tall md-whiteframe-z2">
       <!-- Center Container BEGIN -->
@@ -37,16 +36,16 @@
 
         <!-- Bottom Row BEGIN -->
         <md-tabs md-stretch-tabs="always" class="md-primary" md-selected="tabs.selectedIndex">
-          <md-tab ui-sref="system">
+          <md-tab ui-sref="tabs.system">
             <md-tab-label>System</md-tab-label>
           </md-tab>
-          <md-tab ui-sref="client">
+          <md-tab ui-sref="tabs.client">
             <md-tab-label>Client</md-tab-label>
           </md-tab>
-          <md-tab ui-sref="generator">
+          <md-tab ui-sref="tabs.generator">
             <md-tab-label>Generator</md-tab-label>
           </md-tab>
-          <md-tab ui-sref="docs">
+          <md-tab ui-sref="tabs.docs">
             <md-tab-label>Docs</md-tab-label>
           </md-tab>
         </md-tabs>
@@ -62,60 +61,14 @@
     </md-content>
     <!-- TabContent END -->
 
+    <!-- Imports -->
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="bower_components/angular-aria/angular-aria.js"></script>
+    <script type="text/javascript" src="bower_components/angular-material/angular-material.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
-    <!-- Angular Material -->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-aria/angular-aria.js"></script>
-    <script src="bower_components/angular-material/angular-material.js"></script>
-
-    <!-- Utils -->
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-
-
-    <script type="text/javascript">
-      angular
-        .module('publicationCache', ['ngMaterial', 'ui.router'])
-        // Configure theme
-        .config(function($mdThemingProvider){
-          // Extend the red theme with a few different colors
-          var mendeleyRedMap = $mdThemingProvider.extendPalette('red', {
-            '500': '9D1620'
-          });
-          // Register the new color palette map with the name mendeleyRedMap
-          $mdThemingProvider.definePalette('red', mendeleyRedMap);
-          // Use that theme for the primary intentions
-          $mdThemingProvider.theme('default')
-            .primaryPalette('red')
-
-          $mdThemingProvider.theme('default')
-            .primaryPalette('red')
-            .accentPalette('grey');
-        })
-        // Configure routing
-        .config(function($stateProvider, $urlRouterProvider) {
-          // For any unmatched url, redirect to /system
-          $urlRouterProvider.otherwise("/");
-
-          // Define the different routing states of the web app
-          $stateProvider
-            .state('system', {
-              url: "/",
-              templateUrl: "partials/system.html"
-            })
-            .state('client', {
-              url: "/client",
-              templateUrl: "partials/client.html"
-            })
-            .state('generator', {
-              url: "/generator",
-              templateUrl: "partials/generator.html"
-            })
-            .state('docs', {
-              url: "/docs",
-              templateUrl: "partials/docs.html"
-            })
-        });
-    </script>
+    <!-- Initialize the Angular application -->
+    <script type="text/javascript" src="src/app.js"></script>
   </body>
 </html>
