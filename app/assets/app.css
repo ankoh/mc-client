@@ -4,7 +4,14 @@ html, body {
   height:100%;
   margin: 0px;
   padding: 0px;
-  background-color:#f6f6f6;
+}
+
+md-content {
+	background-color: #efefef;
+}
+
+md-tabs.md-primary md-tab-item:not([disabled]) {
+	color: #b0b0b0;
 }
 
 #chair-logo {
