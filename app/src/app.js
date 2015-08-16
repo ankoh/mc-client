@@ -1,6 +1,8 @@
 // Initialize the angular application
 angular
   .module('mendeleyCache', ['ngMaterial', 'ui.router'])
+  // Controllers
+  .controller('ClientController', ClientController)
   // Configure theme
   .config(function($mdThemingProvider){
     // Extend the red theme with a few different colors
@@ -45,6 +47,8 @@ angular
         data: {
           'selectedTab': 1
         },
+        controller: 'ClientController',
+        controllerAs: 'client',
         templateUrl: "partials/client.html"
       })
       .state('tabs.docs', {

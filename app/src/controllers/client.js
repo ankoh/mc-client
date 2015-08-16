@@ -1,29 +1,51 @@
-angular.module('mendeleyCache')
-	.controller('PublicationsCtrl', PublicationsCtrl);
-
-function PublicationsCtrl($scope) {
+function ClientController() {
 	var self = this;
 
-	// Author filter
-	self.selectedAuthor = null;
-    self.authorSearchText = null;
+	self.publications = {};
+	self.authors = {};
+
+	// Author list
 	self.allAuthors = loadAuthors();
-	self.selectedAuthors = [ ];
-	self.getAuthorMatches = function() {
-		return getMatches(self.authorSearchText, self.allAuthors);
-	};
-
-	// Research field filter
-	self.selectedField = null;
-	self.fieldSearchText = null;
 	self.allFields = loadFields();
-	self.selectedFields = [ ];
-	self.getFieldMatches = function() {
-		return getMatches(self.fieldSearchText, self.allFields);
-	}
 
+	/* Publications */
+
+	// Author filter
+	self.publications.selectedAuthor = null;
+    self.publications.authorSearchText = null;
+	self.publications.selectedAuthors = [ ];
+	self.publications.getAuthorMatches = function() {
+		return getMatches(self.publications.authorSearchText, self.allAuthors);
+	};
+	// Research field filter
+	self.publications.selectedField = null;
+	self.publications.fieldSearchText = null;
+	self.publications.selectedFields = [ ];
+	self.publications.getFieldMatches = function() {
+		return getMatches(self.publications.fieldSearchText, self.allFields);
+	}
 	// Dropdown for live url construction
-	self.dropdown = false;
+	self.publications.dropdown = false;
+
+
+	/* Authors */
+
+	// Author filter
+	self.authors.selectedAuthor = null;
+    self.authors.authorSearchText = null;
+	self.authors.selectedAuthors = [ ];
+	self.authors.getAuthorMatches = function() {
+		return getMatches(self.authors.authorSearchText, self.allAuthors);
+	};
+	// Research field filter
+	self.authors.selectedField = null;
+	self.authors.fieldSearchText = null;
+	self.authors.selectedFields = [ ];
+	self.authors.getFieldMatches = function() {
+		return getMatches(self.authors.fieldSearchText, self.allFields);
+	}
+	// Dropdown for live url construction
+	self.authors.dropdown = false;
 
 
 	/*
@@ -96,4 +118,7 @@ function PublicationsCtrl($scope) {
 		];
 		return fields;
     };
+
+
+
 }

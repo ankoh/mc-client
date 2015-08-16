@@ -1,4 +1,4 @@
-<div class="card md-whiteframe-z1" ng-controller="PublicationsCtrl as ctrl">
+<div class="card md-whiteframe-z1">
 	<md-toolbar layout="row" class="md-toolbar-tools header">
 		<h2>
 	        <span>Publication Query</span>
@@ -7,13 +7,14 @@
 	    <md-button 
 	    	class="md-icon-button"
 	    	aria-label="More"
-	    	ng-click="ctrl.dropdown = !ctrl.dropdown">
+	    	ng-click="client.publications.dropdown = !client.publications.dropdown">
             <md-icon md-svg-icon="assets/svg/material-icons/ic_code_black_24px.svg"></md-icon>
         </md-button>
     </md-toolbar>
 
     <!-- Code Dropdown BEGIN -->
-    <md-content class="dropdown" layout="column" layout-align="center start" ng-show="ctrl.dropdown">
+    <md-content class="dropdown" layout="column" layout-align="center start"
+    ng-show="client.publications.dropdown">
 <pre><code>Protocol: HTTPS
 Method: GET
 Base: dockerbruegge1.informatik.tu-muenchen.de
@@ -33,17 +34,17 @@ Query:
 			<!-- Author filter BEGIN -->
 			<md-chips
 				class="buttonchips buttonchips-fst"
-				ng-model="ctrl.selectedAuthors">
+				ng-model="client.publications.selectedAuthors">
 				<!-- Autocomplete BEGIN -->
 				<md-autocomplete
 					md-autoselect="true"
-					md-selected-item="ctrl.selectedAuthor"
-					md-search-text="ctrl.authorSearchText"
-					md-items="author in ctrl.getAuthorMatches()"
+					md-selected-item="client.publications.selectedAuthor"
+					md-search-text="client.publications.authorSearchText"
+					md-items="author in client.publications.getAuthorMatches()"
 					md-item-text="author.name"
 					placeholder="Filter by authors">
 					<md-item-template>
-						<span md-highlight-text="ctrl.authorSearchText">{{author.name}}</span>
+						<span md-highlight-text="client.publications.authorSearchText">{{author.name}}</span>
 					</md-item-template>
 					<md-not-found>No matches found</md-not-found>
 				</md-autocomplete>
@@ -60,18 +61,18 @@ Query:
 			<!-- Research field filter BEGIN -->
 			<md-chips
 				class="buttonchips"
-				ng-model="ctrl.selectedFields"
+				ng-model="client.publications.selectedFields"
 				>
 				<!-- Autocomplete BEGIN -->
 				<md-autocomplete
 					md-autoselect="true"
-					md-selected-item="ctrl.selectedField"
-					md-search-text="ctrl.fieldSearchText"
-					md-items="field in ctrl.getFieldMatches()"
+					md-selected-item="client.publications.selectedField"
+					md-search-text="client.publications.fieldSearchText"
+					md-items="field in client.publications.getFieldMatches()"
 					md-item-text="field.name"
 					placeholder="Filter by research fields">
 					<md-item-template>
-						<span md-highlight-text="ctrl.fieldSearchText">{{field.name}}</span>
+						<span md-highlight-text="client.publications.fieldSearchText">{{field.name}}</span>
 					</md-item-template>
 					<md-not-found>No matches found</md-not-found>
 				</md-autocomplete>
@@ -102,9 +103,7 @@ Query:
 	</md-content>
 </div>
 
-
-
-<div class="card md-whiteframe-z1" ng-controller="AuthorsCtrl as ctrl">
+<div class="card md-whiteframe-z1">
 	<md-toolbar layout="row" class="md-toolbar-tools header">
 		<h2>
 	        <span>Author Query</span>
@@ -113,13 +112,14 @@ Query:
 	    <md-button 
 	    	class="md-icon-button"
 	    	aria-label="More"
-	    	ng-click="ctrl.dropdown = !ctrl.dropdown">
+	    	ng-click="client.authors.dropdown = !client.authors.dropdown">
             <md-icon md-svg-icon="assets/svg/material-icons/ic_code_black_24px.svg"></md-icon>
         </md-button>
     </md-toolbar>
 
     <!-- Code Dropdown BEGIN -->
-    <md-content class="dropdown" layout="column" layout-align="center start" ng-show="ctrl.dropdown">
+    <md-content class="dropdown" layout="column" layout-align="center start" 
+    ng-show="client.authors.dropdown">
 <pre><code>Protocol: HTTPS
 Method: GET
 Base: dockerbruegge1.informatik.tu-muenchen.de
@@ -139,17 +139,17 @@ Query:
 			<!-- Author filter BEGIN -->
 			<md-chips
 				class="buttonchips buttonchips-fst"
-				ng-model="ctrl.selectedAuthors">
+				ng-model="client.authors.selectedAuthors">
 				<!-- Autocomplete BEGIN -->
 				<md-autocomplete
 					md-autoselect="true"
-					md-selected-item="ctrl.selectedAuthor"
-					md-search-text="ctrl.authorSearchText"
-					md-items="author in ctrl.getAuthorMatches()"
+					md-selected-item="client.authors.selectedAuthor"
+					md-search-text="client.authors.authorSearchText"
+					md-items="author in client.authors.getAuthorMatches()"
 					md-item-text="author.name"
 					placeholder="Add by name">
 					<md-item-template>
-						<span md-highlight-text="ctrl.authorSearchText">{{author.name}}</span>
+						<span md-highlight-text="client.authors.authorSearchText">{{author.name}}</span>
 					</md-item-template>
 					<md-not-found>No matches found</md-not-found>
 				</md-autocomplete>
@@ -166,18 +166,18 @@ Query:
 			<!-- Research field filter BEGIN -->
 			<md-chips
 				class="buttonchips"
-				ng-model="ctrl.selectedFields"
+				ng-model="client.authors.selectedFields"
 				>
 				<!-- Autocomplete BEGIN -->
 				<md-autocomplete
 					md-autoselect="true"
-					md-selected-item="ctrl.selectedField"
-					md-search-text="ctrl.fieldSearchText"
-					md-items="field in ctrl.getFieldMatches()"
+					md-selected-item="client.authors.selectedField"
+					md-search-text="client.authors.fieldSearchText"
+					md-items="field in client.authors.getFieldMatches()"
 					md-item-text="field.name"
 					placeholder="Add by research fields">
 					<md-item-template>
-						<span md-highlight-text="ctrl.fieldSearchText">{{field.name}}</span>
+						<span md-highlight-text="client.authors.fieldSearchText">{{field.name}}</span>
 					</md-item-template>
 					<md-not-found>No matches found</md-not-found>
 				</md-autocomplete>
