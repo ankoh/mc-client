@@ -40,24 +40,17 @@ angular
         },
         templateUrl: "partials/system.html"
       })
-      .state('tabs.publications', {
-        url: "/publications",
+      .state('tabs.client', {
+        url: "/client",
         data: {
           'selectedTab': 1
         },
-        templateUrl: "partials/publications.html"
-      })
-      .state('tabs.authors', {
-        url: "/authors",
-        data: {
-          'selectedTab': 2
-        },
-        templateUrl: "partials/authors.html"
+        templateUrl: "partials/client.html"
       })
       .state('tabs.docs', {
         url: "/docs",
         data: {
-          'selectedTab': 3
+          'selectedTab': 2
         },
         templateUrl: "partials/docs.html"
       })
