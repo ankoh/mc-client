@@ -1,6 +1,6 @@
 // Initialize the angular application
 angular
-  .module('publicationCache', ['ngMaterial', 'ui.router'])
+  .module('mendeleyCache', ['ngMaterial', 'ui.router'])
   // Configure theme
   .config(function($mdThemingProvider){
     // Extend the red theme with a few different colors

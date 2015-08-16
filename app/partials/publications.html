@@ -1,4 +1,4 @@
-<div class="card md-whiteframe-z1">
+<div class="card md-whiteframe-z1" ng-controller="PublicationsCtrl as ctrl">
 	<md-toolbar layout="row" class="md-toolbar-tools">
 		<h2>
 	        <span>Publications</span>
@@ -8,13 +8,59 @@
             <md-icon md-svg-icon="assets/svg/material-icons/ic_code_black_24px.svg"></md-icon>
         </md-button>
     </md-toolbar>
-	<md-content>
+	<md-content layout="column">
 		<div layout-padding>
-			<h2></h2>
+			<!-- Button chip BEGIN -->
+			<md-chips
+				class="buttonchips"
+				ng-model="ctrl.selectedAuthors"
+				>
+				<!-- Autocomplete BEGIN -->
+				<md-autocomplete
+					md-autoselect="true"
+					md-selected-item="ctrl.selectedAuthor"
+					md-search-text="ctrl.authorSearchText"
+					md-items="author in ctrl.getAuthorMatches(ctrl.authorSearchText)"
+					md-item-text="author.name"
+					placeholder="Filter authors">
+					<md-item-template>
+						<span md-highlight-text="ctrl.authorSearchText">{{author.name}}</span>
+					</md-item-template>
+					<md-not-found>
+						No matches found
+					</md-not-found>
+				</md-autocomplete>
+				<!-- Autocomplete END -->
+				<md-chip-template>
+					<span>
+						<strong>{{$chip.name}}</strong>
+					</span>
+				</md-chip-template>
+				<button md-chip-remove class="md-primary">
+					<md-icon md-svg-src="assets/svg/material-icons/ic_close_white_24px.svg"></md-icon>
+				</button>
+			</md-chips>
+			<!-- Button chip END -->
 		</div>
-		<md-divider md-inset></md-divider>
-		<div layout-padding>
-			<h2></h2>
-		</div>
+		<!--<md-fab-toolbar md-open="publications.actions.isOpen" count="publications.actions.count" md-direction="left">
+			<md-fab-trigger>
+				<md-button class="md-fab md-primary">
+					<md-icon md-svg-src="assets/svg/material-icons/ic_arrow_back_white_24px.svg"></md-icon>
+				</md-button>
+			</md-fab-trigger>
+			<md-toolbar>
+				<md-fab-actions class="md-toolbar-tools">
+					<md-button class="md-icon-button">
+				  		<md-icon md-svg-src="assets/svg/material-icons/ic_close_white_24px.svg"></md-icon>
+					</md-button>
+					<md-button class="md-icon-button">
+					  <md-icon md-svg-src="assets/svg/material-icons/ic_close_white_24px.svg"></md-icon>
+					</md-button>
+					<md-button class="md-icon-button">
+					  <md-icon md-svg-src="assets/svg/material-icons/ic_close_white_24px.svg"></md-icon>
+					</md-button>
+				</md-fab-actions>
+			</md-toolbar>
+	  	</md-fab-toolbar> -->
 	</md-content>
 </div>

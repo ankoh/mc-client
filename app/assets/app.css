@@ -5,7 +5,7 @@ html, body {
   margin: 0px;
   padding: 0px;
 
-  background-color: #efefef
+  background-color: #efefef;
 }
 
 md-content {
@@ -29,7 +29,7 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 
 .footer {
 	background-color: #eaeaea;
-	color: #bbb;
+	color: #bbbbbb;
 	position:fixed;
 	bottom: 0;
 	right: 0;
@@ -53,7 +53,7 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	/* {{primary-color}} */
 	background-color: #fcfcfc;
 	/* {{primary-contrast}} */
-	color: #444;
+	color: #444444;
 
 	border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
@@ -66,4 +66,56 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 .card .md-button { /* {{primary-contrast}} */ color: #444; }
 .card md-content {
 	background-color: #ffffff;
+}
+
+
+.buttonchips {
+	
+}
+
+.buttonchips .md-chip {
+	position: relative;
+}
+
+.buttonchips .md-chip-remove-container {
+	position: absolute;
+    right: 4px;
+    top: 4px;
+    margin-right: 0!important;
+    height: 24px;
+}
+
+.buttonchips .md-chip-remove-container button {
+	position: relative;
+    height: 24px;
+    width: 24px;
+    line-height: 30px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    transition: background 0.15s linear;
+    display: block;
+}
+
+.buttonchips .md-chip-remove-container button:focus, .buttonchips .md-chip-remove-container button:hover {
+	background: #002143;
+}
+.buttonchips .md-chip-remove-container button md-icon {
+	position: absolute;
+    right: 4px;
+    top: 4px;
+    left: 4px;
+    bottom: 4px;
+    width: auto;
+    height: auto;
+	color: white;
+	fill: white;
+}
+
+.buttonchips md-chip-template {
+    padding-right: 20px; 
 }
