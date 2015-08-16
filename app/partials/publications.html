@@ -10,7 +10,7 @@
     </md-toolbar>
 	<md-content layout="column">
 		<div layout-padding>
-			<!-- Button chip BEGIN -->
+			<!-- Author filter BEGIN -->
 			<md-chips
 				class="buttonchips"
 				ng-model="ctrl.selectedAuthors"
@@ -20,9 +20,9 @@
 					md-autoselect="true"
 					md-selected-item="ctrl.selectedAuthor"
 					md-search-text="ctrl.authorSearchText"
-					md-items="author in ctrl.getAuthorMatches(ctrl.authorSearchText)"
+					md-items="author in ctrl.getAuthorMatches()"
 					md-item-text="author.name"
-					placeholder="Filter authors">
+					placeholder="Add authors">
 					<md-item-template>
 						<span md-highlight-text="ctrl.authorSearchText">{{author.name}}</span>
 					</md-item-template>
@@ -40,7 +40,39 @@
 					<md-icon md-svg-src="assets/svg/material-icons/ic_close_white_24px.svg"></md-icon>
 				</button>
 			</md-chips>
-			<!-- Button chip END -->
+			<!-- Author filter END -->
+
+			<!-- Research field filter BEGIN -->
+			<md-chips
+				class="buttonchips"
+				ng-model="ctrl.selectedFields"
+				>
+				<!-- Autocomplete BEGIN -->
+				<md-autocomplete
+					md-autoselect="true"
+					md-selected-item="ctrl.selectedField"
+					md-search-text="ctrl.fieldSearchText"
+					md-items="field in ctrl.getFieldMatches()"
+					md-item-text="field.name"
+					placeholder="Add research fields">
+					<md-item-template>
+						<span md-highlight-text="ctrl.fieldSearchText">{{field.name}}</span>
+					</md-item-template>
+					<md-not-found>
+						No matches found
+					</md-not-found>
+				</md-autocomplete>
+				<!-- Autocomplete END -->
+				<md-chip-template>
+					<span>
+						<strong>{{$chip.name}}</strong>
+					</span>
+				</md-chip-template>
+				<button md-chip-remove class="md-primary">
+					<md-icon md-svg-src="assets/svg/material-icons/ic_close_white_24px.svg"></md-icon>
+				</button>
+			</md-chips>
+			<!-- Research field filter END -->
 		</div>
 		<!--<md-fab-toolbar md-open="publications.actions.isOpen" count="publications.actions.count" md-direction="left">
 			<md-fab-trigger>

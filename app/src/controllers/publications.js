@@ -3,36 +3,43 @@ angular.module('mendeleyCache')
 
 function PublicationsCtrl($scope) {
 	var self = this;
+
+	// Author filter
 	self.selectedAuthor = null;
-	self.appendAuthor = appendAuthor;
     self.authorSearchText = null;
-	self.getAuthorMatches = getAuthorMatches;
 	self.allAuthors = loadAuthors();
 	self.selectedAuthors = [ ];
+	self.getAuthorMatches = function() {
+		return getMatches(self.authorSearchText, self.allAuthors);
+	};
 
-	/*
-		This method gets called when the user presses enter to append a new author chip
-	*/
-	function appendAuthor() {
-		console.log("fired");
+	// Research field filter
+	self.selectedField = null;
+	self.fieldSearchText = null;
+	self.allFields = loadFields();
+	self.selectedFields = [ ];
+	self.getFieldMatches = function() {
+		return getMatches(self.fieldSearchText, self.allFields);
 	}
 
+
 	/*
-		The autocomplete control will set the authorSearchText and fire the getAuthorMatches() function.
-		getAuthorMatches is then responsible for finding the matches among all authors. 
+		The autocomplete control will set the {author,filter}SearchText and fire the get{Author,Filter}Matches() function.
+		getMatches is then responsible for finding the matches among all items. 
 	*/
-	function getAuthorMatches() {
-		if (self.authorSearchText) {
-			var lowercaseQuery = angular.lowercase(self.authorSearchText);
-			var filterFn = function filterFn(author) {
-				var lowercaseAuthor = angular.lowercase(author.name);
-				return (lowercaseAuthor.indexOf(lowercaseQuery) != -1);;
+	function getMatches(searchText, array) {
+		if (searchText) {
+			var lowercaseQuery = angular.lowercase(searchText);
+			var filterFn = function filterFn(item) {
+				var lowerCaseItem = angular.lowercase(item.name);
+				return (lowerCaseItem.indexOf(lowercaseQuery) != -1);;
 			};
-			return self.allAuthors.filter(filterFn);
+			return array.filter(filterFn);
 		} else {
 			return [];
 		}
 	};
+
 
 	/*
 		For now the author array is just pre-populated with known values.
@@ -62,5 +69,28 @@ function PublicationsCtrl($scope) {
 			}
 		];
 		return authors;
+    };
+
+
+    /*
+		For now the author array is just pre-populated with known values.
+		TODO: I'll replace that with a more solid REST api call with loading indicator later.
+	*/
+	function loadFields() {
+		var fields = [
+			{ 
+				name: 'Cyber Physical Systems',
+				publications: 20
+			},
+			{
+				name: 'Continuous Software Engineering',
+				publications: 10
+			},
+			{
+				name: 'Agile Development',
+				publications: 30
+			}
+		];
+		return fields;
     };
 }
