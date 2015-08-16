@@ -1,6 +1,9 @@
 // Initialize the angular application
 angular
   .module('mendeleyCache', ['ngMaterial', 'ui.router'])
+  // Services
+  .factory('Cache', function() { return new Cache(); })
+  .factory('Broker', function() { return new Broker(); })
   // Controllers
   .controller('ClientController', ClientController)
   // Configure theme

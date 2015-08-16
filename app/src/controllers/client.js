@@ -1,14 +1,14 @@
-function ClientController() {
+function ClientController(Cache, Broker) {
 	var self = this;
 
 	self.publications = {};
 	self.authors = {};
 
 	// Author list
-	self.allAuthors = loadAuthors();
-	self.allFields = loadFields();
+	self.allAuthors = Broker.fetchAuthors();
+	self.allFields = Broker.fetchFields();
 
-	/* Publications */
+	// Publications
 
 	// Author filter
 	self.publications.selectedAuthor = null;
@@ -28,7 +28,7 @@ function ClientController() {
 	self.publications.dropdown = false;
 
 
-	/* Authors */
+	// Authors
 
 	// Author filter
 	self.authors.selectedAuthor = null;
@@ -47,11 +47,8 @@ function ClientController() {
 	// Dropdown for live url construction
 	self.authors.dropdown = false;
 
-
-	/*
-		The autocomplete control will set the {author,filter}SearchText and fire the get{Author,Filter}Matches() function.
-		getMatches is then responsible for finding the matches among all items. 
-	*/
+	// The autocomplete control will set the {author,filter}SearchText and fire the get{Author,Filter}Matches() function.
+	// getMatches is then responsible for finding the matches among all items. 
 	function getMatches(searchText, array) {
 		if (searchText) {
 			var lowercaseQuery = angular.lowercase(searchText);
@@ -64,61 +61,4 @@ function ClientController() {
 			return [];
 		}
 	};
-
-
-	/*
-		For now the author array is just pre-populated with known values.
-		TODO: I'll replace that with a more solid REST api call with loading indicator later.
-	*/
-	function loadAuthors() {
-		var authors = [
-			{ 
-				name: 'Stephan Krusche',
-				email: 'krusche@in.tum.de',
-				publications: 20
-			},
-			{
-				name: 'Constantin Scheuermann',
-				email: 'scheuermann@in.tum.de',
-				publications: 10
-			},
-			{
-				name: 'Bernd Brügge',
-				email: 'bruegge@in.tum.de',
-				publications: 120
-			},
-			{
-				name: 'Andreas Seitz',
-				email: 'seitz@in.tum.de',
-				publications: 5
-			}
-		];
-		return authors;
-    };
-
-
-    /*
-		For now the author array is just pre-populated with known values.
-		TODO: I'll replace that with a more solid REST api call with loading indicator later.
-	*/
-	function loadFields() {
-		var fields = [
-			{ 
-				name: 'Cyber Physical Systems',
-				publications: 20
-			},
-			{
-				name: 'Continuous Software Engineering',
-				publications: 10
-			},
-			{
-				name: 'Agile Development',
-				publications: 30
-			}
-		];
-		return fields;
-    };
-
-
-
 }
