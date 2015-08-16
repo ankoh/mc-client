@@ -74,8 +74,9 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 .buttonchips md-chips-wrap {
 	margin-top: 16px;
 }
-.buttonchips:nth-of-type(1) md-chips-wrap {
-	margin-top: 0px;
+
+.buttonchips-fst md-chips-wrap {
+	margin-top: 0px !important;
 }
 
 .buttonchips .md-chip {
