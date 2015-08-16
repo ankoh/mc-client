@@ -22,6 +22,9 @@ function PublicationsCtrl($scope) {
 		return getMatches(self.fieldSearchText, self.allFields);
 	}
 
+	// Dropdown for live url construction
+	self.dropdown = false;
+
 
 	/*
 		The autocomplete control will set the {author,filter}SearchText and fire the get{Author,Filter}Matches() function.
