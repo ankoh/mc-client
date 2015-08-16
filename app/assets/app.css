@@ -37,20 +37,6 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	z-index:10;
 }
 
-.footer {
-	background-color: #eaeaea;
-	color: #bbbbbb;
-	position:fixed;
-	bottom: 0;
-	right: 0;
-	left: 0;
-	z-index:0;
-}
-.footer i {
-	font-size: 14px;
-}
-
-
 .card {
 	margin: 8px;
 	margin-bottom: 24px;
