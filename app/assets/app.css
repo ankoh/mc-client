@@ -152,7 +152,7 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	padding-top: 12px;
 	padding-bottom: 8px;
 	padding-right: 0px;
-	height: 240px!important;
+	height: 220px!important;
 }
 .mc-linechart canvas {
 	height: 180px!important;
