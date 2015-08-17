@@ -1,11 +1,17 @@
 // Initialize the angular application
 angular
   .module('mendeleyCache', ['ngMaterial', 'ui.router'])
+
   // Services
   .factory('Cache', function() { return new Cache(); })
-  .factory('Broker', function() { return new Broker(); })
+  .factory('AuthorApi', function() { return new AuthorApi(); })
+  .factory('FieldApi', function() { return new FieldApi(); })
+  .factory('PublicationApi', function() { return new PublicationApi(); })
+
   // Controllers
   .controller('ClientController', ClientController)
+
+
   // Configure theme
   .config(function($mdThemingProvider){
     // Extend the red theme with a few different colors
@@ -22,6 +28,8 @@ angular
       .primaryPalette('tumBlue')
       .accentPalette('grey');
   })
+
+
   // Configure routing
   .config(function($stateProvider, $urlRouterProvider) {
     // For any unmatched url, redirect to /system

@@ -1,12 +1,12 @@
-function ClientController(Cache, Broker) {
+function ClientController(AuthorApi, FieldApi) {
 	var self = this;
 
 	self.publications = {};
 	self.authors = {};
 
 	// Author list
-	self.allAuthors = Broker.fetchAuthors();
-	self.allFields = Broker.fetchFields();
+	self.allAuthors = AuthorApi.getAllAuthors();
+	self.allFields = FieldApi.getAllFields();
 
 	// Publications
 
