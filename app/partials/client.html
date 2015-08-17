@@ -1,5 +1,5 @@
-<div class="card md-whiteframe-z1">
-	<md-toolbar layout="row" class="md-toolbar-tools header">
+<div class="mc-card md-whiteframe-z1">
+	<md-toolbar layout="row" class="md-toolbar-tools mc-header">
 		<h2>
 	        <span>Publication Query</span>
 	    </h2>
@@ -13,7 +13,7 @@
     </md-toolbar>
 
     <!-- Code Dropdown BEGIN -->
-    <md-content class="dropdown" layout="column" layout-align="center start"
+    <md-content class="mc-dropdown" layout="column" layout-align="center start"
     ng-show="client.publications.dropdown">
 <pre><code>Protocol: HTTPS
 Method: GET
@@ -33,7 +33,7 @@ Query:
 		<div class="md-padding">
 			<!-- Author filter BEGIN -->
 			<md-chips
-				class="buttonchips buttonchips-fst"
+				class="mc-buttonchips mc-buttonchips-fst"
 				ng-model="client.publications.selectedAuthors">
 				<!-- Autocomplete BEGIN -->
 				<md-autocomplete
@@ -60,7 +60,7 @@ Query:
 
 			<!-- Research field filter BEGIN -->
 			<md-chips
-				class="buttonchips"
+				class="mc-buttonchips"
 				ng-model="client.publications.selectedFields"
 				>
 				<!-- Autocomplete BEGIN -->
@@ -87,7 +87,7 @@ Query:
 			<!-- Research field filter END -->
 		</div>
 
-		<md-toolbar class="actionbar md-toolbar-tools" layout="row">
+		<md-toolbar class="mc-actionbar md-toolbar-tools" layout="row">
 			<span flex></span>
 			<md-button aria-label="label" class="md-icon-button">
 				<md-icon md-svg-src="assets/svg/material-icons/ic_link_black_24px.svg"></md-icon>
@@ -106,8 +106,8 @@ Query:
 	</md-content>
 </div>
 
-<div class="card md-whiteframe-z1">
-	<md-toolbar layout="row" class="md-toolbar-tools header">
+<div class="mc-card md-whiteframe-z1">
+	<md-toolbar layout="row" class="md-toolbar-tools mc-header">
 		<h2>
 	        <span>Author Query</span>
 	    </h2>
@@ -121,7 +121,7 @@ Query:
     </md-toolbar>
 
     <!-- Code Dropdown BEGIN -->
-    <md-content class="dropdown" layout="column" layout-align="center start" 
+    <md-content class="mc-dropdown" layout="column" layout-align="center start" 
     ng-show="client.authors.dropdown">
 <pre><code>Protocol: HTTPS
 Method: GET
@@ -141,7 +141,7 @@ Query:
 		<div class="md-padding">
 			<!-- Author filter BEGIN -->
 			<md-chips
-				class="buttonchips buttonchips-fst"
+				class="mc-buttonchips mc-buttonchips-fst"
 				ng-model="client.authors.selectedAuthors">
 				<!-- Autocomplete BEGIN -->
 				<md-autocomplete
@@ -168,7 +168,7 @@ Query:
 
 			<!-- Research field filter BEGIN -->
 			<md-chips
-				class="buttonchips"
+				class="mc-buttonchips"
 				ng-model="client.authors.selectedFields"
 				>
 				<!-- Autocomplete BEGIN -->
@@ -195,7 +195,7 @@ Query:
 			<!-- Research field filter END -->
 		</div>
 
-		<md-toolbar class="actionbar md-toolbar-tools" layout="row">
+		<md-toolbar class="mc-actionbar md-toolbar-tools" layout="row">
 			<span flex></span>
 			<md-button aria-label="photo" class="md-icon-button">
 				<md-icon md-svg-src="assets/svg/material-icons/ic_file_download_black_24px.svg"></md-icon>

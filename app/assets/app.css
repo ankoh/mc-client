@@ -24,18 +24,18 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	color: #b0b0b0;
 }
 
-#chair-logo {
+#mc-logo {
 	height: 50px;
 	width: 50px;
 	margin-right: 15px;
 }
-.content {
+.mc-content {
 	background-color: transparent;
 	z-index:10;
 }
 
 
-.card {
+.mc-card {
 	margin-left: 8px;
 	margin-right: 8px;
 	margin-top: 8px;
@@ -45,7 +45,7 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
 }
-.card .header {
+.mc-card .mc-header {
 	/* {{primary-color}} */
 	background-color: #fcfcfc;
 	/* {{primary-contrast}} */
@@ -56,44 +56,44 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	border-top-right-radius: 3px;
 	border-bottom: 1px solid #e3e3e3;
 }
-.card .header md-icon { /* {{primary-contrast}} */ color: #444; }
-.card .md-button { /* {{primary-contrast}} */ color: #444; }
-.card md-content {
+.mc-card .mc-header md-icon { /* {{primary-contrast}} */ color: #444; }
+.mc-card .md-button { /* {{primary-contrast}} */ color: #444; }
+.mc-card md-content {
 	background-color: #ffffff;
 }
-.card .actionbar {
+.mc-card .mc-actionbar {
 	/* background-color: #002143; */
 	background-color: #fcfcfc;
 	margin-top: 26px;
 	border-top: 1px solid #e3e3e3;
 }
-.card .dropdown {
+.mc-card .mc-dropdown {
 	background-color: #666;
 	color: #fff;
 	padding: 20px;
 }
-.card .dropdown pre {
+.mc-card .mc-dropdown pre {
 	margin:0px;
 }
 
-.buttonchips md-chips-wrap {
+.mc-buttonchips md-chips-wrap {
 	margin-top: 16px;
 }
-.buttonchips-fst md-chips-wrap {
+.mc-buttonchips-fst md-chips-wrap {
 	margin-top: 0px !important;
 }
-.buttonchips .md-chip {
+.mc-buttonchips md-chip {
 	position: relative;
 	font-weight:500;
 }
-.buttonchips .md-chip-remove-container {
+.mc-buttonchips .md-chip-remove-container {
 	position: absolute;
     right: 4px;
     top: 4px;
     margin-right: 0!important;
     height: 24px;
 }
-.buttonchips .md-chip-remove-container button {
+.mc-buttonchips .md-chip-remove-container button {
 	position: relative;
     height: 24px;
     width: 24px;
@@ -108,10 +108,10 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
     transition: background 0.15s linear;
     display: block;
 }
-.buttonchips .md-chip-remove-container button:focus, .buttonchips .md-chip-remove-container button:hover {
+.mc-buttonchips .md-chip-remove-container button:focus, .mc-buttonchips .md-chip-remove-container button:hover {
 	background: #002143;
 }
-.buttonchips .md-chip-remove-container button md-icon {
+.mc-buttonchips .md-chip-remove-container button md-icon {
 	position: absolute;
     right: 4px;
     top: 4px;
@@ -122,27 +122,39 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	color: white;
 	fill: white;
 }
-.buttonchips md-chip-template {
+.mc-buttonchips md-chip-template {
     padding-right: 20px; 
 }
 
-.status-table {
+.mc-table {
 	padding-bottom: 8px;
 	padding-top: 8px;
 }
-.status-table p {
+.mc-table p {
 	
 }
-.status-table .row {
+.mc-table .mc-row {
 	padding-right: 8px;
 	padding-left: 0px;
 }
-.status-table .icon-text-column md-icon {
+.mc-table .mc-icon-text-column md-icon {
 	height: 22px;
 	width: 80px;
 }
-.status-table .icon-text-column p {
+.mc-table .mc-icon-text-column p {
 	vertical-align: center;
 	margin-left: 0px;
 	font-weight: 500;
 }
+
+.mc-linechart {
+	padding-left: 30px;
+	padding-top: 12px;
+	padding-bottom: 8px;
+	padding-right: 0px;
+	height: 240px!important;
+}
+.mc-linechart canvas {
+	height: 180px!important;
+}
+

@@ -1,6 +1,6 @@
 // Initialize the angular application
 angular
-  .module('mendeleyCache', ['ngMaterial', 'ui.router'])
+  .module('mendeleyCache', ['ngMaterial', 'ui.router', 'chart.js'])
 
   // Services
   .factory('Cache', function() { return new Cache(); })
@@ -10,14 +10,11 @@ angular
 
   // Controllers
   .controller('ClientController', ClientController)
-
+  .controller('SystemController', SystemController)
 
   // Configure theme
   .config(function($mdThemingProvider){
     // Extend the red theme with a few different colors
-    var mendeleyRedMap = $mdThemingProvider.extendPalette('red', {
-      '500': '9D1620'
-    });
     var tumBlue = $mdThemingProvider.extendPalette('blue', {
       '500': '002143'
     });
@@ -51,6 +48,8 @@ angular
         data: {
           'selectedTab': 0
         },
+        controller: 'SystemController',
+        controllerAs: 'system',
         templateUrl: "partials/system.html"
       })
       .state('tabs.client', {

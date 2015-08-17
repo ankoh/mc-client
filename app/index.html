@@ -9,8 +9,10 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,400italic'>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
+
     <link rel="stylesheet" href="assets/app.css"/>
   </head>
 
@@ -20,10 +22,10 @@
     <!-- Toolbar BEGIN -->
     <md-toolbar layout="row" layout-align="center end" class="md-tall md-whiteframe-z2">
       <!-- Center Container BEGIN -->
-      <div flex flex-sm="100" flex-gt-sm="95" flex-gt-md="75" layout="column">
+      <div flex flex-sm="100" flex-gt-sm="95" flex-gt-md="75" flex-gt-lg="65" layout="column">
         <!-- Top Row BEGIN -->
         <span layout="row" class="md-toolbar-tools">
-          <md-icon md-svg-icon="assets/svg/logo_chair.svg" id="chair-logo" ></md-icon>
+          <md-icon md-svg-icon="assets/svg/logo_chair.svg" id="mc-logo" ></md-icon>
           <h2>
             <span>Mendeley Cache</span>
           </h2>
@@ -56,8 +58,8 @@
     <!-- Toolbar END -->
 
     <!-- TabContent BEGIN -->
-    <md-content flex class="content" layout="row" layout-align="center start" layout-padding>
-        <div ng-if="!stateIsLoading" ui-view flex flex-sm="100" flex-gt-sm="95" flex-gt-md="75"></div>
+    <md-content flex class="mc-content" layout="row" layout-align="center start" layout-padding>
+        <div ng-if="!stateIsLoading" ui-view flex flex-sm="100" flex-gt-sm="95" flex-gt-md="75" flex-gt-lg="65"></div>
         <div ng-if="stateIsLoading">Loading...</div>
     </md-content>
     <!-- TabContent END -->
@@ -80,6 +82,7 @@
 
     <!-- Controllers -->
     <script type="text/javascript" src="src/controllers/client.js"></script>
+    <script type="text/javascript" src="src/controllers/system.js"></script>
 
     <!-- Angular application -->
     <script type="text/javascript" src="src/app.js"></script>
