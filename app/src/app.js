@@ -11,7 +11,7 @@ angular
   // Controllers
   .controller('ClientController', ClientController)
   .controller('SystemController', SystemController)
-  .controller('StatisticsController', SystemController)
+  .controller('StatisticsController', StatisticsController)
 
   // Configure theme
   .config(function($mdThemingProvider){
