@@ -11,6 +11,7 @@ angular
   // Controllers
   .controller('ClientController', ClientController)
   .controller('SystemController', SystemController)
+  .controller('StatisticsController', SystemController)
 
   // Configure theme
   .config(function($mdThemingProvider){
@@ -52,10 +53,19 @@ angular
         controllerAs: 'system',
         templateUrl: "partials/system.html"
       })
+      .state('tabs.statistics', {
+        url: "/statistics",
+        data: {
+          'selectedTab': 1
+        },
+        controller: 'StatisticsController',
+        controllerAs: 'statistics',
+        templateUrl: "partials/statistics.html"
+      })
       .state('tabs.client', {
         url: "/client",
         data: {
-          'selectedTab': 1
+          'selectedTab': 2
         },
         controller: 'ClientController',
         controllerAs: 'client',
@@ -64,7 +74,7 @@ angular
       .state('tabs.docs', {
         url: "/docs",
         data: {
-          'selectedTab': 2
+          'selectedTab': 3
         },
         templateUrl: "partials/docs.html"
       })
