@@ -1,7 +1,7 @@
 <div class="mc-card md-whiteframe-z1">
 	<md-toolbar layout="row" class="md-toolbar-tools mc-header">
 		<h2>
-	        <span>Publications</span>
+	        <span>Publication Query</span>
 	    </h2>
 	    <span flex></span>
 	    <md-button 
@@ -109,7 +109,7 @@ Query:
 <div class="mc-card md-whiteframe-z1">
 	<md-toolbar layout="row" class="md-toolbar-tools mc-header">
 		<h2>
-	        <span>Authors</span>
+	        <span>Author Query</span>
 	    </h2>
 	    <span flex></span>
 	    <md-button 
@@ -178,7 +178,7 @@ Query:
 					md-search-text="client.authors.fieldSearchText"
 					md-items="field in client.authors.getFieldMatches()"
 					md-item-text="field.name"
-					placeholder="Add by research fields">
+					placeholder="Add by research field">
 					<md-item-template>
 						<span md-highlight-text="client.authors.fieldSearchText">{{field.name}}</span>
 					</md-item-template>

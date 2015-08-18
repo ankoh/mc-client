@@ -158,3 +158,8 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	height: 180px!important;
 }
 
+
+
+/* Common */
+.mc-padding-right-16 { padding-right: 16px; }
+.mc-padding-right-24 { padding-right: 24px; }
