@@ -30,9 +30,21 @@
             <span>Mendeley Cache</span>
           </h2>
           <span flex></span>
-          <md-button class="md-icon-button" aria-label="More">
-            <md-icon md-svg-icon="assets/svg/material-icons/ic_more_vert_white_24px.svg"></md-icon>
-          </md-button>
+          <!-- Right Menu BEGIN -->
+          <md-menu md-position-mode="target-right target" >
+            <md-button 
+              class="md-icon-button"
+              ng-click="$mdOpenMenu($event)">
+              <md-icon
+                md-menu-origin
+                md-svg-icon="assets/svg/material-icons/ic_more_vert_white_24px.svg"></md-icon>
+            </md-button>
+            <md-menu-content width="3">
+              <md-menu-item><md-button>About</md-button></md-menu-item>
+              <md-menu-item><md-button>Fork</md-button></md-menu-item>
+            </md-menu-content>
+          </md-menu>
+          <!-- Right Menu END -->
         </span>
         <!-- Top Row END -->
 
