@@ -1,7 +1,7 @@
-function AuthorApi() {
-	this.authors = [];
+function ProfileApi() {
+	this.profiles = [];
 
-	this.authors = [
+	this.profiles = [
 		{ 
 			name: 'Stephan Krusche',
 			email: 'krusche@in.tum.de',
@@ -24,10 +24,10 @@ function AuthorApi() {
 		}
 	];
 
-	console.log("AuthorApi initialized");
+	console.log("ProfileApi initialized");
 }
 
 
-AuthorApi.prototype.getAllAuthors = function () {
-	return this.authors;
+ProfileApi.prototype.getAllProfiles = function () {
+	return this.profiles;
 }

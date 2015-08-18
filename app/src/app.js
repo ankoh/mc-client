@@ -4,7 +4,7 @@ angular
 
   // Services
   .factory('Cache', function() { return new Cache(); })
-  .factory('AuthorApi', function() { return new AuthorApi(); })
+  .factory('ProfileApi', function() { return new ProfileApi(); })
   .factory('FieldApi', function() { return new FieldApi(); })
   .factory('PublicationApi', function() { return new PublicationApi(); })
 

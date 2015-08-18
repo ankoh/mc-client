@@ -1,16 +1,68 @@
 <div class="mc-card md-whiteframe-z1">
-	<md-toolbar>
-		<h2 class="mc-header md-toolbar-tools">
+	<md-toolbar layout="row" class="mc-header md-toolbar-tools">
+		<h2>
 	        <span>Documentation</span>
 	    </h2>
     </md-toolbar>
-	<md-content>
-		<div layout-padding>
-			<h2></h2>
+
+	<md-content class="mc-table" layout="column">
+		<!-- System -->
+		<div class="mc-row" layout="row" layout-align="start center">
+			<div class="mc-icon-text-column" flex="40" flex-align="start center" layout="row">
+				<md-icon md-svg-icon="assets/svg/material-icons/ic_extension_black_24px.svg"></md-icon>
+				<code flex>GET /system</code>
+			</div>
+			<p flex class="mc-description">Returns a system report that covers server version, uptime, last update, log size, research group id and reachability of the Mendeley API.
+			</p>
 		</div>
 		<md-divider md-inset></md-divider>
-		<div layout-padding>
-			<h2></h2>
+		<!-- Statistics -->
+		<div class="mc-row" layout="row" layout-align="start center">
+			<div class="mc-icon-text-column" flex="40" flex-align="start center" layout="row">
+				<md-icon md-svg-icon="assets/svg/material-icons/ic_extension_black_24px.svg"></md-icon>
+				<code flex>GET /statistics</code>
+			</div>
+			<p flex class="mc-description">
+				Always returns the current number of authors, publications and research fields.
+				Additionally returns statistics based on the access logs that cover api calls, file downloads and BibTeX downloads of the last seven weeks in total and per week.
+			</p>
+		</div>
+		<md-divider md-inset></md-divider>
+		<!-- Fields -->
+		<div class="mc-row" layout="row" layout-align="start center">
+			<div class="mc-icon-text-column" flex="40" flex-align="start center" layout="row">
+				<md-icon md-svg-icon="assets/svg/material-icons/ic_extension_black_24px.svg"></md-icon>
+				<code flex>GET /fields</code>
+			</div>
+			<p flex class="mc-description">
+				Returns all research fields that have been identified by the crawler.
+				The crawler checks the tags that have been added to a Mendeley publication and merges small spelling variations.
+				Thereby the original field name is reconstructed based on dash delimiters.
+				(e.g. <code>cyber-physical-systems</code> becomes <code>Cyber Physical Systems</code>)
+			</p>
+		</div>
+		<md-divider md-inset></md-divider>
+		<!-- Profiles -->
+		<div class="mc-row" layout="row" layout-align="start center">
+			<div class="mc-icon-text-column" flex="40" flex-align="start center" layout="row">
+				<md-icon md-svg-icon="assets/svg/material-icons/ic_extension_black_24px.svg"></md-icon>
+				<code flex>GET /profiles</code>
+			</div>
+			<p flex class="mc-description">
+				Given the optional parameters <code>profiles</code> and <code>fields</code>, returns all Mendeley Profiles that are associated with a profile id OR a field id. The crawler only caches those profiles that belong to the configured Mendeley Research Group. If you do not pass any of these two parameters, all profiles (instead of none) are returned. If you pass the parameter <code>slim=true</code>, the result will only include name, id and publication count.
+			</p>
+		</div>
+		<md-divider md-inset></md-divider>
+		<!-- Publications -->
+		<div class="mc-row" layout="row" layout-align="start center">
+			<div class="mc-icon-text-column" flex="40" flex-align="start center" layout="row">
+				<md-icon md-svg-icon="assets/svg/material-icons/ic_extension_black_24px.svg"></md-icon>
+				<code flex>GET /publications</code>
+			</div>
+			<p flex class="mc-description">
+				Given the optional parameters <code>profiles</code> and <code>fields</code>, returns all publications that are associated with a profile id AND a field id.
+				(e.g. <code>?profiles=1234125,1233125&fields=12534,12535</code> returns all publications of the users <code>1234125</code> and <code>1233125</code> that are associated with either the field <code>12534</code> OR the field <code>12535</code>)
+			</p>
 		</div>
 	</md-content>
 </div>

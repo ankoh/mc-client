@@ -1,21 +1,21 @@
-function ClientController(AuthorApi, FieldApi) {
+function ClientController(ProfileApi, FieldApi) {
 	var self = this;
 
 	self.publications = {};
-	self.authors = {};
+	self.profiles = {};
 
-	// Author list
-	self.allAuthors = AuthorApi.getAllAuthors();
+	// Profile list
+	self.allProfiles = ProfileApi.getAllProfiles();
 	self.allFields = FieldApi.getAllFields();
 
 	// Publications
 
-	// Author filter
-	self.publications.selectedAuthor = null;
-    self.publications.authorSearchText = null;
-	self.publications.selectedAuthors = [ ];
-	self.publications.getAuthorMatches = function() {
-		return getMatches(self.publications.authorSearchText, self.allAuthors);
+	// Profile filter
+	self.publications.selectedProfile = null;
+    self.publications.profileSearchText = null;
+	self.publications.selectedProfiles = [ ];
+	self.publications.getProfileMatches = function() {
+		return getMatches(self.publications.profileSearchText, self.allProfiles);
 	};
 	// Research field filter
 	self.publications.selectedField = null;
@@ -28,26 +28,26 @@ function ClientController(AuthorApi, FieldApi) {
 	self.publications.dropdown = false;
 
 
-	// Authors
+	// Profiles
 
-	// Author filter
-	self.authors.selectedAuthor = null;
-    self.authors.authorSearchText = null;
-	self.authors.selectedAuthors = [ ];
-	self.authors.getAuthorMatches = function() {
-		return getMatches(self.authors.authorSearchText, self.allAuthors);
+	// Profile filter
+	self.profiles.selectedProfile = null;
+    self.profiles.profileSearchText = null;
+	self.profiles.selectedProfiles = [ ];
+	self.profiles.getProfileMatches = function() {
+		return getMatches(self.profiles.profileSearchText, self.allProfiles);
 	};
 	// Research field filter
-	self.authors.selectedField = null;
-	self.authors.fieldSearchText = null;
-	self.authors.selectedFields = [ ];
-	self.authors.getFieldMatches = function() {
-		return getMatches(self.authors.fieldSearchText, self.allFields);
+	self.profiles.selectedField = null;
+	self.profiles.fieldSearchText = null;
+	self.profiles.selectedFields = [ ];
+	self.profiles.getFieldMatches = function() {
+		return getMatches(self.profiles.fieldSearchText, self.allFields);
 	}
 	// Dropdown for live url construction
-	self.authors.dropdown = false;
+	self.profiles.dropdown = false;
 
-	// The autocomplete control will set the {author,filter}SearchText and fire the get{Author,Filter}Matches() function.
+	// The autocomplete control will set the {profile,filter}SearchText and fire the get{Profile,Filter}Matches() function.
 	// getMatches is then responsible for finding the matches among all items. 
 	function getMatches(searchText, array) {
 		if (searchText) {

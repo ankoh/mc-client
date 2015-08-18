@@ -21,7 +21,7 @@ Base: dockerbruegge1.informatik.tu-muenchen.de
 Port: 34234
 Path: /publications
 Query:
-	?authors=
+	?profiles=
 		109235295092345,
 		934850932485930
 	&fields=
@@ -31,20 +31,20 @@ Query:
 
 	<md-content layout="column">
 		<div class="md-padding">
-			<!-- Author filter BEGIN -->
+			<!-- Profile filter BEGIN -->
 			<md-chips
 				class="mc-buttonchips mc-buttonchips-fst"
-				ng-model="client.publications.selectedAuthors">
+				ng-model="client.publications.selectedProfiles">
 				<!-- Autocomplete BEGIN -->
 				<md-autocomplete
 					md-autoselect="true"
-					md-selected-item="client.publications.selectedAuthor"
-					md-search-text="client.publications.authorSearchText"
-					md-items="author in client.publications.getAuthorMatches()"
-					md-item-text="author.name"
-					placeholder="Filter by authors">
+					md-selected-item="client.publications.selectedProfile"
+					md-search-text="client.publications.profileSearchText"
+					md-items="profile in client.publications.getProfileMatches()"
+					md-item-text="profile.name"
+					placeholder="Filter by profiles">
 					<md-item-template>
-						<span md-highlight-text="client.publications.authorSearchText">{{author.name}}</span>
+						<span md-highlight-text="client.publications.profileSearchText">{{profile.name}}</span>
 					</md-item-template>
 					<md-not-found>No matches found</md-not-found>
 				</md-autocomplete>
@@ -56,7 +56,7 @@ Query:
 					<md-icon md-svg-src="assets/svg/material-icons/ic_close_white_24px.svg"></md-icon>
 				</button>
 			</md-chips>
-			<!-- Author filter END -->
+			<!-- Profile filter END -->
 
 			<!-- Research field filter BEGIN -->
 			<md-chips
@@ -109,27 +109,27 @@ Query:
 <div class="mc-card md-whiteframe-z1">
 	<md-toolbar layout="row" class="md-toolbar-tools mc-header">
 		<h2>
-	        <span>Author Query</span>
+	        <span>Profile Query</span>
 	    </h2>
 	    <span flex></span>
 	    <md-button 
 	    	class="md-icon-button"
 	    	aria-label="More"
-	    	ng-click="client.authors.dropdown = !client.authors.dropdown">
+	    	ng-click="client.profiles.dropdown = !client.profiles.dropdown">
             <md-icon md-svg-icon="assets/svg/material-icons/ic_code_black_24px.svg"></md-icon>
         </md-button>
     </md-toolbar>
 
     <!-- Code Dropdown BEGIN -->
     <md-content class="mc-dropdown" layout="column" layout-align="center start" 
-    ng-show="client.authors.dropdown">
+    ng-show="client.profiles.dropdown">
 <pre><code>Protocol: HTTPS
 Method: GET
 Base: dockerbruegge1.informatik.tu-muenchen.de
 Port: 34234
-Path: /authors
+Path: /profiles
 Query:
-	?authors=
+	?profiles=
 		109235295092345,
 		934850932485930
 	&fields=
@@ -139,20 +139,20 @@ Query:
 
 	<md-content layout="column">
 		<div class="md-padding">
-			<!-- Author filter BEGIN -->
+			<!-- Profile filter BEGIN -->
 			<md-chips
 				class="mc-buttonchips mc-buttonchips-fst"
-				ng-model="client.authors.selectedAuthors">
+				ng-model="client.profiles.selectedProfiles">
 				<!-- Autocomplete BEGIN -->
 				<md-autocomplete
 					md-autoselect="true"
-					md-selected-item="client.authors.selectedAuthor"
-					md-search-text="client.authors.authorSearchText"
-					md-items="author in client.authors.getAuthorMatches()"
-					md-item-text="author.name"
+					md-selected-item="client.profiles.selectedProfile"
+					md-search-text="client.profiles.profileSearchText"
+					md-items="profile in client.profiles.getProfileMatches()"
+					md-item-text="profile.name"
 					placeholder="Add by name">
 					<md-item-template>
-						<span md-highlight-text="client.authors.authorSearchText">{{author.name}}</span>
+						<span md-highlight-text="client.profiles.profileSearchText">{{profile.name}}</span>
 					</md-item-template>
 					<md-not-found>No matches found</md-not-found>
 				</md-autocomplete>
@@ -164,23 +164,23 @@ Query:
 					<md-icon md-svg-src="assets/svg/material-icons/ic_close_white_24px.svg"></md-icon>
 				</button>
 			</md-chips>
-			<!-- Author filter END -->
+			<!-- Profile filter END -->
 
 			<!-- Research field filter BEGIN -->
 			<md-chips
 				class="mc-buttonchips"
-				ng-model="client.authors.selectedFields"
+				ng-model="client.profiles.selectedFields"
 				>
 				<!-- Autocomplete BEGIN -->
 				<md-autocomplete
 					md-autoselect="true"
-					md-selected-item="client.authors.selectedField"
-					md-search-text="client.authors.fieldSearchText"
-					md-items="field in client.authors.getFieldMatches()"
+					md-selected-item="client.profiles.selectedField"
+					md-search-text="client.profiles.fieldSearchText"
+					md-items="field in client.profiles.getFieldMatches()"
 					md-item-text="field.name"
 					placeholder="Add by research field">
 					<md-item-template>
-						<span md-highlight-text="client.authors.fieldSearchText">{{field.name}}</span>
+						<span md-highlight-text="client.profiles.fieldSearchText">{{field.name}}</span>
 					</md-item-template>
 					<md-not-found>No matches found</md-not-found>
 				</md-autocomplete>

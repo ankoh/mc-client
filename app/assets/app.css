@@ -16,6 +16,10 @@ h2 {
 	font-size: 18px;
 	font-weight: 400;
 }
+h3 {
+	font-size: 17px;
+	font-weight: 400;
+}
 
 md-content {
 	background-color: transparent;
@@ -130,11 +134,16 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	padding-bottom: 8px;
 	padding-top: 8px;
 }
+.mc-table .mc-description {
+	line-height: 21px;
+}
 .mc-table p {
-	
+	line-height: 18px;
+}
+.mc-table code {
 }
 .mc-table .mc-row {
-	padding-right: 8px;
+	padding-right: 24px;
 	padding-left: 0px;
 }
 .mc-table .mc-icon-text-column md-icon {
@@ -159,7 +168,11 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 }
 
 
-
 /* Common */
+.mc-padding-16 { padding: 16px; }
+.mc-padding-24 { padding: 24px; }
+.mc-padding-top-8 { padding-top: 8px; }
+.mc-padding-top-16 { padding-top: 16px; }
+.mc-padding-bottom-8 { padding-bottom: 8px; }
 .mc-padding-right-16 { padding-right: 16px; }
 .mc-padding-right-24 { padding-right: 24px; }
