@@ -12,7 +12,7 @@
 				<md-icon md-svg-icon="assets/svg/material-icons/ic_extension_black_24px.svg"></md-icon>
 				<code flex>GET /system</code>
 			</div>
-			<p flex class="mc-description">Returns a system report that covers server version, uptime, last update, log size, research group id and reachability of the Mendeley API.
+			<p flex class="mc-description">Returns a system report that covers <code>server-version</code>, <code>uptime</code>, <code>last-update</code>, <code>log-size</code>, <code>research-group-id</code> and <code>mendeley-api-status</code>.
 			</p>
 		</div>
 		<md-divider md-inset></md-divider>
@@ -23,7 +23,7 @@
 				<code flex>GET /statistics</code>
 			</div>
 			<p flex class="mc-description">
-				Always returns the current number of authors, publications and research fields.
+				Always returns the current number of profiles, publications and research fields.
 				Additionally returns statistics based on the access logs that cover api calls, file downloads and BibTeX downloads of the last seven weeks in total and per week.
 			</p>
 		</div>
@@ -49,7 +49,7 @@
 				<code flex>GET /profiles</code>
 			</div>
 			<p flex class="mc-description">
-				Given the optional parameters <code>profiles</code> and <code>fields</code>, returns all Mendeley Profiles that are associated with a profile id OR a field id. The crawler only caches those profiles that belong to the configured Mendeley Research Group. If you do not pass any of these two parameters, all profiles (instead of none) are returned. If you pass the parameter <code>slim=true</code>, the result will only include name, id and publication count.
+				Given the optional parameters <code>profiles</code> and <code>fields</code>, returns all Mendeley Profiles that are associated with either a profile id OR a field id. The crawler only caches those profiles that belong to the configured Mendeley Research Group. If you do not pass any of these two parameters, all profiles (instead of none) are returned. If you pass the parameter <code>slim=true</code>, the result will only include <code>name</code>, <code>id</code> and <code>publication-count</code>.
 			</p>
 		</div>
 		<md-divider md-inset></md-divider>
