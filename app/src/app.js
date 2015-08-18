@@ -42,7 +42,7 @@ angular
             $scope.tabs.selectedIndex = toState.data.selectedTab;
           });
         },
-        templateUrl: "partials/template.html"
+        templateUrl: "partials/base.tmpl.html"
       })
       .state('tabs.system', {
         url: "/",
@@ -51,7 +51,7 @@ angular
         },
         controller: 'SystemController',
         controllerAs: 'system',
-        templateUrl: "partials/system.html"
+        templateUrl: "partials/system.tmpl.html"
       })
       .state('tabs.statistics', {
         url: "/statistics",
@@ -60,7 +60,7 @@ angular
         },
         controller: 'StatisticsController',
         controllerAs: 'statistics',
-        templateUrl: "partials/statistics.html"
+        templateUrl: "partials/statistics.tmpl.html"
       })
       .state('tabs.client', {
         url: "/client",
@@ -69,13 +69,13 @@ angular
         },
         controller: 'ClientController',
         controllerAs: 'client',
-        templateUrl: "partials/client.html"
+        templateUrl: "partials/client.tmpl.html"
       })
       .state('tabs.docs', {
         url: "/docs",
         data: {
           'selectedTab': 3
         },
-        templateUrl: "partials/docs.html"
+        templateUrl: "partials/docs.tmpl.html"
       })
   });
