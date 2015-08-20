@@ -21,4 +21,4 @@ We will use Selenium Protractor tests.
 
 ### Deployment
 
-Will be based on Docker and PyPi.
+Will be based on Docker and npm.
