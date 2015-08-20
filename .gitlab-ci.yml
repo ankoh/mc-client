@@ -1,7 +1,7 @@
-before_script:
-  - npm set registry http://npm-cache:4873
-  - npm install --silent
-  - ./node_modules/.bin/bower install --allow-root
+#before_script:
+#  - npm set registry http://npm-cache:4873
+#  - npm install --silent
+#  - ./node_modules/.bin/bower install --allow-root
 
 # protractor:
 #   script:
@@ -33,3 +33,15 @@ before_script:
 #     - xvfb
 #     - selenium
 #     - chrome
+
+github:
+  script:
+    - mkdir -p ~/.ssh/
+    - echo "$GITHUB_DEPLOYMENT_KEY" > ~/.ssh/github.key
+    - printf "Host github\n    HostName github.com\n    User git\n    IdentityFile ~/.ssh/github.key\n" >> ~/.ssh/config
+    - ssh-keyscan github.com >> ~/.ssh/known_hosts
+    - chmod 700 ~/.ssh/
+    - chmod 600 ~/.ssh/config
+    - chmod 600 ~/.ssh/github.key 
+    - chmod 600 ~/.ssh/known_hosts
+    - git push --all ssh://github/ankoh/mendeley-cache-client.git
