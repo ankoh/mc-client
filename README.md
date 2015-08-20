@@ -11,6 +11,8 @@ We use a [GitLab Server](https://gitlab.kohn.io/ankoh/mendeley-cache-client) bun
 
 Feel free to contribute there as soon as the software reaches a certain level of professionality.
 
+Attention: At the moment both servers use self-signed SSL certificates.
+
 
 ### Tests
 
