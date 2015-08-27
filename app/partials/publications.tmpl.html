@@ -1,0 +1,56 @@
+<div class="mc-card md-whiteframe-z1">
+	<md-toolbar layout="row" class="mc-header md-toolbar-tools">
+		<h2>
+	        <span>General</span>
+	    </h2>
+	    <span flex></span>
+	    <md-button class="md-icon-button" aria-label="More">
+            <md-icon md-svg-icon="assets/svg/material-icons/ic_refresh_black_24px.svg"></md-icon>
+        </md-button>
+    </md-toolbar>
+	<md-content layout="column">
+        <md-data-table-container>
+          <table
+          	md-data-table class="md-primary" 
+          	md-progress="publications.deferred">
+            <thead
+            	md-order="publications.query.order"
+            	md-trigger="publications.onorderchange">
+				<tr>
+					<th order-by="name" name="Dessert" unit="100g serving"></th>
+					<th numeric order-by="calories.value" name="Calories"></th>
+					<th numeric unit="g" order-by="fat.value" name="Fat"></th>
+					<th numeric unit="g" order-by="carbs.value" name="Carbs"></th>
+					<th numeric unit="g" order-by="protein.value" name="Protein"></th>
+					<th numeric unit="mg" order-by="sodium.value" name="Sodium"></th>
+					<th numeric unit="%" order-by="calcium.value" name="Calcium"></th>
+					<th numeric unit="%" order-by="iron.value" name="Iron"></th>
+				</tr>
+            </thead>
+            <tbody>
+				<tr md-auto-select ng-repeat="
+					dessert in publications.desserts.data |
+					orderBy: publications.query.order |
+					limitTo: publications.query.limit :
+							(publications.query.page - 1) * publications.query.limit">
+					<td>{{dessert.name}}</td>
+					<td>{{dessert.calories.value}}</td>
+					<td>{{dessert.fat.value | number: 2}}</td>
+					<td>{{dessert.carbs.value}}</td>
+					<td>{{dessert.protein.value | number: 2}}</td>
+					<td>{{dessert.sodium.value}}</td>
+					<td show-unit>{{dessert.calcium.value}}</td>
+					<td show-unit>{{dessert.iron.value}}</td>
+				</tr>
+            </tbody>
+          </table>
+        </md-data-table-container>
+
+        <md-data-table-pagination
+        	md-limit="publications.query.limit"
+        	md-page="publications.query.page"
+        	md-total="{{publications.desserts.count}}"
+        	md-trigger="publications.onpagechange">
+        </md-data-table-pagination>
+	</md-content>
+</div>

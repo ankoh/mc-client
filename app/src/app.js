@@ -1,6 +1,6 @@
 // Initialize the angular application
 angular
-  .module('mendeleyCache', ['ngMaterial', 'ui.router', 'chart.js'])
+  .module('mendeleyCache', ['ngMaterial', 'ui.router', 'chart.js', 'md.data.table'])
 
   // Services
   .factory('Cache', function() { return new Cache(); })
@@ -11,7 +11,7 @@ angular
   // Controllers
   .controller('ClientController', ClientController)
   .controller('SystemController', SystemController)
-  .controller('StatisticsController', StatisticsController)
+  .controller('PublicationsController', PublicationsController)
 
   // Configure theme
   .config(function($mdThemingProvider){
@@ -53,14 +53,14 @@ angular
         controllerAs: 'system',
         templateUrl: "partials/system.tmpl.html"
       })
-      .state('tabs.statistics', {
-        url: "/statistics",
+      .state('tabs.publications', {
+        url: "/publications",
         data: {
           'selectedTab': 1
         },
-        controller: 'StatisticsController',
-        controllerAs: 'statistics',
-        templateUrl: "partials/statistics.tmpl.html"
+        controller: 'PublicationsController',
+        controllerAs: 'publications',
+        templateUrl: "partials/publications.tmpl.html"
       })
       .state('tabs.client', {
         url: "/client",

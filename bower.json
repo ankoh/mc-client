@@ -6,9 +6,10 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "angular-chart.js": "~0.7.3",
     "angular-material": "0.10.0",
-    "angular-ui-router": "~0.2.15",
-    "angular-chart.js": "~0.7.3"
+    "angular-material-data-table": "~0.8.9",
+    "angular-ui-router": "~0.2.15"
   },
   "resolutions": {
     "angular-material": "0.10.0"
