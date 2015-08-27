@@ -21,6 +21,10 @@ h3 {
 	font-weight: 400;
 }
 
+a {
+	text-decoration: none;
+}
+
 md-content {
 	background-color: transparent;
 }
