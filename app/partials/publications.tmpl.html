@@ -1,7 +1,7 @@
 <div class="mc-card md-whiteframe-z1">
 	<md-toolbar layout="row" class="mc-header md-toolbar-tools">
 		<h2>
-	        <span>General</span>
+	        <span>Documents</span>
 	    </h2>
 	    <span flex></span>
 	    <md-button class="md-icon-button" aria-label="More">
@@ -17,30 +17,22 @@
             	md-order="publications.query.order"
             	md-trigger="publications.onorderchange">
 				<tr>
-					<th order-by="name" name="Dessert" unit="100g serving"></th>
-					<th numeric order-by="calories.value" name="Calories"></th>
-					<th numeric unit="g" order-by="fat.value" name="Fat"></th>
-					<th numeric unit="g" order-by="carbs.value" name="Carbs"></th>
-					<th numeric unit="g" order-by="protein.value" name="Protein"></th>
-					<th numeric unit="mg" order-by="sodium.value" name="Sodium"></th>
-					<th numeric unit="%" order-by="calcium.value" name="Calcium"></th>
-					<th numeric unit="%" order-by="iron.value" name="Iron"></th>
+					<th order-by="title" name="Title"></th>
+					<th order-by="source" name="Source"></th>
+					<th unit="" order-by="year" name="Year"></th>
 				</tr>
             </thead>
             <tbody>
-				<tr md-auto-select ng-repeat="
-					dessert in publications.desserts.data |
-					orderBy: publications.query.order |
-					limitTo: publications.query.limit :
-							(publications.query.page - 1) * publications.query.limit">
-					<td>{{dessert.name}}</td>
-					<td>{{dessert.calories.value}}</td>
-					<td>{{dessert.fat.value | number: 2}}</td>
-					<td>{{dessert.carbs.value}}</td>
-					<td>{{dessert.protein.value | number: 2}}</td>
-					<td>{{dessert.sodium.value}}</td>
-					<td show-unit>{{dessert.calcium.value}}</td>
-					<td show-unit>{{dessert.iron.value}}</td>
+				<tr class="mc-pub-doc-table-row"
+					md-auto-select
+					ng-repeat="
+						document in publications.documents.data |
+						orderBy: publications.query.order |
+						limitTo: publications.query.limit :
+								(publications.query.page - 1) * publications.query.limit">
+					<td>{{document.title}}</td>
+					<td>{{document.source}}</td>
+					<td>{{document.year}}</td>
 				</tr>
             </tbody>
           </table>

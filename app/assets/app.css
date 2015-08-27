@@ -156,6 +156,13 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	font-weight: 500;
 }
 
+.mc-pub-doc-table {
+
+}
+
+.mc-pub-doc-table-row {
+}
+
 .mc-linechart {
 	padding-left: 30px;
 	padding-top: 12px;
