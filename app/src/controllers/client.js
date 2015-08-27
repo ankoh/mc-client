@@ -2,7 +2,6 @@ function ClientController(ProfileApi, FieldApi) {
 	var self = this;
 
 	self.publications = {};
-	self.profiles = {};
 
 	// Profile list
 	self.allProfiles = ProfileApi.getAllProfiles();
@@ -27,25 +26,6 @@ function ClientController(ProfileApi, FieldApi) {
 	// Dropdown for live url construction
 	self.publications.dropdown = false;
 
-
-	// Profiles
-
-	// Profile filter
-	self.profiles.selectedProfile = null;
-    self.profiles.profileSearchText = null;
-	self.profiles.selectedProfiles = [ ];
-	self.profiles.getProfileMatches = function() {
-		return getMatches(self.profiles.profileSearchText, self.allProfiles);
-	};
-	// Research field filter
-	self.profiles.selectedField = null;
-	self.profiles.fieldSearchText = null;
-	self.profiles.selectedFields = [ ];
-	self.profiles.getFieldMatches = function() {
-		return getMatches(self.profiles.fieldSearchText, self.allFields);
-	}
-	// Dropdown for live url construction
-	self.profiles.dropdown = false;
 
 	// The autocomplete control will set the {profile,filter}SearchText and fire the get{Profile,Filter}Matches() function.
 	// getMatches is then responsible for finding the matches among all items. 
