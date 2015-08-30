@@ -96,11 +96,11 @@ angular
         controllerAs: 'client',
         templateUrl: "partials/client.tmpl.html"
       })
-      .state('tabs.documentation', {
-        url: "/documentation",
+      .state('tabs.api', {
+        url: "/api",
         data: {
           'selectedTab': 3
         },
-        templateUrl: "partials/documentation.tmpl.html"
+        templateUrl: "partials/api.tmpl.html"
       })
   });
