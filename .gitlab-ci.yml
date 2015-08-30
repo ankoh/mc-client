@@ -41,6 +41,15 @@ docker:
   only:
     - master
 
+compose-local:
+  script:
+    - docker-compose -f compose.yml -p mcclient stop
+    - docker-compose -f compose.yml -p mcclient up -d
+  tags:
+    - privileged
+  only:
+    - master
+
 github:
   script:
     - mkdir -p ~/.ssh/
