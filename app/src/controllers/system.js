@@ -9,7 +9,6 @@ function SystemController($log, ServiceConfiguration, SystemApi) {
 	this.clientVersion = this.config.client.version;
 	this.serverVersion = "Unknown";
 	this.mendeleyStatus = "Unknown";
-	this.uptime = "Unkown";
 	this.lastUpdate = "Unknown";
 
 	// Entities
