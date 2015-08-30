@@ -2,6 +2,6 @@ server:
   image: ankoh/mendeleycache-server:latest
   restart: always
   ports:
-    - "32761:80"
+    - "32761:8080"
   environment:
     - MC_SERVER=http://mc-server.kohn.io
