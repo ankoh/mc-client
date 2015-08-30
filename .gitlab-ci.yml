@@ -1,8 +1,3 @@
-before_script:
-  - npm set registry http://npm-cache:4873
-  - npm install --silent
-  - ./node_modules/.bin/bower install --allow-root
-
 # protractor:
 #   script:
 #     - cd ./app
@@ -36,6 +31,9 @@ before_script:
 
 docker:
   script:
+    - npm set registry http://npm-cache:4873
+    - npm install --silent
+    - ./node_modules/.bin/bower install --allow-root
     - docker build -t ankoh/mendeleycache-client .
   tags:
     - docker
