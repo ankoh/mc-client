@@ -39,6 +39,7 @@ docker:
     - docker build -t ankoh/mendeleycache-client .
   tags:
     - docker
+    - node
   only:
     - master
 
