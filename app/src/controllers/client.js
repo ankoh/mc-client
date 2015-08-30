@@ -1,7 +1,7 @@
 function ClientController(ProfilesApi, FieldsApi) {
 	var self = this;
 
-	self.publications = {};
+	self.documents = {};
 
 	// Profile list
 	self.allProfiles = ProfilesApi.getAllProfiles();
@@ -10,21 +10,21 @@ function ClientController(ProfilesApi, FieldsApi) {
 	// Publications
 
 	// Profile filter
-	self.publications.selectedProfile = null;
-    self.publications.profileSearchText = null;
-	self.publications.selectedProfiles = [ ];
-	self.publications.getProfileMatches = function() {
-		return getMatches(self.publications.profileSearchText, self.allProfiles);
+	self.documents.selectedProfile = null;
+    self.documents.profileSearchText = null;
+	self.documents.selectedProfiles = [ ];
+	self.documents.getProfileMatches = function() {
+		return getMatches(self.documents.profileSearchText, self.allProfiles);
 	};
 	// Research field filter
-	self.publications.selectedField = null;
-	self.publications.fieldSearchText = null;
-	self.publications.selectedFields = [ ];
-	self.publications.getFieldMatches = function() {
-		return getMatches(self.publications.fieldSearchText, self.allFields);
+	self.documents.selectedField = null;
+	self.documents.fieldSearchText = null;
+	self.documents.selectedFields = [ ];
+	self.documents.getFieldMatches = function() {
+		return getMatches(self.documents.fieldSearchText, self.allFields);
 	}
 	// Dropdown for live url construction
-	self.publications.dropdown = false;
+	self.documents.dropdown = false;
 
 
 	// The autocomplete control will set the {profile,filter}SearchText and fire the get{Profile,Filter}Matches() function.

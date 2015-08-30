@@ -7,19 +7,19 @@
 	    <md-button 
 	    	class="md-icon-button"
 	    	aria-label="More"
-	    	ng-click="client.publications.dropdown = !client.publications.dropdown">
+	    	ng-click="client.documents.dropdown = !client.documents.dropdown">
             <md-icon md-svg-icon="assets/svg/material-icons/ic_code_black_24px.svg"></md-icon>
         </md-button>
     </md-toolbar>
 
     <!-- Code Dropdown BEGIN -->
     <md-content class="mc-dropdown" layout="column" layout-align="center start"
-    ng-show="client.publications.dropdown">
+    ng-show="client.documents.dropdown">
 <pre><code>Protocol: HTTPS
 Method: GET
 Base: dockerbruegge1.informatik.tu-muenchen.de
 Port: 34234
-Path: /publications
+Path: /documents
 Query:
 	?profiles=
 		109235295092345,
@@ -34,17 +34,17 @@ Query:
 			<!-- Profile filter BEGIN -->
 			<md-chips
 				class="mc-buttonchips mc-buttonchips-fst"
-				ng-model="client.publications.selectedProfiles">
+				ng-model="client.documents.selectedProfiles">
 				<!-- Autocomplete BEGIN -->
 				<md-autocomplete
 					md-autoselect="true"
-					md-selected-item="client.publications.selectedProfile"
-					md-search-text="client.publications.profileSearchText"
-					md-items="profile in client.publications.getProfileMatches()"
+					md-selected-item="client.documents.selectedProfile"
+					md-search-text="client.documents.profileSearchText"
+					md-items="profile in client.documents.getProfileMatches()"
 					md-item-text="profile.name"
 					placeholder="Filter by names">
 					<md-item-template>
-						<span md-highlight-text="client.publications.profileSearchText">{{profile.name}}</span>
+						<span md-highlight-text="client.documents.profileSearchText">{{profile.name}}</span>
 					</md-item-template>
 					<md-not-found>No matches found</md-not-found>
 				</md-autocomplete>
@@ -61,18 +61,18 @@ Query:
 			<!-- Research field filter BEGIN -->
 			<md-chips
 				class="mc-buttonchips"
-				ng-model="client.publications.selectedFields"
+				ng-model="client.documents.selectedFields"
 				>
 				<!-- Autocomplete BEGIN -->
 				<md-autocomplete
 					md-autoselect="true"
-					md-selected-item="client.publications.selectedField"
-					md-search-text="client.publications.fieldSearchText"
-					md-items="field in client.publications.getFieldMatches()"
+					md-selected-item="client.documents.selectedField"
+					md-search-text="client.documents.fieldSearchText"
+					md-items="field in client.documents.getFieldMatches()"
 					md-item-text="field.name"
 					placeholder="Filter by research fields">
 					<md-item-template>
-						<span md-highlight-text="client.publications.fieldSearchText">{{field.name}}</span>
+						<span md-highlight-text="client.documents.fieldSearchText">{{field.name}}</span>
 					</md-item-template>
 					<md-not-found>No matches found</md-not-found>
 				</md-autocomplete>
