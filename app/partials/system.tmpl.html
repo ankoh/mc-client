@@ -4,10 +4,14 @@
 	        <span>Status</span>
 	    </h2>
 	    <span flex></span>
-	    <md-button class="md-icon-button" aria-label="More">
+	    <md-button class="md-icon-button" ng-click="system.reload()">
             <md-icon md-svg-icon="assets/svg/material-icons/ic_refresh_black_24px.svg"></md-icon>
         </md-button>
     </md-toolbar>
+
+    <div layout="column">
+    	<md-progress-linear ng-if="system.loading" md-mode="indeterminate"></md-progress-linear>
+    </div>
 
 	<md-content class="mc-table" layout="column">
 		<!-- Client version -->

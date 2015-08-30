@@ -26,7 +26,8 @@ angular
   .config(function($mdThemingProvider){
     // Extend the red theme with a few different colors
     var tumBlue = $mdThemingProvider.extendPalette('blue', {
-      '500': '002143'
+      '100': 'dddddd',    // scrollbar background
+      '500': '002143'     // primary color
     });
 
     // Register the new color palette map with the name mendeleyRedMap

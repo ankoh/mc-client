@@ -178,6 +178,15 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	height: 180px!important;
 }
 
+md-progress-linear {
+  margin-top: -5px;
+  margin-bottom: 3px;
+}
+
+md-progress-linear[md-mode="indeterminate"] .md-container .md-bar1 {
+	height: 3px;
+}
+
 
 /* Common */
 .mc-padding-16 { padding: 16px; }
