@@ -20,4 +20,4 @@ COPY ./docker/entrypoint.sh /srv/mc/
 RUN chmod +x /srv/mc/entrypoint.sh
 
 ENTRYPOINT ["/srv/mc/entrypoint.sh"]
-
+CMD ["nginx", "-g", "daemon off;"]
