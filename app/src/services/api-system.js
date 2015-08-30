@@ -17,7 +17,7 @@ SystemApi.prototype.getStatus = function(config) {
 	return this.$http.get(url)
 		.then(function(response) {
 			return {
-				"serverVersion": response.data["server-version"]
+				"serverVersion": response.data["serverVersion"]
 			};
 		})
 		.catch(function(response) {
