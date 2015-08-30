@@ -4,4 +4,5 @@ server:
   ports:
     - "32761:8080"
   environment:
-    - MC_SERVER=http://mc-server.kohn.io
+    - MC_SERVER_HOSTNAME=http://mc-server.kohn.io
+    - MC_SERVER_PORT=80

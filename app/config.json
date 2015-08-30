@@ -1,0 +1,9 @@
+// ATTENTION: This is a sample config.json for local debug purposes
+// This will be overridden in the entrypoint.sh of the Docker container
+
+var mcConfig = {
+	"cache": {
+		"hostname": "http://mc-server.kohn.io",
+		"port": "80"
+	}
+}
