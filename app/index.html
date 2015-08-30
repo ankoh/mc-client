@@ -57,14 +57,14 @@
           <md-tab ui-sref="tabs.system">
             <md-tab-label>System</md-tab-label>
           </md-tab>
-          <md-tab ui-sref="tabs.publications">
-            <md-tab-label>Publications</md-tab-label>
+          <md-tab ui-sref="tabs.documents">
+            <md-tab-label>Documents</md-tab-label>
           </md-tab>
           <md-tab ui-sref="tabs.client">
             <md-tab-label>Client</md-tab-label>
           </md-tab>
-          <md-tab ui-sref="tabs.docs">
-            <md-tab-label>Docs</md-tab-label>
+          <md-tab ui-sref="tabs.documentation">
+            <md-tab-label>Documentation</md-tab-label>
           </md-tab>
         </md-tabs>
         <!-- Bottom Row END -->
@@ -104,13 +104,15 @@
 
     <!-- Services -->
     <script type="text/javascript" language="javascript"
-            src="src/services/cache.js"></script>
+            src="src/services/local-cache.js"></script>
     <script type="text/javascript" language="javascript"
-            src="src/services/profile-api.js"></script>
+            src="src/services/service-config.js"></script>
     <script type="text/javascript" language="javascript"
-            src="src/services/field-api.js"></script>
+            src="src/services/api-profiles.js"></script>
     <script type="text/javascript" language="javascript"
-            src="src/services/publication-api.js"></script>
+            src="src/services/api-fields.js"></script>
+    <script type="text/javascript" language="javascript"
+            src="src/services/api-documents.js"></script>
 
     <!-- Controllers -->
     <script type="text/javascript" language="javascript"
@@ -118,7 +120,7 @@
     <script type="text/javascript" language="javascript"
             src="src/controllers/system.js"></script>
     <script type="text/javascript" language="javascript"
-            src="src/controllers/publications.js"></script>
+            src="src/controllers/documents.js"></script>
 
     <!-- Angular application -->
     <script type="text/javascript" language="javascript"

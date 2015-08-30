@@ -3,15 +3,16 @@ angular
   .module('mendeleyCache', ['ngMaterial', 'ui.router', 'chart.js', 'md.data.table'])
 
   // Services
-  .factory('Cache', function() { return new Cache(); })
-  .factory('ProfileApi', function() { return new ProfileApi(); })
-  .factory('FieldApi', function() { return new FieldApi(); })
-  .factory('PublicationApi', function() { return new PublicationApi(); })
+  .factory('ServiceConfiguration', function() { return new ServiceConfiguration(); })
+  .factory('LocalCache', function() { return new LocalCache(); })
+  .factory('ProfilesApi', function() { return new ProfilesApi(); })
+  .factory('FieldsApi', function() { return new FieldsApi(); })
+  .factory('DocumentsApi', function() { return new DocumentsApi(); })
 
   // Controllers
   .controller('ClientController', ClientController)
   .controller('SystemController', SystemController)
-  .controller('PublicationsController', PublicationsController)
+  .controller('DocumentsController', DocumentsController)
 
   // Configure theme
   .config(function($mdThemingProvider){
@@ -53,14 +54,14 @@ angular
         controllerAs: 'system',
         templateUrl: "partials/system.tmpl.html"
       })
-      .state('tabs.publications', {
-        url: "/publications",
+      .state('tabs.documents', {
+        url: "/documents",
         data: {
           'selectedTab': 1
         },
-        controller: 'PublicationsController',
-        controllerAs: 'publications',
-        templateUrl: "partials/publications.tmpl.html"
+        controller: 'DocumentsController',
+        controllerAs: 'documents',
+        templateUrl: "partials/documents.tmpl.html"
       })
       .state('tabs.client', {
         url: "/client",
@@ -71,11 +72,11 @@ angular
         controllerAs: 'client',
         templateUrl: "partials/client.tmpl.html"
       })
-      .state('tabs.docs', {
-        url: "/docs",
+      .state('tabs.documentation', {
+        url: "/documentation",
         data: {
           'selectedTab': 3
         },
-        templateUrl: "partials/docs.tmpl.html"
+        templateUrl: "partials/documentation.tmpl.html"
       })
   });

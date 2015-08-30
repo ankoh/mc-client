@@ -1,4 +1,4 @@
-function FieldApi() {
+function FieldsApi() {
 	this.fields = [];
 
 	this.fields = [
@@ -20,6 +20,6 @@ function FieldApi() {
 }
 
 
-FieldApi.prototype.getAllFields = function() {
+FieldsApi.prototype.getAllFields = function() {
 	return this.fields;
 }

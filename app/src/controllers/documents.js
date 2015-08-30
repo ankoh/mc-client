@@ -1,4 +1,4 @@
-function PublicationsController($q, $timeout) {
+function DocumentsController($q, $timeout) {
 	var self = this;
 
 	self.selected = [];

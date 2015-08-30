@@ -1,4 +1,4 @@
-function ProfileApi() {
+function ProfilesApi() {
 	this.profiles = [];
 
 	this.profiles = [
@@ -28,6 +28,6 @@ function ProfileApi() {
 }
 
 
-ProfileApi.prototype.getAllProfiles = function () {
+ProfilesApi.prototype.getAllProfiles = function () {
 	return this.profiles;
 }

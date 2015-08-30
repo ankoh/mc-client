@@ -1,11 +1,11 @@
-function ClientController(ProfileApi, FieldApi) {
+function ClientController(ProfilesApi, FieldsApi) {
 	var self = this;
 
 	self.publications = {};
 
 	// Profile list
-	self.allProfiles = ProfileApi.getAllProfiles();
-	self.allFields = FieldApi.getAllFields();
+	self.allProfiles = ProfilesApi.getAllProfiles();
+	self.allFields = FieldsApi.getAllFields();
 
 	// Publications
 
