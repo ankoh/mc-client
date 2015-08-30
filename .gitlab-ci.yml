@@ -32,7 +32,7 @@
 docker:
   script:
     - npm set registry http://npm-cache:4873
-    - npm install --silent bower
+    - npm install --quiet bower
     - ./node_modules/.bin/bower install --quiet --allow-root
     - docker build -q -t ankoh/mendeleycache-client .
   tags:
