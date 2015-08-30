@@ -1,7 +1,7 @@
 function LocalCache() {
 	this.authors = [];
 	this.fields = [];
-	console.log("LocalCache initialized");
+
 }
 
 // Authors

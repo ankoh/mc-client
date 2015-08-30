@@ -15,8 +15,6 @@ function FieldsApi(ServiceConfiguration) {
 			publications: 30
 		}
 	];
-
-	console.log("FieldsApi initialized");
 }
 
 

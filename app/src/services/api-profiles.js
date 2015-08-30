@@ -23,8 +23,6 @@ function ProfilesApi(ServiceConfiguration) {
 			publications: 5
 		}
 	];
-
-	console.log("ProfilesApi initialized");
 }
 
 

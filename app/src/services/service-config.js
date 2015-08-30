@@ -1,10 +1,10 @@
-function ServiceConfiguration() {
+function ServiceConfiguration($log) {
 	this.cacheHostname = mcConfig.cache.hostname;
 	this.cachePort = mcConfig.cache.port;
+	this.$log = $log
 
-	console.log("Server configuration ready");
-	console.log("MendeleyCache hostname: " + this.cacheHostname);
-	console.log("MendeleyCache port: " + this.cachePort)
+	this.$log.info("MendeleyCache hostname: " + this.cacheHostname);
+	this.$log.info("MendeleyCache port: " + this.cachePort)
 }
 
 // Getters for cache config

@@ -1,15 +1,13 @@
 function DocumentsController($q, $timeout) {
-	var self = this;
-
-	self.selected = [];
+	this.selected = [];
   
-	self.query = {
+	this.query = {
 		order: 'title',
 		limit: 5,
 		page: 1
 	};
 
-	self.documents = {
+	this.documents = {
 		"count": 2,
 		"data": [
 		  {
@@ -26,24 +24,24 @@ function DocumentsController($q, $timeout) {
 		  }
 		]
 	};
-
-	self.onpagechange = function(page, limit) {
-		var deferred = $q.defer();
-
-		$timeout(function () {
-	  		deferred.resolve();
-		}, 2000);
-
-		return deferred.promise;
-	};
-
-	self.onorderchange = function(order) {
-		var deferred = $q.defer();
-
-		$timeout(function () {
-		  deferred.resolve();
-		}, 2000);
-
-		return deferred.promise;
-	};
 }
+
+DocumentsController.prototype.onPageChange = function(page, limit) {
+	var deferred = this.$q.defer();
+
+	this.$timeout(function () {
+  		deferred.resolve();
+	}, 2000);
+
+	return deferred.promise;
+};
+
+DocumentsController.prototype.onOrderChange = function(order) {
+	var deferred = this.$q.defer();
+
+	this.$timeout(function () {
+	  deferred.resolve();
+	}, 2000);
+
+	return deferred.promise;
+};

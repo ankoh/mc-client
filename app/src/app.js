@@ -3,24 +3,39 @@ angular
   .module('mendeleyCache', ['ngMaterial', 'ui.router', 'chart.js', 'md.data.table'])
 
   // Services
-  .factory('ServiceConfiguration',
-    function() { return new ServiceConfiguration(); })
-  .factory('LocalCache',
-    function() { return new LocalCache(); })
+  .factory('ServiceConfiguration', [
+    '$log',
+    function($log) { return new ServiceConfiguration($log); }
+    ])
+  .factory('LocalCache', [
+    '$log',
+    function($log) { return new LocalCache($log); }
+    ])
+
   .factory('ProfilesApi', [
-    'ServiceConfiguration',
-    function() { return new ProfilesApi(ServiceConfiguration); }])
+    '$log', '$q', '$http', 'ServiceConfiguration',
+    function($log, $q, $http, ServiceConfiguration) { return new ProfilesApi($log, $q, $http, ServiceConfiguration); }
+    ])
+
   .factory('FieldsApi', [
-    'ServiceConfiguration',
-    function() { return new FieldsApi(ServiceConfiguration); }])
+    '$log', '$q', '$http', 'ServiceConfiguration',
+    function($log, $q, $http, ServiceConfiguration) { return new FieldsApi($log, $q, $http, ServiceConfiguration); }
+    ])
+
   .factory('DocumentsApi', [
-    'ServiceConfiguration',
-    function() { return new DocumentsApi(ServiceConfiguration); }])
+    '$log', '$q', '$http', 'ServiceConfiguration',
+    function($log, $q, $http, ServiceConfiguration) { return new DocumentsApi($log, $q, $http, ServiceConfiguration); }
+    ])
+
+  .factory('SystemApi', [
+    '$log', '$q', '$http', 'ServiceConfiguration',
+    function($log, $q, $http, ServiceConfiguration) { return new SystemApi($log, $q, $http, ServiceConfiguration); }
+    ])
 
   // Controllers
-  .controller('ClientController', ClientController)
-  .controller('SystemController', SystemController)
-  .controller('DocumentsController', DocumentsController)
+  .controller('ClientController',     ClientController)
+  .controller('SystemController',     SystemController)
+  .controller('DocumentsController',  DocumentsController)
 
   // Configure theme
   .config(function($mdThemingProvider){
