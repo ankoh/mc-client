@@ -18,5 +18,6 @@ EXPOSE 80
 # Add Entrypoint
 COPY ./docker/entrypoint.sh /srv/mc/
 RUN chmod +x /srv/mc/entrypoint.sh
-ENTRYPOINT["/srv/mc/entrypoint.sh"]
+
+ENTRYPOINT ["/srv/mc/entrypoint.sh"]
 
