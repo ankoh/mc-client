@@ -1,16 +1,20 @@
 function ServiceConfiguration($log) {
-	this.cacheHostname = mcConfig.cache.hostname;
-	this.cachePort = mcConfig.cache.port;
+	this.client = mcConfig.client;
+	this.cache = mcConfig.cache;
+
 	this.$log = $log
 
-	this.$log.info("MendeleyCache hostname: " + this.cacheHostname);
-	this.$log.info("MendeleyCache port: " + this.cachePort)
+	this.$log.info("Client version: " + this.client.version);
+	this.$log.info("Cache hostname: " + this.cache.hostname);
+	this.$log.info("Cache port: " + this.cache.port);
 }
 
-// Getters for cache config
 ServiceConfiguration.prototype.getCacheHostname = function() {
-	return this.cacheHostname;
+	return this.cache.hostname;
 }
 ServiceConfiguration.prototype.getCachePort = function() {
-	return this.cachePort;
+	return this.cache.port;
+}
+ServiceConfiguration.prototype.getClientVersion = function() {
+	return this.client.version;
 }

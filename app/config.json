@@ -2,6 +2,10 @@
 // This will be overridden in the entrypoint.sh of the Docker container
 
 var mcConfig = {
+	"client": {
+		"version": "0.1.0"
+	},
+
 	"cache": {
 		"hostname": "http://mc-server.kohn.io",
 		"port": "80"
