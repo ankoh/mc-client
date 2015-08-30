@@ -178,6 +178,10 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	height: 180px!important;
 }
 
+.mc-color-primary {
+	color: #002143;
+}
+
 md-progress-linear {
   margin-top: -5px;
   margin-bottom: 3px;

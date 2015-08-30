@@ -33,8 +33,13 @@ SystemApi.prototype.getEntities = function() {
 
 	return this.$http.get(url)
 		.then(function(response) {
-			return {
-			};
+			var entities = {};
+			console.log(response.data);
+			for(i = 0; i < response.data.length; i++) {
+				row = response.data[i]
+				entities[row["table_name"]] = row["cnt"]
+			}
+			return entities
 		})
 		.catch(function(response) {
 			return $q.reject({
