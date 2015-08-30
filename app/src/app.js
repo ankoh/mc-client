@@ -3,11 +3,19 @@ angular
   .module('mendeleyCache', ['ngMaterial', 'ui.router', 'chart.js', 'md.data.table'])
 
   // Services
-  .factory('ServiceConfiguration', function() { return new ServiceConfiguration(); })
-  .factory('LocalCache', function() { return new LocalCache(); })
-  .factory('ProfilesApi', function() { return new ProfilesApi(); })
-  .factory('FieldsApi', function() { return new FieldsApi(); })
-  .factory('DocumentsApi', function() { return new DocumentsApi(); })
+  .factory('ServiceConfiguration',
+    function() { return new ServiceConfiguration(); })
+  .factory('LocalCache',
+    function() { return new LocalCache(); })
+  .factory('ProfilesApi', [
+    'ServiceConfiguration',
+    function() { return new ProfilesApi(ServiceConfiguration); }])
+  .factory('FieldsApi', [
+    'ServiceConfiguration',
+    function() { return new FieldsApi(ServiceConfiguration); }])
+  .factory('DocumentsApi', [
+    'ServiceConfiguration',
+    function() { return new DocumentsApi(ServiceConfiguration); }])
 
   // Controllers
   .controller('ClientController', ClientController)

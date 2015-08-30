@@ -1,4 +1,4 @@
-function FieldsApi() {
+function FieldsApi(ServiceConfiguration) {
 	this.fields = [];
 
 	this.fields = [
@@ -16,7 +16,7 @@ function FieldsApi() {
 		}
 	];
 
-	console.log("FieldApi initialized");
+	console.log("FieldsApi initialized");
 }
 
 

@@ -1,3 +1,3 @@
-function DocumentsApi() {
-	console.log("DocumentApi initialized");
+function DocumentsApi(ServiceConfiguration) {
+	console.log("DocumentsApi initialized");
 }

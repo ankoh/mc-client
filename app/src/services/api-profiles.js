@@ -1,4 +1,4 @@
-function ProfilesApi() {
+function ProfilesApi(ServiceConfiguration) {
 	this.profiles = [];
 
 	this.profiles = [
@@ -24,7 +24,7 @@ function ProfilesApi() {
 		}
 	];
 
-	console.log("ProfileApi initialized");
+	console.log("ProfilesApi initialized");
 }
 
 
