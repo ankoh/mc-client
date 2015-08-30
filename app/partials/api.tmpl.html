@@ -6,13 +6,23 @@
     </md-toolbar>
 
 	<md-content class="mc-table" layout="column">
-		<!-- System -->
+		<!-- System Status -->
 		<div class="mc-row" layout="row" layout-align="start center">
 			<div class="mc-icon-text-column" flex="40" flex-align="start center" layout="row">
 				<md-icon md-svg-icon="assets/svg/material-icons/ic_extension_black_24px.svg"></md-icon>
-				<code flex>GET /system</code>
+				<code flex>GET /system/status</code>
 			</div>
-			<p flex class="mc-description">Returns a system report that covers <code>server-version</code>, <code>uptime</code>, <code>last-update</code>, <code>log-size</code>, <code>research-group-id</code> and <code>mendeley-api-status</code>.
+			<p flex class="mc-description">Returns server version, last update and reachability of the Mendeley API.
+			</p>
+		</div>
+		<md-divider md-inset></md-divider>
+		<!-- System Entities -->
+		<div class="mc-row" layout="row" layout-align="start center">
+			<div class="mc-icon-text-column" flex="40" flex-align="start center" layout="row">
+				<md-icon md-svg-icon="assets/svg/material-icons/ic_extension_black_24px.svg"></md-icon>
+				<code flex>GET /system/entities</code>
+			</div>
+			<p flex class="mc-description">Returns the number of entities in the different database tables <code>profile</code>, <code>document</code>, <code>cache_profile</code>, <code>cache_profile_has_cache_document</code>, <code>cache_document</code>, <code>cache_document_has_cache_field</code> and <code>cache_field</code>.
 			</p>
 		</div>
 		<md-divider md-inset></md-divider>
@@ -37,7 +47,7 @@
 				<code flex>GET /profiles</code>
 			</div>
 			<p flex class="mc-description">
-				Given the optional parameters <code>profiles</code> and <code>fields</code>, returns all Mendeley Profiles that are associated with either a profile id OR a field id. The crawler only caches those profiles that belong to the configured Mendeley Research Group. If you do not pass any of these two parameters, all profiles (instead of none) are returned. If you pass the parameter <code>slim=true</code>, the result will only include <code>name</code>, <code>id</code> and <code>publication-count</code>.
+				Given the optional parameters <code>profiles</code> and <code>fields</code>, returns all Mendeley Profiles that are associated with either a profile id OR a field id. The crawler only caches those profiles that belong to the configured Mendeley Research Group. If you pass the parameter <code>slim=true</code>, the result will only include <code>name</code>, <code>id</code> and <code>publication-count</code>.
 			</p>
 		</div>
 		<md-divider md-inset></md-divider>
@@ -49,7 +59,7 @@
 			</div>
 			<p flex class="mc-description">
 				Given the optional parameters <code>profiles</code> and <code>fields</code>, returns all publications that are associated with a profile id AND a field id.
-				(e.g. <code>?profiles=1234125,1233125&fields=12534,12535</code> returns all publications of the users <code>1234125</code> and <code>1233125</code> that are associated with either the field <code>12534</code> or the field <code>12535</code>)
+				(e.g. <code>?profiles=abc,cde&fields=efg,hij</code> returns all publications of the users <code>abc</code> and <code>cde</code> that are associated with either the field <code>efg</code> or the field <code>hij</code>)
 			</p>
 		</div>
 	</md-content>
