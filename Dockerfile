@@ -12,10 +12,11 @@ COPY ./app /usr/share/nginx/html
 RUN chmod -R 755 /usr/share/nginx/html && \
 	chown -R root:root /usr/share/nginx/html
 
-# Add Entrypoint
-COPY ./docker/entrypoint.sh /
-RUN chmod +x /entrypoint.sh
-ENTYPOINT['/entrypoint.sh']
-
 # Only expose 80
 EXPOSE 80
+
+# Add Entrypoint
+COPY ./docker/entrypoint.sh /srv/mc/
+RUN chmod +x /srv/mc/entrypoint.sh
+ENTYPOINT["/srv/mc/entrypoint.sh"]
+
