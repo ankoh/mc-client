@@ -6,8 +6,8 @@ if [ -z "$MC_SERVER" ]; then
 fi
 
 cat >/usr/share/nginx/html/config.json <<EOL
-{
-	"server":"$MC_SERVER"
+var mcConfig = {
+	"server": "$MC_SERVER"
 }
 EOL
 
