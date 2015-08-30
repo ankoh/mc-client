@@ -45,7 +45,7 @@ compose-local:
   type: deploy
   script:
     - docker-compose -f compose.yml -p mcclient stop
-    - docker-compose -f compose.yml -p mcclient rm
+    - docker-compose -f compose.yml -p mcclient rm -vf
     - docker-compose -f compose.yml -p mcclient up -d
   tags:
     - privileged
