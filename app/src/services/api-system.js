@@ -14,7 +14,9 @@ SystemApi.prototype.getStatus = function() {
 	return this.$http.get(url)
 		.then(function(response) {
 			return {
-				"serverVersion": response.data["serverVersion"]
+				"serverVersion": response.data["serverVersion"],
+				"mendeleyStatus": response.data["mendeleyStatus"],
+				"lastUpdate": response.data["lastUpdate"]
 			};
 		})
 		.catch(function(response) {

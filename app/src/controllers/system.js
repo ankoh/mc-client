@@ -22,6 +22,7 @@ function SystemController($log, $timeout, ServiceConfiguration, SystemApi) {
 	this.documentToFieldLinks = "Unknown";
 	this.researchFields = "Unknown";
 
+	// Reload
 	this.reloadStatus();
 	this.reloadEntities();
 };
@@ -34,6 +35,8 @@ SystemController.prototype.reloadStatus = function() {
 	promise.then(function(data) {
 		self.$log.info("Successfully fetched system status");
 		self.serverVersion = data.serverVersion;
+		self.mendeleyStatus = data.mendeleyStatus;
+		self.lastUpdate = data.lastUpdate
 	}).catch(function(error) {
 		self.$log.warn("Could not load the system status");
 	}).finally(function() {
