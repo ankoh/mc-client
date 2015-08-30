@@ -37,7 +37,7 @@ SystemController.prototype.reloadStatus = function() {
 	}).catch(function(error) {
 		self.$log.warn("Could not load the system status");
 	}).finally(function() {
-		self.$timeout(function(){ self.loadingStatus = false; }, 2000);
+		self.$timeout(function(){ self.loadingStatus = false; }, 1100);
 	})
 };
 
@@ -48,9 +48,6 @@ SystemController.prototype.reloadEntities = function() {
 	self = this;
 	promise.then(function(data) {
 		self.$log.info("Successfully fetched system entities");
-
-		console.log(data)
-
 		self.profiles = data["profile"];
 		self.uniqueProfiles = "( " + data["cache_profile"] + " unique )";
 		self.profileToDocumentLinks = data["cache_profile_has_cache_document"];
@@ -62,6 +59,6 @@ SystemController.prototype.reloadEntities = function() {
 	}).catch(function(error) {
 		self.$log.warn("Could not load the system status");
 	}).finally(function() {
-		self.$timeout(function(){ self.loadingEntities = false; }, 2000);
+		self.$timeout(function(){ self.loadingEntities = false; }, 1100);
 	})
 };

@@ -75,6 +75,9 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	margin-top: 26px;
 	border-top: 1px solid #e3e3e3;
 }
+.mc-card .mc-card-loading-wrapper {
+}
+
 .mc-card .mc-dropdown {
 	background-color: #666;
 	color: #fff;
@@ -180,15 +183,6 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 
 .mc-color-primary {
 	color: #002143;
-}
-
-md-progress-linear {
-  margin-top: -5px;
-  margin-bottom: 3px;
-}
-
-md-progress-linear[md-mode="indeterminate"] .md-container .md-bar1 {
-	height: 3px;
 }
 
 

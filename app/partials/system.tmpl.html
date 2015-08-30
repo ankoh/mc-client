@@ -4,14 +4,16 @@
 	        <span>Status</span>
 	    </h2>
 	    <span flex></span>
+	    <div class="mc-card-loading-wrapper">
+		    <md-progress-circular
+		    	ng-if="system.loadingStatus"
+		    	md-diameter="16"
+		    	md-mode="indeterminate"></md-progress-circular>
+	    </div>
 	    <md-button class="md-icon-button" ng-click="system.reloadStatus()">
             <md-icon md-svg-icon="assets/svg/material-icons/ic_refresh_black_24px.svg"></md-icon>
         </md-button>
     </md-toolbar>
-
-    <div layout="column">
-    	<md-progress-linear ng-if="system.loadingStatus" md-mode="indeterminate"></md-progress-linear>
-    </div>
 
 	<md-content class="mc-table" layout="column">
 		<!-- Client version -->
@@ -58,14 +60,16 @@
 	        <span>Entities</span>
 	    </h2>
 	    <span flex></span>
+	   	<div class="mc-card-loading-wrapper">
+		    <md-progress-circular
+		    	ng-if="system.loadingEntities"
+		    	md-diameter="16"
+		    	md-mode="indeterminate"></md-progress-circular>
+	    </div>
 	    <md-button class="md-icon-button" ng-click="system.reloadEntities()">
             <md-icon md-svg-icon="assets/svg/material-icons/ic_refresh_black_24px.svg"></md-icon>
         </md-button>
     </md-toolbar>
-
-    <div layout="column">
-    	<md-progress-linear ng-if="system.loadingEntities" md-mode="indeterminate"></md-progress-linear>
-    </div>
 
     <md-content class="mc-table" layout="column">
 		<!-- Profiles -->
