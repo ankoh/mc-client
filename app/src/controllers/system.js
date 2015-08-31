@@ -1,15 +1,22 @@
-function SystemController($log, $timeout, ServiceConfiguration, LocalCache, SystemApi) {
+function SystemController($log, $q, $timeout, ServiceConfiguration, LocalCache, SystemApi) {
 	this.config = ServiceConfiguration;
 	this.cache = LocalCache
 	this.systemApi = SystemApi;
 	
 	this.$log = $log;
 	this.$timeout = $timeout;
+	this.$q = $q;
 
 	// Disable the loading circles
 	this.loadingStatus = false;
 	this.loadingEntities = false;
 
+	// Initialize data asynchronously to get rid of tab lag
+	this.initDataAsync();
+};
+
+SystemController.prototype.initDataAsync = function() {
+	var deferred = this.$q.defer();
 	if(this.cache.hasSystemStatus()) {
 		data = this.cache.getSystemStatus();
 		this.setStatus(data);
@@ -26,7 +33,8 @@ function SystemController($log, $timeout, ServiceConfiguration, LocalCache, Syst
 		this.setEntities(null);
 		this.reloadEntities();
 	}
-};
+	return deferred.promise;
+}
 
 SystemController.prototype.setStatus = function(data) {
 	if(data == null) {
