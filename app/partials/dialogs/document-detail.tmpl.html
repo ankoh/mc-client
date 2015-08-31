@@ -15,23 +15,23 @@
       </h3>
       <br>
       <div layout="row">
-        <p flex="33"><strong>Authors</strong></p>
-        <p flex>{{ selectedDocument.authors }}</p>
-      </div>
-      <div layout="row">
-        <p flex="33"><strong>Source</strong></p>
-        <p flex>{{ selectedDocument.source || "None" }}</p>
-      </div>
-      <div layout="row">
-        <p flex="33"><strong>Mendeley ID</strong></p>
+        <p flex="25" class="mc-right-align-column"><strong>Mendeley ID</strong></p>
         <p flex>{{ selectedDocument.mendeley_id }}</p>
       </div>
       <div layout="row">
-        <p flex="33"><strong>Type</strong></p>
+        <p flex="25" class="mc-right-align-column"><strong>Authors</strong></p>
+        <p flex>{{ selectedDocument.authors }}</p>
+      </div>
+      <div layout="row">
+        <p flex="25" class="mc-right-align-column"><strong>Source</strong></p>
+        <p flex>{{ selectedDocument.source || "None" }}</p>
+      </div>
+      <div layout="row">
+        <p flex="25" class="mc-right-align-column"><strong>Type</strong></p>
         <p flex>{{ selectedDocument.doc_type || "None" }}</p>
       </div>
       <div layout="row">
-        <p flex="33"><strong>Keywords</strong></p>
+        <p flex="25" class="mc-right-align-column"><strong>Keywords</strong></p>
         <ul ng-if="selectedDocument.keywords">
           <li
             ng-repeat="keyword in splitted = selectedDocument.keywords.split(',')">
@@ -43,7 +43,7 @@
         </p>
       </div>
       <div layout="row">
-        <p flex="33"><strong>Tags</strong></p>
+        <p flex="25" class="mc-right-align-column"><strong>Tags</strong></p>
         <ul ng-if="selectedDocument.tags">
           <li
             ng-repeat="tag in splitted = selectedDocument.tags.split(',')">
