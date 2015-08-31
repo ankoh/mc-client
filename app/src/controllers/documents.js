@@ -1,4 +1,4 @@
-function DocumentsController($log, $q, $timeout, LocalCache, SystemApi, DocumentsApi) {
+function DocumentsController($scope, $log, $q, $timeout, LocalCache, SystemApi, DocumentsApi) {
 	this.cache = LocalCache
 	this.systemApi = SystemApi;
 	this.documentsApi = DocumentsApi;
@@ -13,12 +13,41 @@ function DocumentsController($log, $q, $timeout, LocalCache, SystemApi, Document
 	// Array for selected items
 	this.selected = [];
   
-  	// Query specified through the table header and footer (order, limit, offset)
-	this.query = {
-		order: '-pub_year',
-		limit: 10,
-		page: 1
-	};
+
+	// Use ECMAScript 5 properties instead of $watch
+	this._order = '-pub_year';
+	Object.defineProperty(this, 'order', {
+		get: function() {
+			return this._order;
+		},
+		set: function(value) {
+			this._order = value;
+			this.loadDocuments();
+		}
+	});
+
+	this._limit = 10;
+	Object.defineProperty(this, 'limit', {
+		get: function() {
+			return this._limit;
+		},
+		set: function(value) {
+			this._limit = value;
+			this.loadDocuments();
+		}
+	});
+
+	this._page = 0;
+	Object.defineProperty(this, 'page', {
+		get: function() {
+			return this._page;
+		},
+		set: function(value) {
+			this._page = value;
+			this.loadDocuments();
+		}
+	});
+
 
 	// Total number of documents fetched through the System API
 	this.totalNumberDocuments = 0;
@@ -31,6 +60,7 @@ function DocumentsController($log, $q, $timeout, LocalCache, SystemApi, Document
 
 	// Initial population of table with documents
 	this.loadDocuments();	
+
 }
 
 DocumentsController.prototype.loadTotalNumber = function() {
@@ -82,16 +112,16 @@ DocumentsController.prototype.loadDocumentsAsync = function() {
 	var offset = 0;
 	var limit = 0;
 
-	if(this.query.order) {
-		if(this.query.order.substring(0,1) == "-") {
+	if(this.order) {
+		if(this.order.substring(0,1) == "-") {
 			orderDir = "desc";
-			orderAttr = this.query.order.substring(1);
+			orderAttr = this.order.substring(1);
 		} else {
-			orderAttr = this.query.order;
+			orderAttr = this.order;
 		}
 	}
-	var limit = this.query.limit;
-	var offset = limit * (this.query.page - 1);
+	var limit = this.limit;
+	var offset = limit * (this.page - 1);
 
 	this.documentsApi.getDocumentsAsync(
 		null, null, orderAttr, orderDir, offset, limit).then(function(data) {
@@ -103,9 +133,5 @@ DocumentsController.prototype.loadDocumentsAsync = function() {
 }
 
 
-DocumentsController.prototype.onPageChange = function(page, limit) {
-
-};
-
-DocumentsController.prototype.onOrderChange = function(order) {
-};
+DocumentsController.prototype.onPageChange = function(page, limit) {};
+DocumentsController.prototype.onOrderChange = function(order) {};
