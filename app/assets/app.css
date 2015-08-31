@@ -187,7 +187,9 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 .mc-color-warning {
 	color: #cccccc!important;
 }
-
+.mc-color-unfocused {
+	color: #cccccc!important;
+}
 .md-select-menu-container {
 	background-color: #ffffff;
 }

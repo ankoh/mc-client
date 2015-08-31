@@ -30,7 +30,7 @@
 					ng-repeat="
 						document in documents.data">
 					<td>{{document.title}}</td>
-					<td ng-class="tagcount == 0 ? 'mc-color-warning' : ''">
+					<td ng-class="tagcount == 0 ? 'mc-color-unfocused' : ''">
 						{{ tagcount = (document.tags | fieldcount) }}
 					</td>
 					<td>{{document.pub_year}}</td>
