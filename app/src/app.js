@@ -11,7 +11,10 @@ angular
     '$log',
     function($log) { return new LocalCache($log); }
     ])
-
+  .factory('Converter', [
+    '$log',
+    function() { return new Converter(); }
+    ])
   .factory('ProfilesApi', [
     '$log', '$q', '$http', 'ServiceConfiguration',
     function($log, $q, $http, ServiceConfiguration) { return new ProfilesApi($log, $q, $http, ServiceConfiguration); }

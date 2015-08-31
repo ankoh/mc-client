@@ -1,7 +1,10 @@
-function DocumentsController($scope, $log, $q, $timeout, $mdDialog, LocalCache, SystemApi, DocumentsApi) {
+function DocumentsController(
+	$scope, $log, $q, $timeout, $mdDialog, LocalCache, Converter, SystemApi, DocumentsApi) {
+
 	this.cache = LocalCache
 	this.systemApi = SystemApi;
 	this.documentsApi = DocumentsApi;
+	this.converter = Converter;
 	
 	this.$log = $log;
 	this.$timeout = $timeout;
@@ -137,12 +140,13 @@ DocumentsController.prototype.onPageChange = function(page, limit) {};
 DocumentsController.prototype.onOrderChange = function(order) {};
 
 
+
 DocumentsController.prototype.selectDocument = function($event, selected) {
 	this.$mdDialog.show({
-		controller: function($scope, $mdDialog, $filter) {
+		controller: function($scope, $mdDialog, $filter, Converter) {
 			$scope.selectedDocument = selected;
+			$scope.derivedFields = Converter.getUnifiedFields(selected.tags); 
 			$scope.hide = function() { $mdDialog.hide(); };
-			$scope.splitCommma = function(input) { return input.split(); };
 		},
 		targetEvent: $event,
 		templateUrl: 'partials/dialogs/document-detail.tmpl.html',

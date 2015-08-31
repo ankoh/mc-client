@@ -10,7 +10,7 @@
   </md-toolbar>
   <md-dialog-content class="mc-dialog-content">
     <div>
-      <h3>
+      <h3 class="mc-text-align-center">
         {{ selectedDocument.title }}
       </h3>
       <br>
@@ -51,6 +51,19 @@
           </li>
         </ul>
         <p ng-if="!selectedDocument.tags">
+          None
+        </p>
+      </div>
+      <div layout="row">
+        <p flex="25" class="mc-right-align-column"><strong>Derived Fields</strong></p>
+        <!-- Workaround for incompatible ng-repeat as described here:
+          https://github.com/angular/material/issues/2829 -->
+        <md-chips
+          ng-if="derivedFields.length > 0"
+          ng-model="derivedFields"
+          readonly="true">
+        </md-chips>
+        <p ng-if="derivedFields.length == 0">
           None
         </p>
       </div>

@@ -207,6 +207,10 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	padding-left: 20px;
 }
 
+.mc-dialog-content .md-chips {
+	box-shadow:  none!important;
+}
+
 .mc-right-align-column {
 	text-align: right;
 	padding-right: 24px;
@@ -229,4 +233,5 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 
 
 .mc-text-align-right { text-align: right; }
+.mc-text-align-center { text-align: center; }
 
