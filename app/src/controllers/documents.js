@@ -49,18 +49,6 @@ function DocumentsController($scope, $log, $q, $timeout, $mdDialog, LocalCache, 
 		}
 	});
 
-	this._selected = null;
-	Object.defineProperty(this, 'selected', {
-		get: function() {
-			return this._selected;
-		},
-		set: function(value) {
-			this._selected = value;
-			this.selectDocument(value);
-		}
-	});
-
-
 	// Total number of documents fetched through the System API
 	this.totalNumberDocuments = 0;
 
@@ -149,12 +137,13 @@ DocumentsController.prototype.onPageChange = function(page, limit) {};
 DocumentsController.prototype.onOrderChange = function(order) {};
 
 
-DocumentsController.prototype.selectDocument = function(selected) {
+DocumentsController.prototype.selectDocument = function($event, selected) {
 	this.$mdDialog.show({
 		controller: function($scope, $mdDialog) {
 			$scope.selectedDocument = selected;
 			$scope.hide = function() { $mdDialog.hide(); };
 		},
+		targetEvent: $event,
 		templateUrl: 'partials/dialogs/document-detail.tmpl.html',
 		parent: angular.element(document.body),
 		clickOutsideToClose:true
@@ -164,5 +153,4 @@ DocumentsController.prototype.selectDocument = function(selected) {
 
 	});
 };
-
 

@@ -28,7 +28,7 @@
 				<tr class="mc-pub-doc-table-row"
 					md-auto-select
 					ng-repeat="document in documents.data"
-					ng-click="documents.selected = document">
+					ng-click="documents.selectDocument($event, document)">
 					<td>{{document.title}}</td>
 					<td ng-class="tagcount == 0 ? 'mc-color-unfocused' : ''">
 						{{ tagcount = (document.tags | fieldcount) }}
