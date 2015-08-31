@@ -31,7 +31,7 @@
 					ng-click="documents.selectDocument($event, document)">
 					<td>{{document.title}}</td>
 					<td ng-class="tagcount == 0 ? 'mc-color-unfocused' : ''">
-						{{ tagcount = (document.tags | fieldcount) }}
+						{{ tagcount = (document.tags | splitByCommaLength) }}
 					</td>
 					<td>{{document.pub_year}}</td>
 				</tr>

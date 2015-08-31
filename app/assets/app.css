@@ -190,6 +190,20 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 .mc-color-unfocused {
 	color: #cccccc!important;
 }
+
+.mc-dialog-content {
+
+}
+
+.mc-dialog-content p {
+	margin-top: 10px;
+    margin-bottom: 10px;
+}
+.mc-dialog-content strong {
+	font-weight: 500;
+}
+
+/* md-data-table "Rows per page" dropdown background */
 .md-select-menu-container {
 	background-color: #ffffff;
 }

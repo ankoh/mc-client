@@ -139,9 +139,10 @@ DocumentsController.prototype.onOrderChange = function(order) {};
 
 DocumentsController.prototype.selectDocument = function($event, selected) {
 	this.$mdDialog.show({
-		controller: function($scope, $mdDialog) {
+		controller: function($scope, $mdDialog, $filter) {
 			$scope.selectedDocument = selected;
 			$scope.hide = function() { $mdDialog.hide(); };
+			$scope.splitCommma = function(input) { return input.split(); };
 		},
 		targetEvent: $event,
 		templateUrl: 'partials/dialogs/document-detail.tmpl.html',

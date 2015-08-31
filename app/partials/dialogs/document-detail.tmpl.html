@@ -8,11 +8,52 @@
       </md-button>
     </div>
   </md-toolbar>
-  <md-dialog-content style="max-width:800px;max-height:810px; ">
+  <md-dialog-content class="mc-dialog-content">
     <div>
-      <p>
+      <h3>
         {{ selectedDocument.title }}
-      </p>
+      </h3>
+      <br>
+      <div layout="row">
+        <p flex="33"><strong>Authors</strong></p>
+        <p flex>{{ selectedDocument.authors }}</p>
+      </div>
+      <div layout="row">
+        <p flex="33"><strong>Source</strong></p>
+        <p flex>{{ selectedDocument.source || "None" }}</p>
+      </div>
+      <div layout="row">
+        <p flex="33"><strong>Mendeley ID</strong></p>
+        <p flex>{{ selectedDocument.mendeley_id }}</p>
+      </div>
+      <div layout="row">
+        <p flex="33"><strong>Type</strong></p>
+        <p flex>{{ selectedDocument.doc_type || "None" }}</p>
+      </div>
+      <div layout="row">
+        <p flex="33"><strong>Keywords</strong></p>
+        <ul ng-if="selectedDocument.keywords">
+          <li
+            ng-repeat="keyword in splitted = selectedDocument.keywords.split(',')">
+            {{ keyword }}
+          </li>
+        </ul>
+        <p ng-if="!selectedDocument.keywords">
+          None
+        </p>
+      </div>
+      <div layout="row">
+        <p flex="33"><strong>Tags</strong></p>
+        <ul ng-if="selectedDocument.tags">
+          <li
+            ng-repeat="tag in splitted = selectedDocument.tags.split(',')">
+            {{ tag }}
+          </li>
+        </ul>
+        <p ng-if="!selectedDocument.tags">
+          None
+        </p>
+      </div>
     </div>
   </md-dialog-content>
 </md-dialog>
