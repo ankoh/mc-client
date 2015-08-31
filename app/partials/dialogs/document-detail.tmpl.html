@@ -1,0 +1,20 @@
+<md-dialog>
+  <form>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Document</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="hide()">
+        <md-icon md-svg-src="assets/svg/material-icons/ic_close_white_24px.svg"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content style="max-width:800px;max-height:810px; ">
+    <div>
+      <p>
+        {{ selectedDocument.title }}
+      </p>
+    </div>
+  </md-dialog-content>
+  </form>
+</md-dialog>

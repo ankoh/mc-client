@@ -1,4 +1,4 @@
-function DocumentsController($scope, $log, $q, $timeout, LocalCache, SystemApi, DocumentsApi) {
+function DocumentsController($scope, $log, $q, $timeout, $mdDialog, LocalCache, SystemApi, DocumentsApi) {
 	this.cache = LocalCache
 	this.systemApi = SystemApi;
 	this.documentsApi = DocumentsApi;
@@ -6,6 +6,7 @@ function DocumentsController($scope, $log, $q, $timeout, LocalCache, SystemApi, 
 	this.$log = $log;
 	this.$timeout = $timeout;
 	this.$q = $q;
+	this.$mdDialog = $mdDialog;
 
 	// Disable the loading circle
 	this.loadingData = false;
@@ -45,6 +46,17 @@ function DocumentsController($scope, $log, $q, $timeout, LocalCache, SystemApi, 
 		set: function(value) {
 			this._page = value;
 			this.loadDocuments();
+		}
+	});
+
+	this._selected = null;
+	Object.defineProperty(this, 'selected', {
+		get: function() {
+			return this._selected;
+		},
+		set: function(value) {
+			this._selected = value;
+			this.selectDocument(value);
 		}
 	});
 
@@ -135,3 +147,22 @@ DocumentsController.prototype.loadDocumentsAsync = function() {
 
 DocumentsController.prototype.onPageChange = function(page, limit) {};
 DocumentsController.prototype.onOrderChange = function(order) {};
+
+
+DocumentsController.prototype.selectDocument = function(selected) {
+	this.$mdDialog.show({
+		controller: function($scope, $mdDialog) {
+			$scope.selectedDocument = selected;
+			$scope.hide = function() { $mdDialog.hide(); };
+		},
+		templateUrl: 'partials/dialogs/document-detail.tmpl.html',
+		parent: angular.element(document.body),
+		clickOutsideToClose:true
+	}).then(function(answer) {
+		
+	}).catch(function() {
+
+	});
+};
+
+
