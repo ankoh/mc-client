@@ -37,7 +37,7 @@ function DocumentsController($scope, $log, $q, $timeout, LocalCache, SystemApi, 
 		}
 	});
 
-	this._page = 0;
+	this._page = 1;
 	Object.defineProperty(this, 'page', {
 		get: function() {
 			return this._page;
