@@ -182,7 +182,10 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 }
 
 .mc-color-primary {
-	color: #002143;
+	color: #002143!important;
+}
+.mc-color-warning {
+	color: #cccccc!important;
 }
 
 

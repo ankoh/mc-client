@@ -16,7 +16,6 @@ function SystemController($log, $q, $timeout, ServiceConfiguration, LocalCache, 
 };
 
 SystemController.prototype.initDataAsync = function() {
-	var deferred = this.$q.defer();
 	if(this.cache.hasSystemStatus()) {
 		data = this.cache.getSystemStatus();
 		this.setStatus(data);
@@ -33,7 +32,6 @@ SystemController.prototype.initDataAsync = function() {
 		this.setEntities(null);
 		this.reloadEntities();
 	}
-	return deferred.promise;
 }
 
 SystemController.prototype.setStatus = function(data) {
@@ -72,10 +70,9 @@ SystemController.prototype.setEntities = function(data) {
 
 SystemController.prototype.reloadStatus = function() {
 	this.loadingStatus = true;
-	var promise = this.systemApi.getStatus();
 	
-	self = this;
-	promise.then(function(data) {
+	var self = this;
+	this.systemApi.getStatusAsync().then(function(data) {
 		self.$log.info("Successfully fetched system status");
 		self.cache.setSystemStatus(data);
 		self.setStatus(data);
@@ -88,15 +85,14 @@ SystemController.prototype.reloadStatus = function() {
 
 SystemController.prototype.reloadEntities = function() {
 	this.loadingEntities = true;
-	var promise = this.systemApi.getEntities();
 	
-	self = this;
-	promise.then(function(data) {
+	var self = this;
+	this.systemApi.getEntitiesAsync().then(function(data) {
 		self.$log.info("Successfully fetched system entities");
 		self.cache.setSystemEntities(data);
 		self.setEntities(data);
 	}).catch(function(error) {
-		self.$log.warn("Could not load the system status");
+		self.$log.warn("Could not load the system entities");
 	}).finally(function() {
 		self.$timeout(function(){ self.loadingEntities = false; }, 1100);
 	})

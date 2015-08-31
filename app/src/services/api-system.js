@@ -5,7 +5,7 @@ function SystemApi($log, $q, $http, ServiceConfiguration) {
 	this.$log = $log;
 }
 	
-SystemApi.prototype.getStatus = function() {
+SystemApi.prototype.getStatusAsync = function() {
 	var url = this.config.getCacheUrlBase();
 	url += "/system/status";
 
@@ -27,7 +27,7 @@ SystemApi.prototype.getStatus = function() {
 		});
 }
 
-SystemApi.prototype.getEntities = function() {
+SystemApi.prototype.getEntitiesAsync = function() {
 	var url = this.config.getCacheUrlBase();
 		url += "/system/entities";
 

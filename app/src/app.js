@@ -1,6 +1,6 @@
 // Initialize the angular application
 angular
-  .module('mendeleyCache', ['ngMaterial', 'ui.router', 'chart.js', 'md.data.table'])
+  .module('mendeleyCache', ['mendeleyCache.filters', 'ngMaterial', 'ui.router', 'md.data.table'])
 
   // Services
   .factory('ServiceConfiguration', [
