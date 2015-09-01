@@ -12,7 +12,94 @@
 	    </div>
     </md-toolbar>
 	<md-content layout="column">
-        <md-data-table-container>
+
+
+		<div class="md-padding">
+			<!-- Profile filter BEGIN -->
+			<md-chips
+				class="mc-buttonchips mc-buttonchips-fst"
+				ng-model="documents.selectedProfileFilters">
+				<!-- Autocomplete BEGIN -->
+				<md-autocomplete
+					md-menu-class="mc-chip-autocomplete-tmpl"
+					md-autoselect="true"
+					md-selected-item="documents.selectedProfileFilter"
+					md-search-text="documents.profileFilterSearchText"
+					md-items="profile in documents.getProfileFilterMatches()"
+					md-item-text="profile.name"
+					placeholder="Filter by authors">
+					<md-item-template>
+						<div layout="row">
+							<span
+								flex
+								class="item-title"
+								md-highlight-text="client.profileFilterSearchText">
+								{{profile.name}}
+							</span>
+							<span>{{ profile.cnt }}</span>
+							<md-icon
+								md-svg-icon="assets/svg/material-icons/ic_link_black_24px.svg">
+							</md-icon>
+						</div>
+					</md-item-template>
+					<md-not-found>No matches found</md-not-found>
+				</md-autocomplete>
+				<!-- Autocomplete END -->
+				<md-chip-template>
+					<span>{{ $chip.name }}</span>
+				</md-chip-template>
+				<button md-chip-remove class="md-primary">
+					<md-icon md-svg-src="assets/svg/material-icons/ic_close_white_24px.svg"></md-icon>
+				</button>
+			</md-chips>
+			<!-- Profile filter END -->
+
+			<!-- Research field filter BEGIN -->
+			<md-chips
+				class="mc-buttonchips"
+				ng-model="documents.selectedFieldFilters"
+				>
+				<!-- Autocomplete BEGIN -->
+				<md-autocomplete
+					md-menu-class="mc-chip-autocomplete-tmpl"
+					md-autoselect="true"
+					md-selected-item="documents.selectedFieldFilter"
+					md-search-text="documents.fieldFilterSearchText"
+					md-items="field in documents.getFieldFilterMatches()"
+					md-item-text="field.title"
+					placeholder="Filter by research fields">
+					<md-item-template>
+						<div layout="row">
+							<span
+								flex
+								class="item-title"
+								md-highlight-text="documents.fieldFilterSearchText">
+								{{ field.title }}
+							</span>
+							<span>{{ field.cnt }}</span>
+							<md-icon
+								md-svg-icon="assets/svg/material-icons/ic_link_black_24px.svg">
+							</md-icon>
+						</div>
+					</md-item-template>
+					<md-not-found>No matches found</md-not-found>
+				</md-autocomplete>
+				<!-- Autocomplete END -->
+				<md-chip-template>
+					<span>{{ $chip.title }}</span>
+				</md-chip-template>
+				<button md-chip-remove class="md-primary">
+					<md-icon md-svg-src="assets/svg/material-icons/ic_close_white_24px.svg"></md-icon>
+				</button>
+			</md-chips>
+			<!-- Research field filter END -->
+		</div>
+
+
+
+
+
+        <md-data-table-container class="mc-data-table">
           <table
           	md-data-table class="md-primary">
             <thead
@@ -25,7 +112,7 @@
 				</tr>
             </thead>
             <tbody>
-				<tr class="mc-pub-doc-table-row"
+				<tr class="mc-data-table-row"
 					md-auto-select
 					ng-repeat="document in documents.data"
 					ng-click="documents.selectDocument($event, document)">
@@ -39,11 +126,21 @@
           </table>
         </md-data-table-container>
 
-        <md-data-table-pagination
-        	md-limit="documents.limit"
-        	md-page="documents.page"
-        	md-total="{{documents.totalNumberDocuments}}"
-        	md-trigger="documents.onPageChange">
-        </md-data-table-pagination>
+        <div 
+        	class="mc-actionbar-transparent"
+        	layout="row"
+        	layout-align="center center">
+			<md-button class="md-icon-button">
+				<md-icon md-svg-src="assets/svg/material-icons/ic_link_black_24px.svg"></md-icon>
+			</md-button>
+			<span flex></span>
+	        <md-data-table-pagination
+	        	class="mc-kill-borders"
+	        	md-limit="documents.limit"
+	        	md-page="documents.page"
+	        	md-total="300"
+	        	md-trigger="documents.onPageChange">
+	        </md-data-table-pagination>
+        </div>
 	</md-content>
 </div>

@@ -36,7 +36,6 @@ angular
     ])
 
   // Controllers
-  .controller('ClientController',     ClientController)
   .controller('SystemController',     SystemController)
   .controller('DocumentsController',  DocumentsController)
 
@@ -90,19 +89,10 @@ angular
         controllerAs: 'documents',
         templateUrl: "partials/documents.tmpl.html"
       })
-      .state('tabs.client', {
-        url: "/client",
-        data: {
-          'selectedTab': 2
-        },
-        controller: 'ClientController',
-        controllerAs: 'client',
-        templateUrl: "partials/client.tmpl.html"
-      })
       .state('tabs.api', {
         url: "/api",
         data: {
-          'selectedTab': 3
+          'selectedTab': 2
         },
         templateUrl: "partials/api.tmpl.html"
       })

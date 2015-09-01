@@ -81,8 +81,10 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 .mc-card .mc-actionbar {
 	/* background-color: #002143; */
 	background-color: #fcfcfc;
-	margin-top: 26px;
 	border-top: 1px solid #e3e3e3;
+}
+.mc-card .mc-actionbar-transparent {
+	border-top: 1px rgba(0,0,0,.12) solid;
 }
 .mc-card .mc-card-loading-wrapper {
 }
@@ -159,8 +161,8 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	padding-top: 8px;
 }
 .mc-chip-autocomplete-tmpl li md-icon {
-	width: 18px;
-	height: 18px;
+	width: 20px;
+	height: 20px;
 	margin-left: 12px;
 }
 
@@ -191,11 +193,10 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	font-weight: 500;
 }
 
-.mc-pub-doc-table {
-
+.mc-data-table {
 }
 
-.mc-pub-doc-table-row {
+.mc-data-table-row {
 }
 
 .mc-linechart {
@@ -263,3 +264,9 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 .mc-text-align-right { text-align: right; }
 .mc-text-align-center { text-align: center; }
 
+.mc-kill-borders {
+	border-width: 0px!important;
+}
+.mc-kill-borders div {
+	border-width: 0px!important;
+}

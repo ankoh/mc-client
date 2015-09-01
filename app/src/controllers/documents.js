@@ -1,9 +1,12 @@
 function DocumentsController(
-	$scope, $log, $q, $timeout, $mdDialog, LocalCache, Converter, SystemApi, DocumentsApi) {
+	$scope, $log, $q, $timeout, $mdDialog,
+	LocalCache, Converter, SystemApi, DocumentsApi, ProfilesApi, FieldsApi) {
 
 	this.cache = LocalCache
 	this.systemApi = SystemApi;
 	this.documentsApi = DocumentsApi;
+	this.profilesApi = ProfilesApi;
+	this.fieldsApi = FieldsApi;
 	this.converter = Converter;
 	
 	this.$log = $log;
@@ -16,7 +19,6 @@ function DocumentsController(
 
 	// Array for selected items
 	this.selected = [];
-  
 
 	// Use ECMAScript 5 properties instead of $watch
 	this._order = '-pub_year';
@@ -30,7 +32,7 @@ function DocumentsController(
 		}
 	});
 
-	this._limit = 10;
+	this._limit = 5;
 	Object.defineProperty(this, 'limit', {
 		get: function() {
 			return this._limit;
@@ -52,44 +54,38 @@ function DocumentsController(
 		}
 	});
 
-	// Total number of documents fetched through the System API
-	this.totalNumberDocuments = 0;
-
 	// Fetched document data
 	this.data = []
 
-	// Initial load of total doc number
-	this.loadTotalNumber();
+
+	// Profile list
+	this.profiles = [];
+	this.fields = [];
+
+	// Profile filter
+	this.selectedProfileFilter = null;
+	this.selectedProfileFilters = [ ];
+    this.profileFilterSearchText = null;
+
+	// Research field filter
+	this.selectedFieldFilter = null;
+	this.selectedFieldFilters = [ ];
+	this.fieldFilterSearchText = null;
+
 
 	// Initial population of table with documents
 	this.loadDocuments();	
 
-}
-
-DocumentsController.prototype.loadTotalNumber = function() {
+	// End initialization with promises
 	var self = this;
-	// Start promise chain for number load
-	this.loadingData = true;
-	this.loadTotalNumberAsync()
-		.then(function(data) { self.totalNumberDocuments = data['cache_document']; })
-		.catch(function(error) { self.$log.warn("Could not load the system entities"); });
+	this.loadSlimProfilesAsync()
+		.then(function(data) { return self.loadFieldsAsync(); })
+		.then(function(data) { self.ready = true; })
+		.catch(function() { /* Catch error */ })
+		.finally(function() { self.$timeout(function(){ self.loadingData = false; }, 1100); });
+
 }
 
-DocumentsController.prototype.loadTotalNumberAsync = function() {
-	var deferred = this.$q.defer();
-	if(this.cache.hasSystemEntities()) {
-		data = this.cache.getSystemEntities();
-		deferred.resolve(data);
-	} else {
-		self = this;
-		this.systemApi.queryEntitiesAsync().then(function(data) {
-			deferred.resolve(data);
-		}).catch(function(error) {
-			deferred.reject(error);
-		})
-	}
-	return deferred.promise;
-}
 
 DocumentsController.prototype.loadDocuments = function() {
 	var self = this;
@@ -139,7 +135,6 @@ DocumentsController.prototype.onPageChange = function(page, limit) {};
 DocumentsController.prototype.onOrderChange = function(order) {};
 
 
-
 DocumentsController.prototype.selectDocument = function($event, selected) {
 	this.$mdDialog.show({
 		controller: function($scope, $mdDialog, $filter, Converter) {
@@ -156,5 +151,66 @@ DocumentsController.prototype.selectDocument = function($event, selected) {
 	}).catch(function() {
 
 	});
+};
+
+
+
+
+DocumentsController.prototype.loadSlimProfilesAsync = function() {
+	if(this.cache.hasSlimProfiles()) {
+		this.profiles = this.cache.getSlimProfiles();
+		return this.$q.resolve();
+	} else {
+		this.loadingData = true;
+		var self = this;
+		return this.profilesApi.querySlimProfilesAsync()
+			.then(function(data) {
+				self.cache.setSlimProfiles(data);
+				self.profiles = data;
+				self.$log.info("Successfully fetched " + data.length + " profiles");
+			});
+	}
+}
+
+DocumentsController.prototype.loadFieldsAsync = function() {
+	if(this.cache.hasFields()) {
+		this.fields = this.cache.getFields()
+		return this.$q.resolve();
+	} else {
+		this.loadingData = true;
+		var self = this;
+		return this.fieldsApi.queryFieldsAsync()
+			.then(function(data) {
+				self.cache.setFields(data);
+				self.fields = data;
+				self.$log.info("Successfully fetched " + data.length + " fields");
+			});
+	}
+}
+
+
+DocumentsController.prototype.getProfileFilterMatches = function() {
+	return this.getMatches(this.profileFilterSearchText, this.profiles, "name");
+}
+
+DocumentsController.prototype.getFieldFilterMatches = function() {
+	return this.getMatches(this.fieldFilterSearchText, this.fields, "title");
+}
+
+DocumentsController.prototype.getMatches = function(searchText, array, attribute) {
+	if(!this.ready) {
+		return [];
+	}
+
+	if (searchText) {
+		var lowercaseQuery = angular.lowercase(searchText);
+		var filterFn = function filterFn(item) {
+			var lowerCaseItem = angular.lowercase(item[attribute]);
+			return (lowerCaseItem.indexOf(lowercaseQuery) != -1);;
+		};
+		return array.filter(filterFn);
+	} else {
+		return [];
+	}
 };
 
