@@ -5,7 +5,7 @@ function DocumentsApi($log, $q, $http, ServiceConfiguration) {
 	this.$log = $log;
 }
 	
-DocumentsApi.prototype.getDocumentsAsync = function(profileIds, fieldIds, orderAttr, orderDir, offset, limit) {
+DocumentsApi.prototype.queryDocumentsAsync = function(profileIds, fieldIds, orderAttr, orderDir, offset, limit) {
 	var url = this.config.getCacheUrlBase();
 	url += "/documents";
 

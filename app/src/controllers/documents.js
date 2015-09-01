@@ -82,7 +82,7 @@ DocumentsController.prototype.loadTotalNumberAsync = function() {
 		deferred.resolve(data);
 	} else {
 		self = this;
-		this.systemApi.getEntitiesAsync().then(function(data) {
+		this.systemApi.queryEntitiesAsync().then(function(data) {
 			deferred.resolve(data);
 		}).catch(function(error) {
 			deferred.reject(error);
@@ -125,7 +125,7 @@ DocumentsController.prototype.loadDocumentsAsync = function() {
 	var limit = this.limit;
 	var offset = limit * (this.page - 1);
 
-	this.documentsApi.getDocumentsAsync(
+	this.documentsApi.queryDocumentsAsync(
 		null, null, orderAttr, orderDir, offset, limit).then(function(data) {
 		deferred.resolve(data);
 	}).catch(function(error) {

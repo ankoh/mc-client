@@ -52,7 +52,7 @@ ClientController.prototype.loadSlimProfilesAsync = function() {
 	} else {
 		this.loadingData = true;
 		var self = this;
-		return this.profilesApi.getSlimProfilesAsync()
+		return this.profilesApi.querySlimProfilesAsync()
 			.then(function(data) {
 				self.cache.setSlimProfiles(data);
 				self.profiles = data;
@@ -68,7 +68,7 @@ ClientController.prototype.loadFieldsAsync = function() {
 	} else {
 		this.loadingData = true;
 		var self = this;
-		return this.fieldsApi.getFieldsAsync()
+		return this.fieldsApi.queryFieldsAsync()
 			.then(function(data) {
 				self.cache.setFields(data);
 				self.fields = data;
@@ -77,7 +77,14 @@ ClientController.prototype.loadFieldsAsync = function() {
 	}
 }
 
-ClientController.prototype.queryDocumentsAsync = function() {
+ClientController.prototype.queryDocuments = function() {
+	// Get profile-ids, get field-ids
+	profileIds = this.selectedProfiles.map(function(profile){
+		return profile.id;
+	})
+	fieldIds = this.selectedFields.map(function(field) {
+		return field.id;
+	})
 
 }
 

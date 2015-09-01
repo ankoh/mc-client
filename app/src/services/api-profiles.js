@@ -5,7 +5,7 @@ function ProfilesApi($log, $q, $http, ServiceConfiguration) {
 	this.$log = $log;
 }
 
-ProfilesApi.prototype.getSlimProfilesAsync = function() {
+ProfilesApi.prototype.querySlimProfilesAsync = function() {
 	var url = this.config.getCacheUrlBase();
 	url += "/profiles/?slim=true";
 

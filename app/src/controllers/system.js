@@ -72,9 +72,9 @@ SystemController.prototype.reloadStatus = function() {
 	this.loadingStatus = true;
 	
 	var self = this;
-	this.systemApi.getStatusAsync().then(function(data) {
+	this.systemApi.queryStatusAsync().then(function(data) {
 		self.$log.info("Successfully fetched system status");
-		self.cache.setSystemStatus(data);
+		self.cache.setSystemStatus(data); 
 		self.setStatus(data);
 	}).catch(function(error) {
 		self.$log.warn("Could not load the system status");
@@ -87,7 +87,7 @@ SystemController.prototype.reloadEntities = function() {
 	this.loadingEntities = true;
 	
 	var self = this;
-	this.systemApi.getEntitiesAsync().then(function(data) {
+	this.systemApi.queryEntitiesAsync().then(function(data) {
 		self.$log.info("Successfully fetched system entities");
 		self.cache.setSystemEntities(data);
 		self.setEntities(data);
