@@ -29,14 +29,8 @@ a {
 Hide scrollbars as described here:
 http://stackoverflow.com/questions/3296644/hiding-the-scrollbar-on-an-html-page
  */
-html { 
-	overflow: -moz-scrollbars-none;
-}
-body::-webkit-scrollbar { 
-    display: none; 
-}
-::-webkit-scrollbar { 
-    display: none; 
+body { 
+    overflow-y: auto!important; 
 }
 
 

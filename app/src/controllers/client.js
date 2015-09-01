@@ -1,6 +1,6 @@
 function ClientController(
-	$scope, $log, $q, $timeout, $mdDialog, LocalCache,
-	DocumentsApi, ProfilesApi, FieldsApi) {
+	$scope, $log, $q, $timeout, $mdDialog, $window, $document,
+	LocalCache, DocumentsApi, ProfilesApi, FieldsApi) {
 
 	// My services
 	this.cache = LocalCache
@@ -14,6 +14,8 @@ function ClientController(
 	this.$q = $q;
 	this.$timeout = $timeout;
 	this.$mdDialog = $mdDialog;
+	this.$window = $window;
+	this.$document = $document;
 
 	// Profile list
 	this.profiles = [];
@@ -75,6 +77,10 @@ ClientController.prototype.loadFieldsAsync = function() {
 	}
 }
 
+ClientController.prototype.queryDocumentsAsync = function() {
+
+}
+
 ClientController.prototype.getProfileMatches = function() {
 	return this.getMatches(this.profileSearchText, this.profiles, "name");
 }
@@ -99,3 +105,26 @@ ClientController.prototype.getMatches = function(searchText, array, attribute) {
 		return [];
 	}
 };
+
+ClientController.prototype.saveToFile = function(data, filename) {
+        if(!data) {
+        	this.$log.error('saveToFile: No data')
+        	return;
+        }
+
+        if(!filename) filename = 'download.json'
+
+        if(typeof data === "object"){
+            data = JSON.stringify(data, undefined, 4)
+        }
+
+        var blob = new Blob([data], {type: 'text/json'}),
+            e    = this.$document.createEvent('MouseEvents'),
+            a    = this.$document.createElement('a')
+
+        a.download = filename
+        a.href = this.$window.URL.createObjectURL(blob)
+        a.dataset.downloadurl =  ['text/json', a.download, a.href].join(':')
+        e.initMouseEvent('click', true, false, this.$window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+        a.dispatchEvent(e)
+}
