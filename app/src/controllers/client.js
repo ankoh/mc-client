@@ -77,7 +77,7 @@ ClientController.prototype.loadFieldsAsync = function() {
 	}
 }
 
-ClientController.prototype.queryDocuments = function() {
+ClientController.prototype.loadDocumentsAsync = function() {
 	// Get profile-ids, get field-ids
 	profileIds = this.selectedProfiles.map(function(profile){
 		return profile.id;
@@ -86,7 +86,10 @@ ClientController.prototype.queryDocuments = function() {
 		return field.id;
 	})
 
+	var self = this;
+	return this.documentsApi.queryDocumentsAsync(profileIds, fieldIds);
 }
+
 
 ClientController.prototype.getProfileMatches = function() {
 	return this.getMatches(this.profileSearchText, this.profiles, "name");
@@ -112,26 +115,3 @@ ClientController.prototype.getMatches = function(searchText, array, attribute) {
 		return [];
 	}
 };
-
-ClientController.prototype.saveToFile = function(data, filename) {
-        if(!data) {
-        	this.$log.error('saveToFile: No data')
-        	return;
-        }
-
-        if(!filename) filename = 'download.json'
-
-        if(typeof data === "object"){
-            data = JSON.stringify(data, undefined, 4)
-        }
-
-        var blob = new Blob([data], {type: 'text/json'}),
-            e    = this.$document.createEvent('MouseEvents'),
-            a    = this.$document.createElement('a')
-
-        a.download = filename
-        a.href = this.$window.URL.createObjectURL(blob)
-        a.dataset.downloadurl =  ['text/json', a.download, a.href].join(':')
-        e.initMouseEvent('click', true, false, this.$window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
-        a.dispatchEvent(e)
-}

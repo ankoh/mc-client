@@ -12,10 +12,10 @@ DocumentsApi.prototype.queryDocumentsAsync = function(profileIds, fieldIds, orde
 	var arguments = []
 
 	if(profileIds) {
-		arguments.push("profile-ids=" + profileIds.join());
+		arguments.push("profile-ids=" + profileIds.join(','));
 	}
 	if(fieldIds) {
-		arguments.push("field-ids=" + fieldIds.join());
+		arguments.push("field-ids=" + fieldIds.join(','));
 	}
 	if(orderAttr) {
 		if(orderAttr == "pub_year") {
