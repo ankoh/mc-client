@@ -36,6 +36,8 @@ DocumentsApi.prototype.queryDocumentsAsync = function(profileIds, fieldIds, orde
 	var argumentString = "?" + arguments.join("&")
 	url += argumentString;
 
+	this.$log.info("GET " + url);
+
 	$q = this.$q;
 
 	return this.$http.get(url)

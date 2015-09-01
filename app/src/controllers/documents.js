@@ -1,6 +1,7 @@
 function DocumentsController(
 	$scope, $log, $q, $timeout, $mdDialog,
 	LocalCache, Converter, SystemApi, DocumentsApi, ProfilesApi, FieldsApi) {
+	var self = this;
 
 	this.cache = LocalCache
 	this.systemApi = SystemApi;
@@ -28,7 +29,7 @@ function DocumentsController(
 		},
 		set: function(value) {
 			this._order = value;
-			this.loadDocuments();
+			this.reloadTable();
 		}
 	});
 
@@ -39,7 +40,7 @@ function DocumentsController(
 		},
 		set: function(value) {
 			this._limit = value;
-			this.loadDocuments();
+			this.reloadTable();
 		}
 	});
 
@@ -50,7 +51,7 @@ function DocumentsController(
 		},
 		set: function(value) {
 			this._page = value;
-			this.loadDocuments();
+			this.reloadTable();
 		}
 	});
 
@@ -66,15 +67,17 @@ function DocumentsController(
 	this.selectedProfileFilter = null;
 	this.selectedProfileFilters = [ ];
     this.profileFilterSearchText = null;
+    $scope.$watch("documents.selectedProfileFilters.length", function () { self.reloadTable(); } );
 
 	// Research field filter
 	this.selectedFieldFilter = null;
 	this.selectedFieldFilters = [ ];
 	this.fieldFilterSearchText = null;
+	$scope.$watch("documents.selectedFieldFilters.length", function () { self.reloadTable(); } );
 
 
 	// Initial population of table with documents
-	this.loadDocuments();	
+	this.reloadTable();	
 
 	// End initialization with promises
 	var self = this;
@@ -87,12 +90,12 @@ function DocumentsController(
 }
 
 
-DocumentsController.prototype.loadDocuments = function() {
+DocumentsController.prototype.reloadTable = function() {
 	var self = this;
 
 	// Start promise chain for document load
 	this.loadingData = true;
-	this.loadDocumentsAsync().then(function(data) {
+	this.queryDocumentsAsync().then(function(data) {
 		self.$log.info("Successfully queried documents");
 		self.data = data;
 	}).catch(function(error) {
@@ -102,9 +105,7 @@ DocumentsController.prototype.loadDocuments = function() {
 	});
 }
 
-DocumentsController.prototype.loadDocumentsAsync = function() {
-	var deferred = this.$q.defer();
-
+DocumentsController.prototype.queryDocumentsAsync = function() {
 	var orderAttr = "pub_year";
 	var orderDir = "asc";
 	var offset = 0;
@@ -121,13 +122,20 @@ DocumentsController.prototype.loadDocumentsAsync = function() {
 	var limit = this.limit;
 	var offset = limit * (this.page - 1);
 
-	this.documentsApi.queryDocumentsAsync(
-		null, null, orderAttr, orderDir, offset, limit).then(function(data) {
-		deferred.resolve(data);
-	}).catch(function(error) {
-		deferred.reject(error);
-	})
-	return deferred.promise;
+	var profileIds = null;
+	if(this.selectedProfileFilters.length > 0) {
+		profileIds = this.selectedProfileFilters.map(function(filter) {
+			return filter.id;
+		})
+	}
+	var fieldIds = null;
+	if(this.selectedFieldFilters.length > 0) {
+		fieldIds = this.selectedFieldFilters.map(function(filter) {
+			return filter.id;
+		})
+	}
+	return this.documentsApi.queryDocumentsAsync(
+		profileIds, fieldIds, orderAttr, orderDir, offset, limit);
 }
 
 
