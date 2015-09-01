@@ -1,23 +1,24 @@
-function FieldsApi(ServiceConfiguration) {
-	this.fields = [];
-
-	this.fields = [
-		{ 
-			name: 'Cyber Physical Systems',
-			publications: 20
-		},
-		{
-			name: 'Continuous Software Engineering',
-			publications: 10
-		},
-		{
-			name: 'Agile Development',
-			publications: 30
-		}
-	];
+function FieldsApi($log, $q, $http, ServiceConfiguration) {
+	this.config = ServiceConfiguration;
+	this.$q = $q;
+	this.$http = $http;
+	this.$log = $log;
 }
 
+FieldsApi.prototype.getFieldsAsync = function() {
+	var url = this.config.getCacheUrlBase();
+	url += "/fields";
 
-FieldsApi.prototype.getAllFields = function() {
-	return this.fields;
+	$q = this.$q;
+
+	return this.$http.get(url)
+		.then(function(response) {
+			return response.data;
+		})
+		.catch(function(response) {
+			return $q.reject({
+				code: response.status,
+				text: response.statusText
+			});
+		});
 }

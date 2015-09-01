@@ -1,31 +1,24 @@
-function ProfilesApi(ServiceConfiguration) {
-	this.profiles = [];
-
-	this.profiles = [
-		{ 
-			name: 'Stephan Krusche',
-			email: 'krusche@in.tum.de',
-			publications: 20
-		},
-		{
-			name: 'Constantin Scheuermann',
-			email: 'scheuermann@in.tum.de',
-			publications: 10
-		},
-		{
-			name: 'Bernd Brügge',
-			email: 'bruegge@in.tum.de',
-			publications: 120
-		},
-		{
-			name: 'Andreas Seitz',
-			email: 'seitz@in.tum.de',
-			publications: 5
-		}
-	];
+function ProfilesApi($log, $q, $http, ServiceConfiguration) {
+	this.config = ServiceConfiguration;
+	this.$q = $q;
+	this.$http = $http;
+	this.$log = $log;
 }
 
+ProfilesApi.prototype.getSlimProfilesAsync = function() {
+	var url = this.config.getCacheUrlBase();
+	url += "/profiles/?slim=true";
 
-ProfilesApi.prototype.getAllProfiles = function () {
-	return this.profiles;
+	$q = this.$q;
+
+	return this.$http.get(url)
+		.then(function(response) {
+			return response.data;
+		})
+		.catch(function(response) {
+			return $q.reject({
+				code: response.status,
+				text: response.statusText
+			});
+		});
 }

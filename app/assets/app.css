@@ -25,6 +25,21 @@ a {
 	text-decoration: none;
 }
 
+/* 
+Hide scrollbars as described here:
+http://stackoverflow.com/questions/3296644/hiding-the-scrollbar-on-an-html-page
+ */
+html { 
+	overflow: -moz-scrollbars-none;
+}
+body::-webkit-scrollbar { 
+    display: none; 
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+
 md-content {
 	background-color: transparent;
 }
@@ -136,6 +151,25 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 .mc-buttonchips md-chip-template {
     padding-right: 20px; 
 }
+
+.mc-chip-autocomplete-tmpl {
+}
+.mc-chip-autocomplete-tmpl .item-title {
+	white-space: nowrap;
+	padding-right: 50px;
+}
+.mc-chip-autocomplete-tmpl li {
+	height: auto;
+	white-space: normal;
+	padding-bottom: 8px;
+	padding-top: 8px;
+}
+.mc-chip-autocomplete-tmpl li md-icon {
+	width: 18px;
+	height: 18px;
+	margin-left: 12px;
+}
+
 
 .mc-table {
 	padding-bottom: 8px;

@@ -69,11 +69,10 @@ function DocumentsController(
 DocumentsController.prototype.loadTotalNumber = function() {
 	var self = this;
 	// Start promise chain for number load
-	this.loadTotalNumberAsync().then(function(data) {
-		self.totalNumberDocuments = data['cache_document'];
-	}).catch(function(error) {
-		self.$log.warn("Could not load the system entities");
-	});
+	this.loadingData = true;
+	this.loadTotalNumberAsync()
+		.then(function(data) { self.totalNumberDocuments = data['cache_document']; })
+		.catch(function(error) { self.$log.warn("Could not load the system entities"); });
 }
 
 DocumentsController.prototype.loadTotalNumberAsync = function() {
