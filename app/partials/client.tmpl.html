@@ -4,30 +4,8 @@
 	        <span>Publication Query</span>
 	    </h2>
 	    <span flex></span>
-	    <md-button 
-	    	class="md-icon-button"
-	    	aria-label="More"
-	    	ng-click="client.dropdown = !client.dropdown">
-            <md-icon md-svg-icon="assets/svg/material-icons/ic_code_black_24px.svg"></md-icon>
-        </md-button>
+	    
     </md-toolbar>
-
-    <!-- Code Dropdown BEGIN -->
-    <md-content class="mc-dropdown" layout="column" layout-align="center start"
-    ng-show="client.dropdown">
-<pre><code>Protocol: HTTPS
-Method: GET
-Base: dockerbruegge1.informatik.tu-muenchen.de
-Port: 34234
-Path: /documents
-Query:
-	?profiles=
-		109235295092345,
-		934850932485930
-	&fields=
-		20s394ip2o34oi2</code></pre>
-    </md-content>
-    <!-- Code Dropdown END -->
 
 	<md-content layout="column">
 		<div class="md-padding">

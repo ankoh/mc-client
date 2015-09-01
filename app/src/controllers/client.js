@@ -15,8 +15,6 @@ function ClientController(ProfilesApi, FieldsApi) {
 	this.fieldSearchText = null;
 	this.selectedFields = [ ];
 
-	// Dropdown for live url construction
-	this.dropdown = false;
 }
 
 ClientController.prototype.getProfileMatches = function() {
