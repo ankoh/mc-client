@@ -5,7 +5,7 @@ function DocumentsApi($log, $q, $http, ServiceConfiguration) {
 	this.$log = $log;
 }
 	
-DocumentsApi.prototype.queryDocumentsAsync = function(profileIds, fieldIds, orderAttr, orderDir, offset, limit) {
+DocumentsApi.prototype.queryDocumentsAsync = function(profileIds, fieldIds, orderAttr, orderDir, offset, limit, onlyCount) {
 	var url = this.config.getCacheUrlBase();
 	url += "/documents";
 
@@ -31,6 +31,9 @@ DocumentsApi.prototype.queryDocumentsAsync = function(profileIds, fieldIds, orde
 	}
 	if(limit) {
 		arguments.push("limit="+limit);
+	}
+	if(onlyCount) {
+		arguments.push("only-count="+onlyCount);
 	}
 
 	var argumentString = "?" + arguments.join("&")

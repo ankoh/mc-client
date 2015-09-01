@@ -15,6 +15,8 @@ function DocumentsController(
 	this.$q = $q;
 	this.$mdDialog = $mdDialog;
 
+	this.firstRun = true;
+
 	// Disable the loading circle
 	this.loadingData = false;
 
@@ -57,6 +59,7 @@ function DocumentsController(
 
 	// Fetched document data
 	this.data = []
+	this.dataCount = 0;
 
 
 	// Profile list
@@ -86,12 +89,16 @@ function DocumentsController(
 		.then(function(data) { self.ready = true; })
 		.catch(function() { /* Catch error */ })
 		.finally(function() { self.$timeout(function(){ self.loadingData = false; }, 1100); });
-
 }
 
 
 DocumentsController.prototype.reloadTable = function() {
 	var self = this;
+
+	// Abort if loading
+	if(this.loadingData) {
+		return;
+	}
 
 	// Start promise chain for document load
 	this.loadingData = true;
@@ -103,6 +110,11 @@ DocumentsController.prototype.reloadTable = function() {
 	}).finally(function() {
 		self.$timeout(function(){ self.loadingData = false; }, 1100);
 	});
+
+	// Load document count in parallel
+	this.queryDocumentCountAsync().then(function(data) {
+		self.dataCount = data.cnt;
+	})
 }
 
 DocumentsController.prototype.queryDocumentsAsync = function() {
@@ -136,6 +148,40 @@ DocumentsController.prototype.queryDocumentsAsync = function() {
 	}
 	return this.documentsApi.queryDocumentsAsync(
 		profileIds, fieldIds, orderAttr, orderDir, offset, limit);
+}
+
+DocumentsController.prototype.queryDocumentCountAsync = function() {
+	var orderAttr = "pub_year";
+	var orderDir = "asc";
+	var offset = 0;
+	var limit = 0;
+
+	if(this.order) {
+		if(this.order.substring(0,1) == "-") {
+			orderDir = "desc";
+			orderAttr = this.order.substring(1);
+		} else {
+			orderAttr = this.order;
+		}
+	}
+	var limit = this.limit;
+	var offset = limit * (this.page - 1);
+
+	var profileIds = null;
+	if(this.selectedProfileFilters.length > 0) {
+		profileIds = this.selectedProfileFilters.map(function(filter) {
+			return filter.id;
+		})
+	}
+	var fieldIds = null;
+	if(this.selectedFieldFilters.length > 0) {
+		fieldIds = this.selectedFieldFilters.map(function(filter) {
+			return filter.id;
+		})
+	}
+	var onlyCount = true;
+	return this.documentsApi.queryDocumentsAsync(
+		profileIds, fieldIds, orderAttr, orderDir, offset, limit, onlyCount);
 }
 
 
