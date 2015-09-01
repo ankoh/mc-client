@@ -40,7 +40,7 @@ function ClientController(
 		.then(function(profiles) { return self.loadFieldsAsync(); })
 		.then(function() { self.ready = true; })
 		.catch(function() { /* Catch error */ })
-		.finally(function() { self.loadingData = false })
+		.finally(function() { self.$timeout(function(){ self.loadingData = false; }, 1100); })
 }
 
 ClientController.prototype.loadSlimProfilesAsync = function() {

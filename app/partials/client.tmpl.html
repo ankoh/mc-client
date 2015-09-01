@@ -4,7 +4,12 @@
 	        <span>Publication Query</span>
 	    </h2>
 	    <span flex></span>
-	    
+	    <div class="mc-card-loading-wrapper">
+		    <md-progress-circular
+		    	ng-if="client.loadingData"
+		    	md-diameter="16"
+		    	md-mode="indeterminate"></md-progress-circular>
+	    </div>
     </md-toolbar>
 
 	<md-content layout="column">
