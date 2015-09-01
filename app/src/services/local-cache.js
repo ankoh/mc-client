@@ -1,10 +1,8 @@
 function LocalCache() {
-	this.authors = [];
-	this.fields = [];
-
 	this.systemEntities = null;
 	this.systemStatus = null;
-
+	this.fields = null;
+	this.slimProfiles = null;
 }
 
 
@@ -31,20 +29,24 @@ LocalCache.prototype.setSystemStatus = function(status) {
 	this.systemStatus = status;
 }
 
-
-
-// Authors
-LocalCache.prototype.getAuthors = function() {
-	return this.authors;
+// /system/fields
+LocalCache.prototype.hasFields = function() {
+	return this.fields != null;
 }
-LocalCache.prototype.setAuthors = function(authors) {
-	return this.authors = authors;
-}
-
-// Fields
 LocalCache.prototype.getFields = function() {
-	return this.fields;
+	return this.fields
 }
-LocalCache.prototype.setFields = function(fields) {
-	return this.fields = fields;
+LocalCache.prototype.setFields = function(entities) {
+	this.fields = entities;
+}
+
+// /system/profiles?slim=true
+LocalCache.prototype.hasSlimProfiles = function() {
+	return this.slimProfiles != null;
+}
+LocalCache.prototype.getSlimProfiles = function() {
+	return this.slimProfiles
+}
+LocalCache.prototype.setSlimProfiles = function(entities) {
+	this.slimProfiles = entities;
 }

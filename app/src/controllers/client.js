@@ -30,35 +30,49 @@ function ClientController(
 	this.fieldSearchText = null;
 
 	// Trigger initial load of fields and profiles
-	this.loadingData = true;
+	this.loadingData = false;
 	// Use variable to set if data is ready
 	this.ready = true;
 
 	// End initialization with promises
 	var self = this;
 	this.loadSlimProfilesAsync()
-		.then(function(profiles) { return self.loadFieldsAsync(); })
-		.then(function() { self.ready = true; })
+		.then(function(data) { return self.loadFieldsAsync(); })
+		.then(function(data) { self.ready = true; })
 		.catch(function() { /* Catch error */ })
 		.finally(function() { self.$timeout(function(){ self.loadingData = false; }, 1100); })
 }
 
 ClientController.prototype.loadSlimProfilesAsync = function() {
-	var self = this;
-	return this.profilesApi.getSlimProfilesAsync()
-		.then(function(data) { 
-			self.$log.info("Successfully fetched " + data.length + " slim profiles");
-			self.profiles = data;
-		})
+	if(this.cache.hasSlimProfiles()) {
+		this.profiles = this.cache.getSlimProfiles();
+		return this.$q.resolve();
+	} else {
+		this.loadingData = true;
+		var self = this;
+		return this.profilesApi.getSlimProfilesAsync()
+			.then(function(data) {
+				self.cache.setSlimProfiles(data);
+				self.profiles = data;
+				self.$log.info("Successfully fetched " + data.length + " profiles");
+			});
+	}
 }
 
 ClientController.prototype.loadFieldsAsync = function() {
-	var self = this;
-	return this.fieldsApi.getFieldsAsync()
-		.then(function(data) {
-			self.$log.info("Successfully " + data.length + " fetched fields");
-			self.fields = data;
-		})
+	if(this.cache.hasFields()) {
+		this.fields = this.cache.getFields()
+		return this.$q.resolve();
+	} else {
+		this.loadingData = true;
+		var self = this;
+		return this.fieldsApi.getFieldsAsync()
+			.then(function(data) {
+				self.cache.setFields(data);
+				self.fields = data;
+				self.$log.info("Successfully fetched " + data.length + " fields");
+			});
+	}
 }
 
 ClientController.prototype.getProfileMatches = function() {
@@ -69,9 +83,11 @@ ClientController.prototype.getFieldMatches = function() {
 	return this.getMatches(this.fieldSearchText, this.fields, "title");
 }
 
-// The autocomplete control will set the {profile,filter}SearchText and fire the get{Profile,Filter}Matches() function.
-// getMatches is then responsible for finding the matches among all items. 
 ClientController.prototype.getMatches = function(searchText, array, attribute) {
+	if(!this.ready) {
+		return [];
+	}
+
 	if (searchText) {
 		var lowercaseQuery = angular.lowercase(searchText);
 		var filterFn = function filterFn(item) {
