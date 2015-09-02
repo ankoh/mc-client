@@ -38,6 +38,7 @@ angular
   // Controllers
   .controller('SystemController',     SystemController)
   .controller('DocumentsController',  DocumentsController)
+  .controller('MoreController',       MoreController)
 
   // Configure theme
   .config(function($mdThemingProvider){

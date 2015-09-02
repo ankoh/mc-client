@@ -32,7 +32,9 @@
           </h1>
           <span flex></span>
           <!-- Right Menu BEGIN -->
-          <md-menu md-position-mode="target-right target" >
+          <md-menu
+          ng-controller="MoreController as more"
+          md-position-mode="target-right target" >
             <md-button 
               class="md-icon-button"
               ng-click="$mdOpenMenu($event)">
@@ -41,8 +43,8 @@
                 md-svg-icon="assets/svg/material-icons/ic_more_vert_white_24px.svg"></md-icon>
             </md-button>
             <md-menu-content width="3">
-              <md-menu-item><md-button>About</md-button></md-menu-item>
-              <md-menu-item><md-button>Fork</md-button></md-menu-item>
+              <md-menu-item><md-button ng-click="more.showAbout($event)">About</md-button></md-menu-item>
+              <md-menu-item><md-button ng-click="more.showFork($event)">Fork</md-button></md-menu-item>
             </md-menu-content>
           </md-menu>
           <!-- Right Menu END -->
@@ -123,6 +125,8 @@
             src="src/controllers/system.js"></script>
     <script type="text/javascript" language="javascript"
             src="src/controllers/documents.js"></script>
+    <script type="text/javascript" language="javascript"
+            src="src/controllers/more.js"></script>
 
     <!-- Other scripts -->
     <script type="text/javascript" language="javascript"

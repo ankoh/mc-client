@@ -7,9 +7,8 @@ function SystemController($log, $q, $timeout, ServiceConfiguration, LocalCache, 
 	this.$timeout = $timeout;
 	this.$q = $q;
 
-	// Disable the loading circles
-	this.loadingStatus = false;
-	this.loadingEntities = false;
+	// Disable the loading circle
+	this.loadingData = false;
 
 	// Initialize data asynchronously to get rid of tab lag
 	this.initDataAsync();
@@ -36,13 +35,9 @@ SystemController.prototype.initDataAsync = function() {
 
 SystemController.prototype.setStatus = function(data) {
 	if(data == null) {
-		this.clientVersion 		= 	this.config.client.version;
-		this.serverVersion 		= 	"Unknown";
 		this.mendeleyStatus 	= 	"Unknown";
 		this.lastUpdate 		=	"Unknown";
 	} else {
-		this.clientVersion 		= 	this.config.client.version;
-		this.serverVersion 		= 	data["serverVersion"];
 		this.mendeleyStatus 	= 	data["mendeleyStatus"];
 		this.lastUpdate 		= 	data["lastUpdate"];
 	}
@@ -69,7 +64,7 @@ SystemController.prototype.setEntities = function(data) {
 }
 
 SystemController.prototype.reloadStatus = function() {
-	this.loadingStatus = true;
+	this.loadingData = true;
 	
 	var self = this;
 	this.systemApi.queryStatusAsync().then(function(data) {
@@ -79,12 +74,12 @@ SystemController.prototype.reloadStatus = function() {
 	}).catch(function(error) {
 		self.$log.warn("Could not load the system status");
 	}).finally(function() {
-		self.$timeout(function(){ self.loadingStatus = false; }, 1100);
+		self.$timeout(function(){ self.loadingData = false; }, 1100);
 	})
 };
 
 SystemController.prototype.reloadEntities = function() {
-	this.loadingEntities = true;
+	this.loadingData = true;
 	
 	var self = this;
 	this.systemApi.queryEntitiesAsync().then(function(data) {
@@ -94,6 +89,6 @@ SystemController.prototype.reloadEntities = function() {
 	}).catch(function(error) {
 		self.$log.warn("Could not load the system entities");
 	}).finally(function() {
-		self.$timeout(function(){ self.loadingEntities = false; }, 1100);
+		self.$timeout(function(){ self.loadingData = false; }, 1100);
 	})
 };
