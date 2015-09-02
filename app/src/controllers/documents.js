@@ -82,8 +82,8 @@ function DocumentsController(
     	if(self.initProfileWatch) {
     		self.initProfileWatch = false;
     	} else {
-    		self.reloadTableAsync();
     		self.reloadTableTotalAsync();
+    		self.reloadTableAsync();
     	}
     } );
 
@@ -103,8 +103,8 @@ function DocumentsController(
 
 
 	// Initial population of table with documents
-	this.reloadTableAsync();
 	self.reloadTableTotalAsync();	
+	this.reloadTableAsync();
 
 	// Initial load of profiles and fields for filtering
 	var self = this;
@@ -133,11 +133,6 @@ DocumentsController.prototype.reloadTableAsync = function() {
 	}).finally(function() {
 		self.$timeout(function(){ self.loadingData = false; }, 1100);
 	});
-
-	// Load document count in parallel
-	var countPromise = this.queryDocumentCountAsync().then(function(data) {
-		self.dataCount = data.cnt;
-	})
 	return dataPromise;
 }
 
