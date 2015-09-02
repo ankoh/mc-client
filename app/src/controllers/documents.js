@@ -302,18 +302,25 @@ DocumentsController.prototype.selectDocument = function($event, selected) {
 	});
 };
 
+/*
+	Embed the current document query in another website
+*/
+DocumentsController.prototype.embedQuery = function($event) {
+	this.$mdDialog.show({
+		controller: function($scope, $mdDialog) {
+			$scope.hide = function() { $mdDialog.hide(); };
+		},
+		targetEvent: $event,
+		templateUrl: 'partials/dialogs/embed.tmpl.html',
+		parent: angular.element(document.body),
+		clickOutsideToClose:true
+	}).then(function(answer) {
+		
+	}).catch(function() {
 
+	});
+};
 
-
-
-
-DocumentsController.prototype.getProfileFilterMatches = function() {
-	return this.getMatches(this.profileFilterSearchText, this.profiles, "name");
-}
-
-DocumentsController.prototype.getFieldFilterMatches = function() {
-	return this.getMatches(this.fieldFilterSearchText, this.fields, "title");
-}
 
 /*
 	Given a search text, this function returns the matches in the respective arrays
@@ -335,4 +342,10 @@ DocumentsController.prototype.getMatches = function(searchText, array, attribute
 		return [];
 	}
 };
+DocumentsController.prototype.getProfileFilterMatches = function() {
+	return this.getMatches(this.profileFilterSearchText, this.profiles, "name");
+}
+DocumentsController.prototype.getFieldFilterMatches = function() {
+	return this.getMatches(this.fieldFilterSearchText, this.fields, "title");
+}
 
