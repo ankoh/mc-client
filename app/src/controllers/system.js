@@ -63,6 +63,11 @@ SystemController.prototype.setEntities = function(data) {
 	}
 }
 
+SystemController.prototype.reloadData = function() {
+	this.reloadStatus();
+	this.reloadEntities();
+}
+
 SystemController.prototype.reloadStatus = function() {
 	this.loadingData = true;
 	
