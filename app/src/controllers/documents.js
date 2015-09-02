@@ -70,13 +70,27 @@ function DocumentsController(
 	this.selectedProfileFilter = null;
 	this.selectedProfileFilters = [ ];
     this.profileFilterSearchText = null;
-    $scope.$watch("documents.selectedProfileFilters.length", function () { self.reloadTable(); } );
+    this.initProfileWatch = true;
+    $scope.$watch("documents.selectedProfileFilters.length", function () {
+    	if(self.initProfileWatch) {
+    		self.initProfileWatch = false;
+    	} else {
+    		self.reloadTable();
+    	}
+    } );
 
 	// Research field filter
 	this.selectedFieldFilter = null;
 	this.selectedFieldFilters = [ ];
 	this.fieldFilterSearchText = null;
-	$scope.$watch("documents.selectedFieldFilters.length", function () { self.reloadTable(); } );
+	this.initFieldWatch = true;
+	$scope.$watch("documents.selectedFieldFilters.length", function () {
+		if(self.initFieldWatch) {
+    		self.initFieldWatch = false;
+    	} else {
+    		self.reloadTable();
+    	}
+	} );
 
 
 	// Initial population of table with documents
@@ -94,11 +108,6 @@ function DocumentsController(
 
 DocumentsController.prototype.reloadTable = function() {
 	var self = this;
-
-	// Abort if loading
-	if(this.loadingData) {
-		return;
-	}
 
 	// Start promise chain for document load
 	this.loadingData = true;
