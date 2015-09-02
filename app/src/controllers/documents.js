@@ -24,6 +24,8 @@ function DocumentsController(
 	this.selected = [];
 
 	// Use ECMAScript 5 properties instead of $watch
+
+	// Order attribute of data table
 	this._order = '-pub_year';
 	Object.defineProperty(this, 'order', {
 		get: function() {
@@ -31,10 +33,12 @@ function DocumentsController(
 		},
 		set: function(value) {
 			this._order = value;
-			this.reloadTable();
+			this.reloadTableAsync();
+			// do not reload table total
 		}
 	});
 
+	// Limit attribute of sql query
 	this._limit = 5;
 	Object.defineProperty(this, 'limit', {
 		get: function() {
@@ -42,10 +46,12 @@ function DocumentsController(
 		},
 		set: function(value) {
 			this._limit = value;
-			this.reloadTable();
+			this.reloadTableAsync();
+			// do not reload table total
 		}
 	});
 
+	// Page attribute of sql query. page <=> offset
 	this._page = 1;
 	Object.defineProperty(this, 'page', {
 		get: function() {
@@ -53,7 +59,8 @@ function DocumentsController(
 		},
 		set: function(value) {
 			this._page = value;
-			this.reloadTable();
+			this.reloadTableAsync();
+			// do not reload table total
 		}
 	});
 
@@ -75,7 +82,8 @@ function DocumentsController(
     	if(self.initProfileWatch) {
     		self.initProfileWatch = false;
     	} else {
-    		self.reloadTable();
+    		self.reloadTableAsync();
+    		self.reloadTableTotalAsync();
     	}
     } );
 
@@ -88,15 +96,17 @@ function DocumentsController(
 		if(self.initFieldWatch) {
     		self.initFieldWatch = false;
     	} else {
-    		self.reloadTable();
+    		self.reloadTableTotalAsync();
+    		self.reloadTableAsync();	
     	}
 	} );
 
 
 	// Initial population of table with documents
-	this.reloadTable();	
+	this.reloadTableAsync();
+	self.reloadTableTotalAsync();	
 
-	// End initialization with promises
+	// Initial load of profiles and fields for filtering
 	var self = this;
 	this.loadSlimProfilesAsync()
 		.then(function(data) { return self.loadFieldsAsync(); })
@@ -106,12 +116,16 @@ function DocumentsController(
 }
 
 
-DocumentsController.prototype.reloadTable = function() {
+/*
+	This function reloads the data table asynchronously and fetches the new total count
+	for pagination
+*/
+DocumentsController.prototype.reloadTableAsync = function() {
 	var self = this;
 
 	// Start promise chain for document load
 	this.loadingData = true;
-	this.queryDocumentsAsync().then(function(data) {
+	var dataPromise = this.queryDocumentsAsync().then(function(data) {
 		self.$log.info("Successfully queried documents");
 		self.data = data;
 	}).catch(function(error) {
@@ -121,17 +135,36 @@ DocumentsController.prototype.reloadTable = function() {
 	});
 
 	// Load document count in parallel
-	this.queryDocumentCountAsync().then(function(data) {
+	var countPromise = this.queryDocumentCountAsync().then(function(data) {
 		self.dataCount = data.cnt;
 	})
+	return dataPromise;
 }
 
+
+/*
+	This function reloads the total data count of the table asynchronously
+*/
+DocumentsController.prototype.reloadTableTotalAsync = function() {
+	var self = this;
+	this.loadingData = true;
+	var countPromise = this.queryDocumentCountAsync().then(function(data) {
+		self.dataCount = data.cnt;
+	})
+	return countPromise;
+}
+
+/*
+	This function asynchronously queryies the documents based on
+	order, offset, limit and profile/field filters
+
+*/
 DocumentsController.prototype.queryDocumentsAsync = function() {
+	// order, offset, limit are directly derived from the table controls
 	var orderAttr = "pub_year";
 	var orderDir = "asc";
 	var offset = 0;
 	var limit = 0;
-
 	if(this.order) {
 		if(this.order.substring(0,1) == "-") {
 			orderDir = "desc";
@@ -143,6 +176,7 @@ DocumentsController.prototype.queryDocumentsAsync = function() {
 	var limit = this.limit;
 	var offset = limit * (this.page - 1);
 
+	// profileids and fileids are derived from the selected chips
 	var profileIds = null;
 	if(this.selectedProfileFilters.length > 0) {
 		profileIds = this.selectedProfileFilters.map(function(filter) {
@@ -155,16 +189,25 @@ DocumentsController.prototype.queryDocumentsAsync = function() {
 			return filter.id;
 		})
 	}
+
+	// pass everything to api service
 	return this.documentsApi.queryDocumentsAsync(
 		profileIds, fieldIds, orderAttr, orderDir, offset, limit);
 }
 
+/*
+	This function asynchronously queryies the document count based on
+	order, offset, limit and profile/field filters
+	ATTENTION:
+	Even though this function looks very similar to queryDocumentsAsync,
+	it is called only when the filter changes.
+	queryDocumentsAsync is called every time the table controls are used
+*/
 DocumentsController.prototype.queryDocumentCountAsync = function() {
 	var orderAttr = "pub_year";
 	var orderDir = "asc";
 	var offset = 0;
 	var limit = 0;
-
 	if(this.order) {
 		if(this.order.substring(0,1) == "-") {
 			orderDir = "desc";
@@ -175,7 +218,6 @@ DocumentsController.prototype.queryDocumentCountAsync = function() {
 	}
 	var limit = this.limit;
 	var offset = limit * (this.page - 1);
-
 	var profileIds = null;
 	if(this.selectedProfileFilters.length > 0) {
 		profileIds = this.selectedProfileFilters.map(function(filter) {
@@ -193,11 +235,60 @@ DocumentsController.prototype.queryDocumentCountAsync = function() {
 		profileIds, fieldIds, orderAttr, orderDir, offset, limit, onlyCount);
 }
 
+/* 
+	This function shall load the slim profiles that are needed for
+	the autocompleted chips
+*/
+DocumentsController.prototype.loadSlimProfilesAsync = function() {
+	if(this.cache.hasSlimProfiles()) {
+		this.profiles = this.cache.getSlimProfiles();
+		return this.$q.resolve();
+	} else {
+		this.loadingData = true;
+		var self = this;
+		return this.profilesApi.querySlimProfilesAsync()
+			.then(function(data) {
+				self.cache.setSlimProfiles(data);
+				self.profiles = data;
+				self.$log.info("Successfully fetched " + data.length + " profiles");
+			});
+	}
+}
 
+
+/* 
+	This function shall load the fields that are needed for
+	the autocompleted chips
+*/
+DocumentsController.prototype.loadFieldsAsync = function() {
+	if(this.cache.hasFields()) {
+		this.fields = this.cache.getFields()
+		return this.$q.resolve();
+	} else {
+		this.loadingData = true;
+		var self = this;
+		return this.fieldsApi.queryFieldsAsync()
+			.then(function(data) {
+				self.cache.setFields(data);
+				self.fields = data;
+				self.$log.info("Successfully fetched " + data.length + " fields");
+			});
+	}
+}
+
+
+/* 
+	Dummies as the md-data-table will disable
+	the pagination controls if no triggers are passed....
+*/
 DocumentsController.prototype.onPageChange = function(page, limit) {};
 DocumentsController.prototype.onOrderChange = function(order) {};
 
 
+/*
+	This function is called when a document is selected in the table.
+	It will show the mdDialog with details to the document
+*/
 DocumentsController.prototype.selectDocument = function($event, selected) {
 	this.$mdDialog.show({
 		controller: function($scope, $mdDialog, $filter, Converter) {
@@ -219,37 +310,6 @@ DocumentsController.prototype.selectDocument = function($event, selected) {
 
 
 
-DocumentsController.prototype.loadSlimProfilesAsync = function() {
-	if(this.cache.hasSlimProfiles()) {
-		this.profiles = this.cache.getSlimProfiles();
-		return this.$q.resolve();
-	} else {
-		this.loadingData = true;
-		var self = this;
-		return this.profilesApi.querySlimProfilesAsync()
-			.then(function(data) {
-				self.cache.setSlimProfiles(data);
-				self.profiles = data;
-				self.$log.info("Successfully fetched " + data.length + " profiles");
-			});
-	}
-}
-
-DocumentsController.prototype.loadFieldsAsync = function() {
-	if(this.cache.hasFields()) {
-		this.fields = this.cache.getFields()
-		return this.$q.resolve();
-	} else {
-		this.loadingData = true;
-		var self = this;
-		return this.fieldsApi.queryFieldsAsync()
-			.then(function(data) {
-				self.cache.setFields(data);
-				self.fields = data;
-				self.$log.info("Successfully fetched " + data.length + " fields");
-			});
-	}
-}
 
 
 DocumentsController.prototype.getProfileFilterMatches = function() {
@@ -260,6 +320,10 @@ DocumentsController.prototype.getFieldFilterMatches = function() {
 	return this.getMatches(this.fieldFilterSearchText, this.fields, "title");
 }
 
+/*
+	Given a search text, this function returns the matches in the respective arrays
+	This is used for the autocompletion
+*/
 DocumentsController.prototype.getMatches = function(searchText, array, attribute) {
 	if(!this.ready) {
 		return [];
