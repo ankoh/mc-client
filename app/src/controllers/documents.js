@@ -126,7 +126,7 @@ DocumentsController.prototype.reloadTableAsync = function() {
 	// Start promise chain for document load
 	this.loadingData = true;
 	var dataPromise = this.queryDocumentsAsync().then(function(data) {
-		self.$log.info("Successfully queried documents");
+		self.$log.info("Successfully queried " + data.length + " documents");
 		self.data = data;
 	}).catch(function(error) {
 		self.$log.warn("Could not query documents");
