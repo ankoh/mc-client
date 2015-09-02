@@ -47,7 +47,7 @@
 				<code flex>GET /profiles</code>
 			</div>
 			<p flex class="mc-description">
-				Given the optional parameters <code>profiles</code> and <code>fields</code>, returns all Mendeley Profiles that are associated with either a profile id OR a field id. The crawler only caches those profiles that belong to the configured Mendeley Research Group. If you pass the parameter <code>slim=true</code>, the result will only include <code>name</code>, <code>id</code> and <code>publication-count</code>.
+				Given the optional parameters <code>profiles</code> and <code>fields</code>, returns all Mendeley Profiles that are associated with either a profile id OR a field id. The crawler only caches those profiles that belong to the configured Mendeley Research Group. If you pass the parameter <code>slim=true</code>, the result will only include <code>name</code>, <code>id</code> and <code>cnt</code>.
 			</p>
 		</div>
 		<md-divider md-inset></md-divider>
@@ -55,11 +55,11 @@
 		<div class="mc-row" layout="row" layout-align="start center">
 			<div class="mc-icon-text-column" flex="40" flex-align="start center" layout="row">
 				<md-icon md-svg-icon="assets/svg/material-icons/ic_extension_black_24px.svg"></md-icon>
-				<code flex>GET /publications</code>
+				<code flex>GET /documents</code>
 			</div>
 			<p flex class="mc-description">
-				Given the optional parameters <code>profiles</code> and <code>fields</code>, returns all publications that are associated with a profile id AND a field id.
-				(e.g. <code>?profiles=abc,cde&fields=efg,hij</code> returns all publications of the users <code>abc</code> and <code>cde</code> that are associated with either the field <code>efg</code> or the field <code>hij</code>)
+				Given the optional parameters <code>profiles</code> and <code>fields</code>, returns all documents that are associated with a profile id AND a field id.
+				(e.g. <code>?profiles=abc,cde&fields=efg,hij</code> returns all documents of the users <code>abc</code> and <code>cde</code> that are associated with either the field <code>efg</code> or the field <code>hij</code>)
 			</p>
 		</div>
 	</md-content>
