@@ -23,6 +23,6 @@ MoreController.prototype.showAbout = function($event) {
 	});
 };
 
-MoreController.prototype.showFork = function() {
+MoreController.prototype.syncCache = function() {
 	// body...
 };
