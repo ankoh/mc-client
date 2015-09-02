@@ -23,6 +23,18 @@ MoreController.prototype.showAbout = function($event) {
 	});
 };
 
-MoreController.prototype.syncCache = function() {
-	// body...
+MoreController.prototype.syncCache = function($event) {
+	this.$mdDialog.show({
+		controller: function($scope, $mdDialog) {
+			$scope.hide = function() { $mdDialog.hide(); };
+		},
+		targetEvent: $event,
+		templateUrl: 'partials/dialogs/sync-cache.tmpl.html',
+		parent: angular.element(document.body),
+		clickOutsideToClose:true
+	}).then(function(answer) {
+		
+	}).catch(function() {
+
+	});
 };
