@@ -1,10 +1,10 @@
 function DocumentsController(
 	$scope, $log, $q, $timeout, $mdDialog,
-	LocalCache, Converter, SystemApi, DocumentsApi, ProfilesApi, FieldsApi) {
+	LocalCache, Converter, CacheApi, DocumentsApi, ProfilesApi, FieldsApi) {
 	var self = this;
 
 	this.cache = LocalCache
-	this.systemApi = SystemApi;
+	this.cacheApi = CacheApi;
 	this.documentsApi = DocumentsApi;
 	this.profilesApi = ProfilesApi;
 	this.fieldsApi = FieldsApi;

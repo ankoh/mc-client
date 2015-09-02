@@ -6,11 +6,11 @@
     </md-toolbar>
 
 	<md-content class="mc-table" layout="column">
-		<!-- System Status -->
+		<!-- Cache Status -->
 		<div class="mc-row" layout="row" layout-align="start center">
 			<div class="mc-icon-text-column" flex="40" flex-align="start center" layout="row">
 				<md-icon md-svg-icon="assets/svg/material-icons/ic_extension_black_24px.svg"></md-icon>
-				<code flex>GET /system/status</code>
+				<code flex>GET /cache/status</code>
 			</div>
 			<p flex class="mc-description">Returns server version, last update and reachability of the Mendeley API.
 			</p>
@@ -20,12 +20,12 @@
 		<div class="mc-row" layout="row" layout-align="start center">
 			<div class="mc-icon-text-column" flex="40" flex-align="start center" layout="row">
 				<md-icon md-svg-icon="assets/svg/material-icons/ic_extension_black_24px.svg"></md-icon>
-				<code flex>GET /system/entities</code>
+				<code flex>GET /cache/entities</code>
 			</div>
 			<p flex class="mc-description">Returns the number of entities in the different database tables <code>profile</code>, <code>document</code>, <code>cache_profile</code>, <code>cache_profile_has_cache_document</code>, <code>cache_document</code>, <code>cache_document_has_cache_field</code> and <code>cache_field</code>.
 			</p>
 		</div>
-		<md-divider md-inset></md-divider>
+		<md-divider></md-divider>
 		<!-- Fields -->
 		<div class="mc-row" layout="row" layout-align="start center">
 			<div class="mc-icon-text-column" flex="40" flex-align="start center" layout="row">
@@ -40,7 +40,7 @@
 				(e.g. <code>cyber-physical.,:  Systems</code> becomes <code>Cyber-Physical Systems</code>)
 			</p>
 		</div>
-		<md-divider md-inset></md-divider>
+		<md-divider></md-divider>
 		<!-- Profiles -->
 		<div class="mc-row" layout="row" layout-align="start center">
 			<div class="mc-icon-text-column" flex="40" flex-align="start center" layout="row">
@@ -51,7 +51,7 @@
 				Given the optional parameters <code>profiles</code> and <code>fields</code>, returns all Mendeley Profiles that are associated with either a profile id OR a field id. The crawler only caches those profiles that belong to the configured Mendeley Research Group. If you pass the parameter <code>slim=true</code>, the result will only include <code>name</code>, <code>id</code> and <code>cnt</code>.
 			</p>
 		</div>
-		<md-divider md-inset></md-divider>
+		<md-divider></md-divider>
 		<!-- Publications -->
 		<div class="mc-row" layout="row" layout-align="start center">
 			<div class="mc-icon-text-column" flex="40" flex-align="start center" layout="row">

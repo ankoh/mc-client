@@ -1,13 +1,13 @@
-function SystemApi($log, $q, $http, ServiceConfiguration) {
+function CacheApi($log, $q, $http, ServiceConfiguration) {
 	this.config = ServiceConfiguration;
 	this.$q = $q;
 	this.$http = $http;
 	this.$log = $log;
 }
 	
-SystemApi.prototype.queryStatusAsync = function() {
+CacheApi.prototype.queryStatusAsync = function() {
 	var url = this.config.getCacheUrlBase();
-	url += "/system/status";
+	url += "/cache/status";
 
 	$q = this.$q;
 
@@ -27,9 +27,9 @@ SystemApi.prototype.queryStatusAsync = function() {
 		});
 }
 
-SystemApi.prototype.queryEntitiesAsync = function() {
+CacheApi.prototype.queryEntitiesAsync = function() {
 	var url = this.config.getCacheUrlBase();
-		url += "/system/entities";
+		url += "/cache/entities";
 
 	$q = this.$q;
 

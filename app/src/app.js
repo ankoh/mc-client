@@ -30,13 +30,13 @@ angular
     function($log, $q, $http, ServiceConfiguration) { return new DocumentsApi($log, $q, $http, ServiceConfiguration); }
     ])
 
-  .factory('SystemApi', [
+  .factory('CacheApi', [
     '$log', '$q', '$http', 'ServiceConfiguration',
-    function($log, $q, $http, ServiceConfiguration) { return new SystemApi($log, $q, $http, ServiceConfiguration); }
+    function($log, $q, $http, ServiceConfiguration) { return new CacheApi($log, $q, $http, ServiceConfiguration); }
     ])
 
   // Controllers
-  .controller('SystemController',     SystemController)
+  .controller('CacheController',      CacheController)
   .controller('DocumentsController',  DocumentsController)
   .controller('MoreController',       MoreController)
 
@@ -72,14 +72,14 @@ angular
         },
         templateUrl: "partials/base.tmpl.html"
       })
-      .state('tabs.system', {
+      .state('tabs.cache', {
         url: "/",
         data: {
           'selectedTab': 0
         },
-        controller: 'SystemController',
-        controllerAs: 'system',
-        templateUrl: "partials/system.tmpl.html"
+        controller: 'CacheController',
+        controllerAs: 'cache',
+        templateUrl: "partials/cache.tmpl.html"
       })
       .state('tabs.documents', {
         url: "/documents",

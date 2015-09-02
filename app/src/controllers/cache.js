@@ -1,7 +1,7 @@
-function SystemController($log, $q, $timeout, ServiceConfiguration, LocalCache, SystemApi) {
+function CacheController($log, $q, $timeout, ServiceConfiguration, LocalCache, CacheApi) {
 	this.config = ServiceConfiguration;
 	this.cache = LocalCache
-	this.systemApi = SystemApi;
+	this.cacheApi = CacheApi;
 	
 	this.$log = $log;
 	this.$timeout = $timeout;
@@ -14,7 +14,7 @@ function SystemController($log, $q, $timeout, ServiceConfiguration, LocalCache, 
 	this.initDataAsync();
 };
 
-SystemController.prototype.initDataAsync = function() {
+CacheController.prototype.initDataAsync = function() {
 	if(this.cache.hasSystemStatus()) {
 		data = this.cache.getSystemStatus();
 		this.setStatus(data);
@@ -33,7 +33,7 @@ SystemController.prototype.initDataAsync = function() {
 	}
 }
 
-SystemController.prototype.setStatus = function(data) {
+CacheController.prototype.setStatus = function(data) {
 	if(data == null) {
 		this.mendeleyStatus 	= 	"Unknown";
 		this.lastUpdate 		=	"Unknown";
@@ -43,7 +43,7 @@ SystemController.prototype.setStatus = function(data) {
 	}
 }
 
-SystemController.prototype.setEntities = function(data) {
+CacheController.prototype.setEntities = function(data) {
 	if(data == null) {
 		this.profiles 				=	"Unknown";
 		this.uniqueProfiles 		= 	"";
@@ -63,16 +63,16 @@ SystemController.prototype.setEntities = function(data) {
 	}
 }
 
-SystemController.prototype.reloadData = function() {
+CacheController.prototype.reloadData = function() {
 	this.reloadStatus();
 	this.reloadEntities();
 }
 
-SystemController.prototype.reloadStatus = function() {
+CacheController.prototype.reloadStatus = function() {
 	this.loadingData = true;
 	
 	var self = this;
-	this.systemApi.queryStatusAsync().then(function(data) {
+	this.cacheApi.queryStatusAsync().then(function(data) {
 		self.$log.info("Successfully fetched system status");
 		self.cache.setSystemStatus(data); 
 		self.setStatus(data);
@@ -83,11 +83,11 @@ SystemController.prototype.reloadStatus = function() {
 	})
 };
 
-SystemController.prototype.reloadEntities = function() {
+CacheController.prototype.reloadEntities = function() {
 	this.loadingData = true;
 	
 	var self = this;
-	this.systemApi.queryEntitiesAsync().then(function(data) {
+	this.cacheApi.queryEntitiesAsync().then(function(data) {
 		self.$log.info("Successfully fetched system entities");
 		self.cache.setSystemEntities(data);
 		self.setEntities(data);
