@@ -35,8 +35,9 @@
 			<p flex class="mc-description">
 				Returns all research fields that have been identified by the crawler.
 				The crawler checks the tags that have been added to a Mendeley publication and merges small spelling variations.
-				Thereby the original field name is reconstructed based on dash delimiters.
-				(e.g. <code>cyber-physical-systems</code> becomes <code>Cyber Physical Systems</code>)
+				Thereby the original tag is internally trimmed, converted to lowercase and some special characters are removed.
+				Only whitespace and minus are allowed as delimiter between words.
+				(e.g. <code>cyber-physical.,:  Systems</code> becomes <code>Cyber-Physical Systems</code>)
 			</p>
 		</div>
 		<md-divider md-inset></md-divider>
