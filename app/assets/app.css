@@ -22,6 +22,7 @@ h3 {
 }
 
 a {
+	color: #002143;
 	text-decoration: none;
 }
 
@@ -239,6 +240,21 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 .mc-dialog-content .md-chips {
 	box-shadow:  none!important;
 }
+
+.mc-dialog-content .mc-light-description {
+	line-height:18px;
+	color: #777;
+	text-align: center;
+}
+
+.mc-dialog-table {
+	padding-bottom: 8px;
+	padding-top: 8px;
+}
+.mc-dialog-table p {
+	line-height: 14px;
+}
+
 
 .mc-right-align-column {
 	text-align: right;

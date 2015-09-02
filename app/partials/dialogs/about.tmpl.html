@@ -1,4 +1,4 @@
-<md-dialog flex-sm="80" flex-gt-sm="60" flex-gt-md="40" flex-gt-lg="40">
+<md-dialog flex-sm="80" flex-gt-sm="60" flex-gt-md="40" flex-gt-lg="30">
   <md-toolbar>
     <div class="md-toolbar-tools">
       <h2>About</h2>
@@ -9,12 +9,59 @@
     </div>
   </md-toolbar>
   <md-dialog-content class="mc-dialog-content">
-    <div
-      layout="column"
-      layout-align="start center">
-      <h2>Mendeley Cache</h2>
-      <p>Client version:</p>
-      <p>Server version:</p>
-    </div>
+
+    <md-content class="mc-dialog-table" layout="column">
+      <div
+        layout="column"
+        layout-align="start center">
+        <h2>Mendeley Cache</h2>
+      </div>
+
+      <p class="mc-light-description">
+        The system is being developed by the Administrators at the TUM Chair of Applied Software Engineering.<br>
+        It aims improve the interaction with the Mendeley platform by identifying additional document correlations such as tag based research fields.
+      </p>
+
+      <br>
+
+       <!-- Server version -->
+      <div layout="row" layout-align="center center">
+        <p flex="15"><strong>Server</strong></p>
+        <a
+          target="_blank"
+          flex="40"
+          href='https://github.com/ankoh/mendeley-cache-server'>
+          Source Code</a>
+        <a
+          target="_blank"
+          href='http://gitlab-ci.kohn.io/projects/19?ref=master'
+          layout="column"
+          layout-align="center center">
+          <img src='http://gitlab-ci.kohn.io/projects/19/status.png?ref=master' />
+        </a>
+      </div>
+
+      <!-- Client version -->
+      <div layout="row" layout-align="center center">
+        <p flex="15"><strong>Client</strong></p>
+        <a
+          target="_blank"
+          flex="40"
+          href='https://github.com/ankoh/mendeley-cache-client'>
+          Source Code</a>
+        <a
+          target="_blank"
+          href='http://gitlab-ci.kohn.io/projects/16?ref=master'
+          layout="column"
+          layout-align="center center">
+          <img src='http://gitlab-ci.kohn.io/projects/16/status.png?ref=master' />
+          </a>
+      </div>
+
+     
+    </md-content>
+
+
+    
   </md-dialog-content>
 </md-dialog>
