@@ -39,7 +39,7 @@ function DocumentsController(
 	});
 
 	// Limit attribute of sql query
-	this._limit = 5;
+	this._limit = 6;
 	Object.defineProperty(this, 'limit', {
 		get: function() {
 			return this._limit;

@@ -13,7 +13,7 @@
     </md-toolbar>
 	<md-content layout="column">
 
-
+		<!-- Filters BEGIN -->
 		<div class="md-padding">
 			<!-- Profile filter BEGIN -->
 			<md-chips
@@ -94,11 +94,9 @@
 			</md-chips>
 			<!-- Research field filter END -->
 		</div>
+		<!-- Filter END -->
 
-
-
-
-
+		<!-- Documents BEGIN -->
         <md-data-table-container class="mc-data-table">
           <table
           	md-data-table class="md-primary">
@@ -130,14 +128,19 @@
         	class="mc-actionbar-transparent"
         	layout="row"
         	layout-align="center center">
+        	<md-button>Embed</md-button>
 			<span flex></span>
 	        <md-data-table-pagination
 	        	class="mc-kill-borders"
+	        	md-row-select="[6,12,18]"
 	        	md-limit="documents.limit"
 	        	md-page="documents.page"
 	        	md-total="{{documents.dataCount}}"
 	        	md-trigger="documents.onPageChange">
 	        </md-data-table-pagination>
         </div>
+        <!-- Documents END -->
+
+
 	</md-content>
 </div>

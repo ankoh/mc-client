@@ -72,10 +72,12 @@
 
     <!-- TabContent BEGIN -->
     <md-content flex class="mc-content" layout="row" layout-align="center start" layout-padding>
-        <div ng-if="!stateIsLoading" ui-view flex flex-sm="100" flex-gt-sm="95" flex-gt-md="75" flex-gt-lg="65"></div>
+        <div ng-if="!stateIsLoading"
+          ui-view flex flex-sm="100" flex-gt-sm="95" flex-gt-md="75" flex-gt-lg="65"></div>
         <div ng-if="stateIsLoading">Loading...</div>
     </md-content>
     <!-- TabContent END -->
+
 
     <!-- Service configuration -->
     <script type="text/javascript" language="javascript"
