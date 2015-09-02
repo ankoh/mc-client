@@ -16,13 +16,23 @@
 			</p>
 		</div>
 		<md-divider md-inset></md-divider>
-		<!-- System Entities -->
+		<!-- Cache Entities -->
 		<div class="mc-row" layout="row" layout-align="start center">
 			<div class="mc-icon-text-column" flex="40" flex-align="start center" layout="row">
 				<md-icon md-svg-icon="assets/svg/material-icons/ic_extension_black_24px.svg"></md-icon>
 				<code flex>GET /cache/entities</code>
 			</div>
 			<p flex class="mc-description">Returns the number of entities in the different database tables <code>profile</code>, <code>document</code>, <code>cache_profile</code>, <code>cache_profile_has_cache_document</code>, <code>cache_document</code>, <code>cache_document_has_cache_field</code> and <code>cache_field</code>.
+			</p>
+		</div>
+		<md-divider md-inset></md-divider>
+		<!-- Cache Update -->
+		<div class="mc-row" layout="row" layout-align="start center">
+			<div class="mc-icon-text-column" flex="40" flex-align="start center" layout="row">
+				<md-icon md-svg-icon="assets/svg/material-icons/ic_extension_black_24px.svg"></md-icon>
+				<code flex>POST /cache/update</code>
+			</div>
+			<p flex class="mc-description">Triggers the cache synchronization and returns an entity report. The report contains <code>profiles</code>, <code>documents</code>, <code>unified_profiles</code>, <code>unified_documents</code>, <code>fields</code> and <code>field_associations</code>.
 			</p>
 		</div>
 		<md-divider></md-divider>
