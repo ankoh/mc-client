@@ -8,13 +8,14 @@
       </md-button>
     </div>
   </md-toolbar>
-  <md-dialog-content class="mc-dialog-content" layout="column">
+
+  <!-- Attention screen -->
+  <md-dialog-content ng-if="state == 1" class="mc-dialog-content" layout="column" layout-align="start center">
     <div
       layout="column"
       layout-align="start center">
       <h2>Attention</h2>
     </div>
-
     <p class="mc-light-description">
       Whenever you synchronize the cache, you spawn about 20 threads that concurrently gather
       data from Mendeley. An excessive use of that functionality will most probably lead to a blocked API key.
@@ -22,7 +23,20 @@
     </p>
 
     <br>
-
-    <md-button>Synchronize anyway</md-button>
+    <md-button ng-click="syncAnyway();">Synchronize anyway</md-button>
   </md-dialog-content>
+
+  <!-- Working screen -->
+  <md-dialog-content ng-if="state == 2" class="mc-dialog-content" layout="column" layout-align="start center">
+    <br>
+    <md-progress-circular
+      md-diameter="38"
+      md-mode="indeterminate"></md-progress-circular>
+    <br>
+    <h2>Working...</h2>
+  </md-dialog-content>
+
+
+  <!-- Result screen -->
+
 </md-dialog>

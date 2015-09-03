@@ -27,6 +27,8 @@ MoreController.prototype.syncCache = function($event) {
 	this.$mdDialog.show({
 		controller: function($scope, $mdDialog) {
 			$scope.hide = function() { $mdDialog.hide(); };
+			$scope.state = 1;
+			$scope.syncAnyway = function() { $scope.state = 2; }
 		},
 		targetEvent: $event,
 		templateUrl: 'partials/dialogs/sync-cache.tmpl.html',
