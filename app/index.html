@@ -36,6 +36,7 @@
           ng-controller="MoreController as more"
           md-position-mode="target-right target" >
             <md-button 
+              aria-label="Menu"
               class="md-icon-button"
               ng-click="$mdOpenMenu($event)">
               <md-icon
@@ -43,8 +44,20 @@
                 md-svg-icon="assets/svg/material-icons/ic_more_vert_white_24px.svg"></md-icon>
             </md-button>
             <md-menu-content width="3">
-              <md-menu-item><md-button ng-click="more.syncCache($event)">Sync Cache</md-button></md-menu-item>
-              <md-menu-item><md-button ng-click="more.showAbout($event)">About</md-button></md-menu-item> 
+              <md-menu-item>
+                <md-button
+                  aria-label="Synchronize Cache"
+                  ng-click="more.syncCache($event)">
+                  Sync Cache
+                </md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button
+                  aria-label="About"
+                  ng-click="more.showAbout($event)">
+                  About
+                </md-button>
+              </md-menu-item> 
             </md-menu-content>
           </md-menu>
           <!-- Right Menu END -->
@@ -57,13 +70,13 @@
         <!-- Bottom Row BEGIN -->
         <md-tabs md-stretch-tabs="always" class="md-primary" md-selected="tabs.selectedIndex">
           <md-tab ui-sref="tabs.cache">
-            <md-tab-label>Cache</md-tab-label>
+            <md-tab-label aria-label="Cache">Cache</md-tab-label>
           </md-tab>
           <md-tab ui-sref="tabs.documents">
-            <md-tab-label>Documents</md-tab-label>
+            <md-tab-label aria-label="Documents">Documents</md-tab-label>
           </md-tab>
           <md-tab ui-sref="tabs.api">
-            <md-tab-label>Api</md-tab-label>
+            <md-tab-label aria-label="Api">Api</md-tab-label>
           </md-tab>
         </md-tabs>
         <!-- Bottom Row END -->
