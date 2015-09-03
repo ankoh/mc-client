@@ -20,8 +20,16 @@
   <body
     ng-app="mendeleyCache"
     layout="column">
+
+    <!-- Splash loading screen begin -->
+    <div ng-cloak flex class="splash">
+
+    </div>
+    <!-- Splash loading screen end -->
+
+
     <!-- Toolbar BEGIN -->
-    <md-toolbar layout="row" layout-align="center end" class="md-tall md-whiteframe-z2">
+    <md-toolbar ng-cloak layout="row" layout-align="center end" class="md-tall md-whiteframe-z2">
       <!-- Center Container BEGIN -->
       <div flex flex-sm="100" flex-gt-sm="95" flex-gt-md="75" flex-gt-lg="65" layout="column">
         <!-- Top Row BEGIN -->
@@ -86,7 +94,7 @@
     <!-- Toolbar END -->
 
     <!-- TabContent BEGIN -->
-    <md-content flex class="mc-content" layout="row" layout-align="center start" layout-padding>
+    <md-content ng-cloak flex class="mc-content" layout="row" layout-align="center start" layout-padding>
         <div
           ui-view flex flex-sm="100" flex-gt-sm="95" flex-gt-md="75" flex-gt-lg="65"></div>
     </md-content>

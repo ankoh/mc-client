@@ -34,6 +34,21 @@ body {
     overflow-y: auto!important; 
 }
 
+/* ng-cloak default display */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+	display: none!important;
+}
+
+/* By default, hide the splash screen */
+.splash {
+    display: none;
+}
+/* If ng-cloak is added, show splash screen */
+[ng-cloak].splash {
+    display: block!important;
+}
+
+
 
 md-content {
 	background-color: transparent;
