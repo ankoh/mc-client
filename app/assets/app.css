@@ -228,6 +228,7 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 .mc-dialog-content p {
 	margin-top: 10px;
     margin-bottom: 10px;
+    line-height: 14px;
 }
 .mc-dialog-content strong {
 	font-weight: 500;
@@ -246,14 +247,11 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	color: #777;
 	text-align: center;
 }
+.mc-dialog-content pre {
+	padding-left: 24px;
+	overflow-y: hidden;
+}
 
-.mc-dialog-table {
-	padding-bottom: 8px;
-	padding-top: 8px;
-}
-.mc-dialog-table p {
-	line-height: 14px;
-}
 
 
 .mc-right-align-column {
@@ -271,6 +269,7 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 /* Common */
 .mc-padding-16 { padding: 16px; }
 .mc-padding-24 { padding: 24px; }
+.mc-padding-32 { padding: 32px; }
 .mc-padding-top-8 { padding-top: 8px; }
 .mc-padding-top-16 { padding-top: 16px; }
 .mc-padding-bottom-8 { padding-bottom: 8px; }

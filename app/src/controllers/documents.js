@@ -1,8 +1,10 @@
 function DocumentsController(
 	$scope, $log, $q, $timeout, $mdDialog,
+	ServiceConfiguration,
 	LocalCache, Converter, CacheApi, DocumentsApi, ProfilesApi, FieldsApi) {
 	var self = this;
 
+	this.config = ServiceConfiguration;
 	this.cache = LocalCache
 	this.cacheApi = CacheApi;
 	this.documentsApi = DocumentsApi;
@@ -306,8 +308,55 @@ DocumentsController.prototype.selectDocument = function($event, selected) {
 	Embed the current document query in another website
 */
 DocumentsController.prototype.embedQuery = function($event) {
+	// Create string for profileIds
+	var profileIdsString = ""
+	for(var i = 0; i < this.selectedProfileFilters.length; i++) {
+		if(profileIdsString != "") {
+			profileIdsString += ",\n\t"
+		} else {
+			profileIdsString += "\n\t"
+		}
+		id = this.selectedProfileFilters[i].id;
+		id = id.replace(new RegExp('=', 'g'), '%3D');
+		profileIdsString += id;
+	}
+
+	// Create string for fieldIds
+	var fieldIdsString = ""
+	for(var i = 0; i < this.selectedFieldFilters.length; i++) {
+		if(fieldIdsString != "") {
+			fieldIdsString += ",\n\t"
+		} else {
+			fieldIdsString += "\n\t"
+		}
+		id = this.selectedFieldFilters[i].id;
+		id = id.replace(new RegExp('=', 'g'), '%3D');
+		fieldIdsString += id;
+	}
+
+	// Extract orderAttr, orderDir
+	var orderAttr = "pub_year";
+	var orderDir = "asc";
+	if(this.order) {
+		if(this.order.substring(0,1) == "-") {
+			orderDir = "desc";
+			orderAttr = this.order.substring(1);
+		} else {
+			orderAttr = this.order;
+		}
+	}
+
+	// Get URL Base for script src
+	var baseUrl = this.config.getCacheUrlBase();
+
+	// Show dialog
 	this.$mdDialog.show({
 		controller: function($scope, $mdDialog) {
+			$scope.profileIds = profileIdsString;
+			$scope.fieldIds = fieldIdsString; 
+			$scope.orderAttr = orderAttr;
+			$scope.orderDir = orderDir;
+			$scope.baseUrl = baseUrl;
 			$scope.hide = function() { $mdDialog.hide(); };
 		},
 		targetEvent: $event,
