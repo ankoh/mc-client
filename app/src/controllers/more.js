@@ -25,10 +25,21 @@ MoreController.prototype.showAbout = function($event) {
 
 MoreController.prototype.syncCache = function($event) {
 	this.$mdDialog.show({
-		controller: function($scope, $mdDialog) {
+		controller: function($scope, $mdDialog,  $timeout) {
 			$scope.hide = function() { $mdDialog.hide(); };
 			$scope.state = 1;
-			$scope.syncAnyway = function() { $scope.state = 2; }
+			$scope.syncAnyway = function() { 
+				$scope.state = 2; 
+				$timeout(function() {
+					$scope.state = 3;
+					$scope.profiles = 10;
+					$scope.documents = 20;
+					$scope.fields = 30;
+					$scope.unified_profiles = 8;
+					$scope.unified_documents = 9;
+					$scope.field_associations = 10;
+				}, 2000);
+			}
 		},
 		targetEvent: $event,
 		templateUrl: 'partials/dialogs/sync-cache.tmpl.html',

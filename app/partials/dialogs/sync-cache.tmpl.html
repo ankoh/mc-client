@@ -38,5 +38,27 @@
 
 
   <!-- Result screen -->
+  <md-dialog-content ng-if="state == 3" class="mc-dialog-content" layout="column">    
+    <div
+      layout="column"
+      layout-align="start center">
+      <h2>Synchronized</h2>
+    </div>
+    <!-- Profiles -->
+    <div layout="row" layout-align="center center">
+      <p flex="40" class="mc-right-align-column"><strong>Profiles</strong></p>
+      <p flex="40">{{profiles}} ({{unified_profiles}} unique)</p>
+    </div>
+    <!-- Documents -->
+    <div layout="row" layout-align="center center">
+      <p flex="40" class="mc-right-align-column"><strong>Documents</strong></p>
+      <p flex="40">{{documents}} ({{unified_documents}} unique)</p>
+    </div>
+    <!-- Fields -->
+    <div layout="row" layout-align="center center">
+      <p flex="40" class="mc-right-align-column"><strong>Fields</strong></p>
+      <p flex="40">{{fields}} ({{field_associations}} links)</p>
+    </div>
+  </md-dialog-content>
 
 </md-dialog>
