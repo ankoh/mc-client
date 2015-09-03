@@ -9,7 +9,23 @@
     </div>
   </md-toolbar>
   <md-dialog-content class="mc-dialog-content">
+    <div class="mc-dialog-table" layout="column">
 
-    
+      <div
+        layout="column"
+        layout-align="start center">
+        <h2>Attention</h2>
+      </div>
+
+      <p class="mc-light-description">
+        Whenever you synchronize the cache, you spawn about 20 threads that concurrently gather
+        data from Mendeley. An excessive use of that functionality will most probably lead to a blocked API key.
+        Additionally, the cache will update itself every midnight on its own so press this button with caution.
+      </p>
+
+      <br>
+
+      <md-button>Synchronize anyway</md-button>
+    </div>   
   </md-dialog-content>
 </md-dialog>
