@@ -1,20 +1,24 @@
-function DocumentsApi($log, $q, $http, ServiceConfiguration) {
+function DocumentsApi($log, $q, $http, ServiceConfiguration, Converter) {
 	this.config = ServiceConfiguration;
+	this.converter = Converter;
 	this.$q = $q;
 	this.$http = $http;
 	this.$log = $log;
 }
 	
 DocumentsApi.prototype.queryDocumentsAsync = function(profileIds, fieldIds, orderAttr, orderDir, offset, limit, onlyCount) {
+	var self = this;
 	var url = this.config.getCacheUrlBase();
 	url += "/documents";
 
 	var arguments = []
 
 	if(profileIds) {
+		profileIds = profileIds.map(function(id) { return self.converter.getB64UrlSafe(id); })
 		arguments.push("profile-ids=" + profileIds.join(','));
 	}
 	if(fieldIds) {
+		fieldIds = fieldIds.map(function(id) { return self.converter.getB64UrlSafe(id); })
 		arguments.push("field-ids=" + fieldIds.join(','));
 	}
 	if(orderAttr) {

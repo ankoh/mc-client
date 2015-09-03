@@ -26,3 +26,10 @@ Converter.prototype.getUnifiedFields = function (tags) {
 
 	return unified;
 }
+
+/*
+	Given a base64 identifier, replace '='
+*/
+Converter.prototype.getB64UrlSafe = function(b64) {
+	return b64.replace(new RegExp('=', 'g'), '%3D');
+}

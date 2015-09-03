@@ -316,8 +316,7 @@ DocumentsController.prototype.embedQuery = function($event) {
 		} else {
 			profileIdsString += "\n\t"
 		}
-		id = this.selectedProfileFilters[i].id;
-		id = id.replace(new RegExp('=', 'g'), '%3D');
+		id = this.converter.getB64UrlSafe(this.selectedProfileFilters[i].id);
 		profileIdsString += id;
 	}
 
@@ -329,8 +328,7 @@ DocumentsController.prototype.embedQuery = function($event) {
 		} else {
 			fieldIdsString += "\n\t"
 		}
-		id = this.selectedFieldFilters[i].id;
-		id = id.replace(new RegExp('=', 'g'), '%3D');
+		id = this.converter.getB64UrlSafe(this.selectedFieldFilters[i].id);
 		fieldIdsString += id;
 	}
 

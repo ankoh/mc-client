@@ -26,8 +26,8 @@ angular
     ])
 
   .factory('DocumentsApi', [
-    '$log', '$q', '$http', 'ServiceConfiguration',
-    function($log, $q, $http, ServiceConfiguration) { return new DocumentsApi($log, $q, $http, ServiceConfiguration); }
+    '$log', '$q', '$http', 'ServiceConfiguration', 'Converter',
+    function($log, $q, $http, ServiceConfiguration, Converter) { return new DocumentsApi($log, $q, $http, ServiceConfiguration, Converter); }
     ])
 
   .factory('CacheApi', [
