@@ -8,12 +8,18 @@
 
 */
 angular.module('mendeleyCache')
-	.directive('mcEmbedjs', function($timeout, $http, $log, ServiceConfiguration) {
+	.directive('mcEmbedjs', function($compile, $timeout, $http, $log, ServiceConfiguration) {
 	    return {
 	    	restrict: 'E',								// Restrict angular directive to be used as element
 	    	transclude: true,							// The childs use the outer scope instead of the inner one
 			link: function(scope, element, attr) {
-				$log.info("Linked mc-embedjs");
+				// Add and compile loading circle
+				element.append('<div layout="column" layout-align="start center"> \
+									<md-progress-circular md-diameter="38" \
+								    md-mode="indeterminate"></md-progress-circular> \
+								</div>');
+				$compile(element.contents())(scope)
+				$log.info("Loading embed.js");
 				// Download embedjs
 				url = ServiceConfiguration.getClientUrlBase();
 				url += '/dist/embed.js';

@@ -142,8 +142,7 @@ jQuery(document).ready(function() {
                 // update target
                 target.removeClass('mc-loading');
                 target.addClass('mc-loaded');
-                target.empty();
-                target.append(docs);
+                setTimeout(function() { target.empty(); target.append(docs);}, 1100);
             })
             .fail(function(jqXHR, textStatus) {
                 window.console&&console.log(textStatus);

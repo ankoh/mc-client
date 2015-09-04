@@ -16,10 +16,6 @@ MoreController.prototype.showAbout = function($event) {
 		templateUrl: 'partials/dialogs/about.tmpl.html',
 		parent: angular.element(document.body),
 		clickOutsideToClose:true
-	}).then(function(answer) {
-		
-	}).catch(function() {
-
 	});
 };
 
