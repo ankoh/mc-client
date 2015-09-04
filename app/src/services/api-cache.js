@@ -11,7 +11,7 @@ CacheApi.prototype.queryStatusAsync = function() {
 
 	$q = this.$q;
 
-	return this.$http.get(url)
+	return this.$http.get(url, {cache: false})
 		.then(function(response) {
 			return {
 				"serverVersion": response.data["serverVersion"],
@@ -33,7 +33,7 @@ CacheApi.prototype.queryEntitiesAsync = function() {
 
 	$q = this.$q;
 
-	return this.$http.get(url)
+	return this.$http.get(url, {cache: false})
 		.then(function(response) {
 			var entities = {};
 			for(i = 0; i < response.data.length; i++) {

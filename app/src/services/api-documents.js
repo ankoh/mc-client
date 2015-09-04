@@ -47,7 +47,7 @@ DocumentsApi.prototype.queryDocumentsAsync = function(profileIds, fieldIds, orde
 
 	$q = this.$q;
 
-	return this.$http.get(url)
+	return this.$http.get(url, {cache: false})
 		.then(function(response) {
 			return response.data;
 		})
