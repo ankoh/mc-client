@@ -128,7 +128,22 @@
         	class="mc-actionbar-transparent"
         	layout="row"
         	layout-align="center center">
-        	<md-button ng-click="documents.embedQuery($event)">Embed</md-button>
+        	<div>
+	        	<md-button
+	        		class="mc-icon-button"
+	        		aria-label="Embed"
+	        		ng-click="documents.embedQuery($event)">
+	        		<md-icon md-svg-icon="assets/svg/material-icons/ic_link_black_24px.svg"></md-icon>
+	        	</md-button>
+        	</div>
+        	<div>
+	        	<md-button
+	        		class="mc-icon-button"
+	        		aria-label="Sample"
+	        		ng-click="">
+	        		<md-icon md-svg-icon="assets/svg/material-icons/ic_visibility_black_24px.svg"></md-icon>
+	        	</md-button>
+        	</div>
 			<span flex></span>
 	        <md-data-table-pagination
 	        	class="mc-kill-borders"

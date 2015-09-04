@@ -102,6 +102,24 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 .mc-card .mc-actionbar-transparent {
 	border-top: 1px rgba(0,0,0,.12) solid;
 }
+.mc-card .mc-actionbar-transparent .mc-icon-button {
+	position: relative;
+	margin-left: 24px;
+	min-height: 0px;
+	min-width: 0px;
+	height: 24px;
+	width: 28px;
+	padding: 0px;
+}
+.mc-card .mc-actionbar-transparent .mc-icon-button md-icon {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	padding: 2px;
+}
+
 .mc-card .mc-card-loading-wrapper {
 }
 
