@@ -26,7 +26,7 @@ var mcConfig = {
 EOL
 
 # Configure embed.js with hostname and port
-sed -e s/:base_host/$MC_SERVER_HOSTNAME/ -e s/:base_port/$MC_SERVER_PORT/ \
+sed -e "s/:base_host/$MC_SERVER_HOSTNAME/" -e "s/:base_port/$MC_SERVER_PORT/" \
 	/usr/share/nginx/html/assets/embed.js > /usr/share/nginx/html/assets/embed.js
 
 
