@@ -349,12 +349,12 @@ DocumentsController.prototype.embedQuery = function($event) {
 
 	// Show dialog
 	this.$mdDialog.show({
-		controller: function($scope, $mdDialog, $location) {
+		controller: function($scope, $mdDialog, ServiceConfiguration) {
 			$scope.profileIds = profileIdsString;
 			$scope.fieldIds = fieldIdsString; 
 			$scope.orderAttr = orderAttr;
 			$scope.orderDir = orderDir;
-			$scope.baseUrl = $location.protocol() + "://" + $location.host() + ":" + $location.port();
+			$scope.baseUrl = ServiceConfiguration.getClientUrlBase();
 			$scope.hide = function() { $mdDialog.hide(); };
 		},
 		targetEvent: $event,

@@ -1,11 +1,12 @@
 // Initialize the angular application
 angular
-  .module('mendeleyCache', ['mendeleyCache.filters', 'ngMaterial', 'ui.router', 'md.data.table'])
+  .module('mendeleyCache',
+    ['mendeleyCache.filters', 'mendeleyCache.directives', 'ngMaterial', 'ui.router', 'md.data.table'])
 
   // Services
   .factory('ServiceConfiguration', [
-    '$log',
-    function($log) { return new ServiceConfiguration($log); }
+    '$log', '$location',
+    function($log, $location) { return new ServiceConfiguration($log, $location); }
     ])
   .factory('LocalCache', [
     '$log',
