@@ -12,6 +12,7 @@ if [ -z "$MC_SERVER_PORT" ]; then
     exit 1
 fi
 
+# Write config.json
 cat >/usr/share/nginx/html/config.json <<EOL
 var mcConfig = {
 	"client": {
@@ -23,5 +24,10 @@ var mcConfig = {
 	}
 }
 EOL
+
+# Configure embed.js with hostname and port
+sed -e s/:base_host/$MC_SERVER_HOSTNAME/ -e s/:base_port/$MC_SERVER_PORT/ \
+	/usr/share/nginx/html/assets/embed.js > /usr/share/nginx/html/assets/embed.js
+
 
 exec "$@"
