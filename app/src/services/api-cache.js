@@ -44,7 +44,7 @@ CacheApi.prototype.queryEntitiesAsync = function() {
 				row = response.data[i]
 				entities[row["table_name"]] = row["cnt"]
 			}
-			return entities
+			return $q.resolve(entities);
 		})
 		.catch(function(response) {
 			return $q.reject({

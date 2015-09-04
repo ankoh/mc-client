@@ -49,7 +49,7 @@ DocumentsApi.prototype.queryDocumentsAsync = function(profileIds, fieldIds, orde
 
 	return this.$http.get(url, {cache: false})
 		.then(function(response) {
-			return response.data;
+			return $q.resolve(response.data);
 		})
 		.catch(function(response) {
 			return $q.reject({

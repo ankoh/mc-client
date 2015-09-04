@@ -43,6 +43,7 @@ MoreController.prototype.syncCache = function($event) {
 						LocalCache.flush();
 					})
 					.catch(function(error) {
+						$scope.state = 3;
 						$scope.workStatus = "Failed";
 					});
 			}

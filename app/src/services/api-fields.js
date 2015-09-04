@@ -15,7 +15,7 @@ FieldsApi.prototype.queryFieldsAsync = function() {
 
 	return this.$http.get(url, {cache: false})
 		.then(function(response) {
-			return response.data;
+			return $q.resolve(response.data);
 		})
 		.catch(function(response) {
 			return $q.reject({
