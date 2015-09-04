@@ -128,7 +128,7 @@ DocumentsController.prototype.reloadTableAsync = function() {
 	// Start promise chain for document load
 	this.loadingData = true;
 	var dataPromise = this.queryDocumentsAsync().then(function(data) {
-		self.$log.info("Successfully queried " + data.length + " documents");
+		self.$log.info("Fetched " + data.length + " documents");
 		self.data = data;
 	}).catch(function(error) {
 		self.$log.warn("Could not query documents");
@@ -247,7 +247,7 @@ DocumentsController.prototype.loadSlimProfilesAsync = function() {
 			.then(function(data) {
 				self.cache.setSlimProfiles(data);
 				self.profiles = data;
-				self.$log.info("Successfully fetched " + data.length + " profiles");
+				self.$log.info("Fetched " + data.length + " profiles");
 			});
 	}
 }
@@ -268,7 +268,7 @@ DocumentsController.prototype.loadFieldsAsync = function() {
 			.then(function(data) {
 				self.cache.setFields(data);
 				self.fields = data;
-				self.$log.info("Successfully fetched " + data.length + " fields");
+				self.$log.info("Fetched " + data.length + " fields");
 			});
 	}
 }

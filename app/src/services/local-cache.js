@@ -5,6 +5,13 @@ function LocalCache() {
 	this.slimProfiles = null;
 }
 
+// Flush cache after /cache/update
+LocalCache.prototype.flush = function() {
+	this.systemEntities = null;
+	this.systemStatus = null;
+	this.fields = null;
+	this.slimProfiles = null;
+}
 
 // /system/status
 LocalCache.prototype.hasSystemEntities = function() {

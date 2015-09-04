@@ -73,7 +73,6 @@ CacheController.prototype.reloadStatus = function() {
 	
 	var self = this;
 	this.cacheApi.queryStatusAsync().then(function(data) {
-		self.$log.info("Successfully fetched system status");
 		self.cache.setSystemStatus(data); 
 		self.setStatus(data);
 	}).catch(function(error) {
@@ -88,7 +87,6 @@ CacheController.prototype.reloadEntities = function() {
 	
 	var self = this;
 	this.cacheApi.queryEntitiesAsync().then(function(data) {
-		self.$log.info("Successfully fetched system entities");
 		self.cache.setSystemEntities(data);
 		self.setEntities(data);
 	}).catch(function(error) {

@@ -11,6 +11,8 @@ ProfilesApi.prototype.querySlimProfilesAsync = function() {
 
 	$q = this.$q;
 
+	this.$log.info("GET " + url);
+
 	return this.$http.get(url, {cache: false})
 		.then(function(response) {
 			return response.data;

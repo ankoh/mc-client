@@ -25,21 +25,26 @@ MoreController.prototype.showAbout = function($event) {
 
 MoreController.prototype.syncCache = function($event) {
 	this.$mdDialog.show({
-		controller: function($scope, $mdDialog,  $timeout) {
+		controller: function($scope, $mdDialog,  $timeout, CacheApi, LocalCache) {
 			$scope.hide = function() { $mdDialog.hide(); };
 			$scope.state = 1;
 			$scope.syncAnyway = function() { 
 				$scope.state = 2; 
-				$timeout(function() {
-					$scope.state = 3;
-					$scope.workStatus = "Succeeded";
-					$scope.profiles = 10;
-					$scope.documents = 20;
-					$scope.fields = 30;
-					$scope.unified_profiles = 8;
-					$scope.unified_documents = 9;
-					$scope.field_associations = 10;
-				}, 2000);
+				CacheApi.triggerUpdateAsync()
+					.then(function(data) {
+						$scope.state = 3;
+						$scope.workStatus = "Succeeded";
+						$scope.profiles = data["profiles"];
+						$scope.documents = data["documents"];
+						$scope.fields = data["fields"];
+						$scope.unified_profiles = data["unified_profiles"];
+						$scope.unified_documents = data["unified_documents"];
+						$scope.field_associations = data["field_associations"];
+						LocalCache.flush();
+					})
+					.catch(function(error) {
+						$scope.workStatus = "Failed";
+					});
 			}
 		},
 		targetEvent: $event,

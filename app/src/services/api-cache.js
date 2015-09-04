@@ -11,6 +11,8 @@ CacheApi.prototype.queryStatusAsync = function() {
 
 	$q = this.$q;
 
+	this.$log.info("GET " + url);
+
 	return this.$http.get(url, {cache: false})
 		.then(function(response) {
 			return {
@@ -33,6 +35,8 @@ CacheApi.prototype.queryEntitiesAsync = function() {
 
 	$q = this.$q;
 
+	this.$log.info("GET " + url);
+
 	return this.$http.get(url, {cache: false})
 		.then(function(response) {
 			var entities = {};
@@ -49,3 +53,25 @@ CacheApi.prototype.queryEntitiesAsync = function() {
 			});
 		});
 }
+
+CacheApi.prototype.triggerUpdateAsync = function() {
+	var url = this.config.getCacheUrlBase();
+		url += "/cache/update";
+
+	$q = this.$q;
+
+	this.$log.info("POST " + url);
+
+	return this.$http.post(url, {cache: false})
+		.then(function(response) {
+			return response.data;
+		})
+		.catch(function(response) {
+			return $q.reject({
+				code: response.status,
+				text: response.statusText
+			});
+		});
+}
+
+
