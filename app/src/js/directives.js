@@ -10,7 +10,7 @@
 angular.module('mendeleyCache')
 	.directive('mcEmbedjs', function($timeout, $http, $log, ServiceConfiguration) {
 	    return {
-	    	restrict: 'A',								// Restrict angular directive to be used as element
+	    	restrict: 'E',								// Restrict angular directive to be used as element
 	    	transclude: true,							// The childs use the outer scope instead of the inner one
 			link: function(scope, element, attr) {
 				$log.info("Linked mc-embedjs");
