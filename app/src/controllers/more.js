@@ -32,6 +32,7 @@ MoreController.prototype.syncCache = function($event) {
 				$scope.state = 2; 
 				$timeout(function() {
 					$scope.state = 3;
+					$scope.workStatus = "Succeeded";
 					$scope.profiles = 10;
 					$scope.documents = 20;
 					$scope.fields = 30;
