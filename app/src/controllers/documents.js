@@ -305,9 +305,9 @@ DocumentsController.prototype.selectDocument = function($event, selected) {
 };
 
 /*
-	Embed the current document query in another website
+	Generate data for the embedded query
 */
-DocumentsController.prototype.embedQuery = function($event) {
+DocumentsController.prototype.getEmbedData = function() {
 	// Create string for profileIds
 	var profileIdsString = ""
 	for(var i = 0; i < this.selectedProfileFilters.length; i++) {
@@ -347,18 +347,56 @@ DocumentsController.prototype.embedQuery = function($event) {
 	// Get URL Base for script src
 	var baseUrl = this.config.getCacheUrlBase();
 
+	return [profileIdsString, fieldIdsString, orderAttr, orderDir, baseUrl]
+}
+
+/*
+	Show the embedded div tag
+*/
+DocumentsController.prototype.embedQuery = function($event) {
+	var embedData = this.getEmbedData();
+	
 	// Show dialog
 	this.$mdDialog.show({
 		controller: function($scope, $mdDialog, ServiceConfiguration) {
-			$scope.profileIds = profileIdsString;
-			$scope.fieldIds = fieldIdsString; 
-			$scope.orderAttr = orderAttr;
-			$scope.orderDir = orderDir;
-			$scope.baseUrl = ServiceConfiguration.getClientUrlBase();
+			$scope.profileIds = embedData[0];
+			$scope.fieldIds = embedData[1]; 
+			$scope.orderAttr = embedData[2];
+			$scope.orderDir = embedData[3];
+			$scope.limit = 20;
+			$scope.baseUrl = embedData[4];
 			$scope.hide = function() { $mdDialog.hide(); };
 		},
 		targetEvent: $event,
 		templateUrl: 'partials/dialogs/embed.tmpl.html',
+		parent: angular.element(document.body),
+		clickOutsideToClose:true
+	}).then(function(answer) {
+		
+	}).catch(function() {
+
+	});
+};
+
+/*
+	Show the page with the embedded query
+*/
+DocumentsController.prototype.embeddedQuery = function($event) {
+	var embedData = this.getEmbedData();
+	
+	// Show dialog
+	this.$mdDialog.show({
+		controller: function($scope, $mdDialog, ServiceConfiguration) {
+			$scope.profileIds = embedData[0];
+			$scope.fieldIds = embedData[1]; 
+			$scope.orderAttr = embedData[2];
+			$scope.orderDir = embedData[3];
+			$scope.limit = 20;
+			$scope.baseUrl = embedData[4];
+			$scope.hide = function() { $mdDialog.hide(); };
+		},
+		targetEvent: $event,
+		templateUrl: 'partials/dialogs/embedded.tmpl.html',
 		parent: angular.element(document.body),
 		clickOutsideToClose:true
 	}).then(function(answer) {

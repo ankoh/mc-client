@@ -7,16 +7,28 @@
 	Then we download embed.js and dynamically execute the jquery code.
 
 */
-angular.module('mendeleyCache.directives', [])
-	.directive('mc-embedjs', function($timeout, $http) {
+angular.module('mendeleyCache')
+	.directive('mcEmbedjs', function($timeout, $http, $log, ServiceConfiguration) {
 	    return {
-	    	restrict: 'E',								// Restrict angular directive to be used as element
+	    	restrict: 'A',								// Restrict angular directive to be used as element
 	    	transclude: true,							// The childs use the outer scope instead of the inner one
 			link: function(scope, element, attr) {
+				$log.info("Linked mc-embedjs");
 				// Download embedjs
-				$timeout(function() {
-
-				});
+				url = ServiceConfiguration.getClientUrlBase();
+				url += '/dist/embed.js';
+				$http.get(url, { cache: false })
+					.then(function(response) {
+						embedjs = response.data;
+						// Now wait for the page to be rendered by angular, then execute the embedjs code
+						$timeout(function() {
+							eval(embedjs);
+							$log.debug("Executed embed.js");
+						});
+					})
+					.catch(function(response) {
+						$log.error(response.statusText);
+					});
 			}
 	    }
 });

@@ -1,4 +1,4 @@
-angular.module('mendeleyCache.filters', [])
+angular.module('mendeleyCache')
 	.filter('splitByCommaLength', function() {
 		return function(input) {
 			var splitted = input.split(",");

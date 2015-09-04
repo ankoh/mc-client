@@ -9,7 +9,8 @@
     "angular-chart.js": "~0.7.3",
     "angular-material": "0.10.0",
     "angular-material-data-table": "~0.8.9",
-    "angular-ui-router": "~0.2.15"
+    "angular-ui-router": "~0.2.15",
+    "jquery": "jQuery#~2.1.4"
   },
   "resolutions": {
     "angular-material": "0.10.0"

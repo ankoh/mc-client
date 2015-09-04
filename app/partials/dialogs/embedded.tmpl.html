@@ -1,0 +1,21 @@
+<md-dialog flex-sm="80" flex-gt-sm="80" flex-gt-md="60" flex-gt-lg="50" aria-label="Embedded Query Dialog">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Embedded Query</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="hide()" aria-label="Hide">
+        <md-icon md-svg-src="assets/svg/material-icons/ic_close_white_24px.svg"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content class="mc-dialog-content">
+    <div
+      mc-embedjs
+      class="mc-documents" 
+      data-profileids="{{profileIds}}" 
+      data-fieldids="{{fieldIds}}"
+      data-orderattr="{{orderAttr}}" 
+      data-orderdir="{{orderDir}}"
+      data-limit="{{limit}}"></div>
+  </md-dialog-content>
+</md-dialog>

@@ -298,6 +298,14 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 }
 
 
+.mc-documents ul {
+	line-height: 18px;
+}
+.mc-documents li {
+	padding: 4px 0px;
+}
+
+
 
 /* Common */
 .mc-padding-16 { padding: 16px; }
