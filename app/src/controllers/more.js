@@ -35,7 +35,7 @@ MoreController.prototype.syncCache = function($event) {
 						$scope.fields = data["fields"];
 						$scope.unified_profiles = data["unified_profiles"];
 						$scope.unified_documents = data["unified_documents"];
-						$scope.field_associations = data["field_associations"];
+						$scope.field_links = data["field_links"];
 						LocalCache.flush();
 					})
 					.catch(function(error) {
