@@ -35,7 +35,7 @@
 				<md-icon md-svg-icon="assets/svg/material-icons/ic_timelapse_black_24px.svg"></md-icon>
 				<p flex>Last update</p>
 			</div>
-			<p flex>{{ cache.lastUpdate | date : 'medium' : 'europe/berlin' | timeAgo }}</p>
+			<p flex>{{ cache.lastUpdate | timeAgo }}</p>
 		</div>
 		<md-divider></md-divider>
 
