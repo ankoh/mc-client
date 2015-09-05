@@ -25,7 +25,7 @@
 				<md-icon md-svg-icon="assets/svg/material-icons/ic_extension_black_24px.svg"></md-icon>
 				<p flex>Mendeley API</p>
 			</div>
-			<p flex ng-bind="cache.mendeleyStatus"></p>
+			<p flex>{{ cache.mendeleyStatus }}</p>
 		</div>
 		<md-divider md-inset></md-divider>
 
@@ -35,7 +35,7 @@
 				<md-icon md-svg-icon="assets/svg/material-icons/ic_timelapse_black_24px.svg"></md-icon>
 				<p flex>Last update</p>
 			</div>
-			<p flex ng-bind="cache.lastUpdate"></p>
+			<p flex>{{ cache.lastUpdate | date : 'medium' : 'europe/berlin' | timeAgo }}</p>
 		</div>
 		<md-divider></md-divider>
 
@@ -45,8 +45,8 @@
 				<md-icon md-svg-icon="assets/svg/material-icons/ic_person_black_24px.svg"></md-icon>
 				<p flex>Profiles</p>
 			</div>
-			<p flex ng-bind="cache.profiles"></p>
-			<p flex ng-bind="cache.uniqueProfiles"></p>
+			<p flex>{{ cache.profiles }}</p>
+			<p flex>{{ cache.uniqueProfiles }}</p>
 		</div>
 		<md-divider md-inset></md-divider>
 		
@@ -56,7 +56,7 @@
 				<md-icon md-svg-icon="assets/svg/material-icons/ic_link_black_24px.svg"></md-icon>
 				<p flex>Profile &rarr; Document</p>
 			</div>
-			<p flex ng-bind="cache.profileToDocumentLinks"></p>
+			<p flex>{{ cache.profileToDocumentLinks }}</p>
 		</div>
 		<md-divider md-inset></md-divider>
 		<!-- Documents -->
@@ -65,8 +65,8 @@
 				<md-icon md-svg-icon="assets/svg/material-icons/ic_description_black_24px.svg"></md-icon>
 				<p flex>Documents</p>
 			</div>
-			<p flex ng-bind="cache.documents"></p>
-			<p flex ng-bind="cache.uniqueDocuments"></p>
+			<p flex>{{ cache.documents }}</p>
+			<p flex>{{ cache.uniqueDocuments }}</p>
 		</div>
 		<md-divider md-inset></md-divider>
 		<!-- Document to Field -->
@@ -75,7 +75,7 @@
 				<md-icon md-svg-icon="assets/svg/material-icons/ic_link_black_24px.svg"></md-icon>
 				<p flex>Document &rarr; Field</p>
 			</div>
-			<p flex ng-bind="cache.documentToFieldLinks"></p>
+			<p flex>{{ cache.documentToFieldLinks }}</p>
 		</div>
 		<md-divider md-inset></md-divider>
 		<!-- Research Fields -->
@@ -84,7 +84,7 @@
 				<md-icon md-svg-icon="assets/svg/material-icons/ic_label_black_24px.svg"></md-icon>
 				<p flex>Research Fields</p>
 			</div>
-			<p flex ng-bind="cache.researchFields"></p>
+			<p flex>{{ cache.researchFields }}</p>
 		</div>
 	</md-content>
 </div>

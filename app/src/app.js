@@ -1,7 +1,7 @@
 // Initialize the angular application
 angular
   .module('mendeleyCache',
-    ['ngMaterial', 'ui.router', 'md.data.table'])
+    ['ngMaterial', 'ui.router', 'md.data.table', 'yaru22.angular-timeago'])
 
   // Services
   .factory('ServiceConfiguration', [

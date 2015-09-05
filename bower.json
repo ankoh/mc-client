@@ -9,6 +9,7 @@
     "angular-chart.js": "~0.7.3",
     "angular-material": "0.10.0",
     "angular-material-data-table": "~0.8.9",
+    "angular-timeago": "~0.2.4",
     "angular-ui-router": "~0.2.15",
     "jquery": "jQuery#~2.1.4"
   },
