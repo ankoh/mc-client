@@ -8,7 +8,7 @@ function DocumentsApi($log, $q, $http, ServiceConfiguration, Converter) {
 	
 DocumentsApi.prototype.queryDocumentsAsync = function(profileIds, fieldIds, orderAttr, orderDir, offset, limit, onlyCount) {
 	var self = this;
-	var url = this.config.getCacheUrlBase();
+	var url = this.config.getCacheHostname() + "\:" + this.config.getCachePort();
 	url += "/documents";
 
 	var arguments = []

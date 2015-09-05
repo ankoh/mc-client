@@ -18,6 +18,14 @@ ServiceConfiguration.prototype.getCacheUrlBase = function() {
 	return this.cache.hostname+":"+this.cache.port;
 }
 
+ServiceConfiguration.prototype.getCacheHostname = function() {
+	return this.cache.hostname;
+}
+
+ServiceConfiguration.prototype.getCachePort = function() {
+	return this.cache.port;
+}
+
 ServiceConfiguration.prototype.getClientVersion = function() {
 	return this.client.version;
 }

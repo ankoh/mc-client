@@ -6,7 +6,7 @@ function CacheApi($log, $q, $http, ServiceConfiguration) {
 }
 	
 CacheApi.prototype.queryStatusAsync = function() {
-	var url = this.config.getCacheUrlBase();
+	var url = this.config.getCacheHostname() + "\:" + this.config.getCachePort();
 	url += "/cache/status";
 
 	$q = this.$q;
@@ -30,8 +30,8 @@ CacheApi.prototype.queryStatusAsync = function() {
 }
 
 CacheApi.prototype.queryEntitiesAsync = function() {
-	var url = this.config.getCacheUrlBase();
-		url += "/cache/entities";
+	var url = this.config.getCacheHostname() + "\:" + this.config.getCachePort();
+	url += "/cache/entities";
 
 	$q = this.$q;
 
@@ -55,8 +55,8 @@ CacheApi.prototype.queryEntitiesAsync = function() {
 }
 
 CacheApi.prototype.triggerUpdateAsync = function() {
-	var url = this.config.getCacheUrlBase();
-		url += "/cache/update";
+	var url = this.config.getCacheHostname() + "\:" + this.config.getCachePort();
+	url += "/cache/update";
 
 	$q = this.$q;
 
