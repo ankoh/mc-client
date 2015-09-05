@@ -6,7 +6,7 @@ function FieldsApi($log, $q, $http, ServiceConfiguration) {
 }
 
 FieldsApi.prototype.queryFieldsAsync = function() {
-	var url = this.config.getCacheHostname() + "\:" + this.config.getCachePort();
+	var url = this.config.getCacheUrlBase();
 	url += "/fields";
 
 	$q = this.$q;
