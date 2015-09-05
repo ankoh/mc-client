@@ -21,7 +21,7 @@ function DocumentsApi(Converter) {
 DocumentsApi.prototype.queryDocumentsAsync = function(profileIds, fieldIds, orderAttr, orderDir, offset, limit, onlyCount) {
     var self = this;
     var url = this.baseUrl;
-    url += '/documents';
+    url += '/documents/';
 
     var arguments = []
 
