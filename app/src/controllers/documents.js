@@ -364,7 +364,7 @@ DocumentsController.prototype.embedQuery = function($event) {
 			$scope.orderAttr = embedData[2];
 			$scope.orderDir = embedData[3];
 			$scope.limit = 20;
-			$scope.baseUrl = embedData[4];
+			$scope.baseUrl = ServiceConfiguration.getClientUrlBase();
 			$scope.hide = function() { $mdDialog.hide(); };
 		},
 		targetEvent: $event,
@@ -392,7 +392,6 @@ DocumentsController.prototype.embeddedQuery = function($event) {
 			$scope.orderAttr = embedData[2];
 			$scope.orderDir = embedData[3];
 			$scope.limit = 20;
-			$scope.baseUrl = embedData[4];
 			$scope.hide = function() { $mdDialog.hide(); };
 		},
 		targetEvent: $event,
