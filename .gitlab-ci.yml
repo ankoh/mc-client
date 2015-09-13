@@ -97,4 +97,3 @@ compose-dockerbruegge1:
         docker rmi \$(docker images | grep '<none>' | awk '{print $3}') 2>/dev/null || echo 'No untagged images to delete.'"
   only:
     - master
-    - testing
