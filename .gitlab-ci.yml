@@ -57,6 +57,9 @@ compose-local:
 compose-dockerbruegge1:
   type: deploy
   script:
+    - npm set registry http://npm-cache:4873
+    - npm install --silent bower
+    - ./node_modules/.bin/bower install --quiet --allow-root
     - mkdir -p ~/.ssh/
     - echo "$DOCKERBRUEGGE_DEPLOYMENT_KEY" > ~/.ssh/dockerbruegge1.key
     - printf "Host dockerbruegge1\n    HostName dockerbruegge1.informatik.tu-muenchen.de\n    User itg\n    IdentityFile ~/.ssh/dockerbruegge1.key\n" >> ~/.ssh/config
@@ -68,7 +71,7 @@ compose-dockerbruegge1:
     - ssh dockerbruegge1 "mkdir -p ~/projects/mendeley-cache/client;
         rm -rf ~/projects/mendeley-cache/client;
         mkdir -p ~/projects/mendeley-cache/client;"
-    - tar -czf client.tar.gz mendeleycache docker compose.yml Dockerfile
+    - tar -czf client.tar.gz app docker compose.yml Dockerfile
     - scp client.tar.gz dockerbruegge1:~/projects/mendeley-cache/client/
     - ssh dockerbruegge1 "tar -xzf ~/projects/mendeley-cache/client/client.tar.gz -C ~/projects/mendeley-cache/client"
   only:
@@ -76,6 +79,7 @@ compose-dockerbruegge1:
     - testing
 
 github:
+  type: deploy
   script:
     - mkdir -p ~/.ssh/
     - echo "$GITHUB_DEPLOYMENT_KEY" > ~/.ssh/github.key
