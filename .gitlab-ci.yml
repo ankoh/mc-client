@@ -40,6 +40,7 @@ docker:
     - node
   only:
     - master
+    - testing
 
 compose-local:
   type: deploy
@@ -51,6 +52,7 @@ compose-local:
     - privileged
   only:
     - master
+    - testing
 
 github:
   script:
