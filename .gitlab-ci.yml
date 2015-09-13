@@ -34,7 +34,6 @@ docker:
     - npm set registry http://npm-cache:4873
     - npm install --silent bower
     - ./node_modules/.bin/bower install --quiet --allow-root
-    - sed -i'' -e s%:mchost%http://mc-server.kohn.io% -e s/:mcport/80/ -e s/:port/32761/ compose.yml
     - docker build -q -t ankoh/mendeleycache-client .
   tags:
     - docker
@@ -59,6 +58,7 @@ github:
 compose-local:
   type: deploy
   script:
+    - sed -i'' -e s%:mchost%http://mc-server.kohn.io% -e s/:mcport/80/ -e s/:port/32761/ compose.yml
     - docker-compose -f compose.yml -p mcclient stop
     - docker-compose -f compose.yml -p mcclient rm -vf
     - docker-compose -f compose.yml -p mcclient up -d
