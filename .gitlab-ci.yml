@@ -89,6 +89,12 @@ compose-dockerbruegge1:
     - tar -czf client.tar.gz app docker compose.yml Dockerfile
     - scp client.tar.gz dockerbruegge1:~/projects/mendeley-cache/client/
     - ssh dockerbruegge1 "tar -xzf ~/projects/mendeley-cache/client/client.tar.gz -C ~/projects/mendeley-cache/client"
+    - ssh dockerbruegge1 "cd ~/projects/mendeley-cache/client; 
+        docker build -t ankoh/mendeleycache-client .;
+        docker-compose -f compose.yml -p mcclient stop;
+        docker-compose -f compose.yml -p mcclient up -d;
+        rm -rf ~/projects/mendeley-cache/client;
+        docker rmi \$(docker images | grep '<none>' | awk '{print $3}') 2>/dev/null || echo 'No untagged images to delete.'"
   only:
     - master
     - testing
