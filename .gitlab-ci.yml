@@ -51,7 +51,7 @@ github:
     - ssh-keyscan github.com >> ~/.ssh/known_hosts
     - chmod 700 ~/.ssh/
     - chmod 600 ~/.ssh/config
-    - chmod 600 ~/.ssh/github.key 
+    - chmod 600 ~/.ssh/github.key
     - chmod 600 ~/.ssh/known_hosts
     - git push --all ssh://github/ankoh/mendeley-cache-client.git
 
@@ -74,7 +74,7 @@ compose-dockerbruegge1:
     - npm set registry http://npm-cache:4873
     - npm install --silent bower
     - ./node_modules/.bin/bower install --quiet --allow-root
-    - sed -i'' -e s%:mchost%http://dockerbruegge1.informatik.tu-muenchen.de% -e s/:mcport/22760/ -e s/:port/32761/ compose.yml
+    - sed -i'' -e s%:mchost%https://dockerbruegge1.informatik.tu-muenchen.de% -e s/:mcport/22760/ -e s/:port/32761/ compose.yml
     - mkdir -p ~/.ssh/
     - echo "$DOCKERBRUEGGE_DEPLOYMENT_KEY" > ~/.ssh/dockerbruegge1.key
     - printf "Host dockerbruegge1\n    HostName dockerbruegge1.informatik.tu-muenchen.de\n    User itg\n    IdentityFile ~/.ssh/dockerbruegge1.key\n" >> ~/.ssh/config
@@ -89,7 +89,7 @@ compose-dockerbruegge1:
     - tar -czf client.tar.gz app docker compose.yml Dockerfile
     - scp client.tar.gz dockerbruegge1:~/projects/mendeley-cache/client/
     - ssh dockerbruegge1 "tar -xzf ~/projects/mendeley-cache/client/client.tar.gz -C ~/projects/mendeley-cache/client"
-    - ssh dockerbruegge1 "cd ~/projects/mendeley-cache/client; 
+    - ssh dockerbruegge1 "cd ~/projects/mendeley-cache/client;
         docker build -t ankoh/mendeleycache-client .;
         docker-compose -f compose.yml -p mcclient stop;
         docker-compose -f compose.yml -p mcclient up -d;
@@ -97,4 +97,3 @@ compose-dockerbruegge1:
         docker rmi \$(docker images | grep '<none>' | awk '{print $3}') 2>/dev/null || echo 'No untagged images to delete.'"
   only:
     - master
-    - testing
