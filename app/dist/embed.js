@@ -166,7 +166,7 @@ function queryDocuments() {
                           docs += ', ';
                         }
                         if(name in profilePages) {
-                          docs += '<a target="_blank" href="' + profilePages[name] + '">' + name + '</a>';
+                          docs += '<a href="' + profilePages[name] + '">' + name + '</a>';
                         } else {
                           docs += name;
                         }
