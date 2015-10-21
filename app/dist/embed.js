@@ -153,7 +153,7 @@ function queryDocuments() {
                     if(data[i].website) {
                       docs += '<a href="' + data [i].website + '"><b>' + data[i].title + '</b></a>';
                     } else {
-                      docs += data[i].title;
+                      docs += '<b>' + data[i].title + '</b>';
                     }
                     docs += '</br>';
                   }
