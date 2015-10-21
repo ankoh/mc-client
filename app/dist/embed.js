@@ -145,7 +145,7 @@ function queryDocuments() {
       // Trigger async fetch
       documentsApi.queryDocumentsAsync(profileIds, fieldIds, orderAttr, orderDir, 0, limit)
           .done(function(data) {
-              var docs = '<ul style="color: #666">';
+              var docs = '<ul>';
               // loop through docs
               for (var i = 0; i < data.length; i++) {
                   docs += '<li>';
