@@ -145,32 +145,39 @@ function queryDocuments() {
       // Trigger async fetch
       documentsApi.queryDocumentsAsync(profileIds, fieldIds, orderAttr, orderDir, 0, limit)
           .done(function(data) {
-              var docs = '<ul>';
+              var docs = '<ul style="color: #666">';
               // loop through docs
               for (var i = 0; i < data.length; i++) {
                   docs += '<li>';
                   if(typeof data[i].title !== 'undefined') {
-                      docs += '<b>' + data[i].title + '</b><br />';
+                    docs += '<b>';
+                    if(data[i].website) {
+                      docs += '<a href="' + data [i].website + '">' + data[i].title + '</a>';
+                    } else {
+                      docs += data[i].title;
+                    }
+                    docs += '</b>';
+                    docs += '</br>';
                   }
                   if(typeof data[i].authors !== 'undefined') {
-                      // Now try to find the profile pages for the different authors
-                      // First prepare the authors string
-                      var authors = data[i].authors.split(',');
-                      authors = authors.map(function(author) {
-                        return author.replace(/(^[,\s]+)|([,\s]+$)/g, '');
-                      });
-                      // Then probe with the previously fetched profilePages dict
-                      for(var j = 0; j < authors.length; j++) {
-                        var name = authors[j];
-                        if(j > 0) {
-                          docs += ', ';
-                        }
-                        if(name in profilePages) {
-                          docs += '<a href="' + profilePages[name] + '">' + name + '</a>';
-                        } else {
-                          docs += name;
-                        }
+                    // Now try to find the profile pages for the different authors
+                    // First prepare the authors string
+                    var authors = data[i].authors.split(',');
+                    authors = authors.map(function(author) {
+                      return author.replace(/(^[,\s]+)|([,\s]+$)/g, '');
+                    });
+                    // Then probe with the previously fetched profilePages dict
+                    for(var j = 0; j < authors.length; j++) {
+                      var name = authors[j];
+                      if(j > 0) {
+                        docs += ', ';
                       }
+                      if(name in profilePages) {
+                        docs += '<a href="' + profilePages[name] + '">' + name + '</a>';
+                      } else {
+                        docs += name;
+                      }
+                    }
                   }
                   if(typeof data[i].source !== "undefined" &&
                           typeof data[i].pub_year !== "undefined" &&
