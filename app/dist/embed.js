@@ -150,13 +150,11 @@ function queryDocuments() {
               for (var i = 0; i < data.length; i++) {
                   docs += '<li>';
                   if(typeof data[i].title !== 'undefined') {
-                    docs += '<b>';
                     if(data[i].website) {
-                      docs += '<a href="' + data [i].website + '">' + data[i].title + '</a>';
+                      docs += '<a href="' + data [i].website + '"><b>' + data[i].title + '</b></a>';
                     } else {
                       docs += data[i].title;
                     }
-                    docs += '</b>';
                     docs += '</br>';
                   }
                   if(typeof data[i].authors !== 'undefined') {
