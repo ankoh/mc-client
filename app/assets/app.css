@@ -22,16 +22,17 @@ h3 {
 }
 
 a {
-	color: #002143;
+	/* color: #002143; */
+  color: #11639d;
 	text-decoration: none;
 }
 
-/* 
+/*
 Hide scrollbars as described here:
 http://stackoverflow.com/questions/3296644/hiding-the-scrollbar-on-an-html-page
  */
-body { 
-    overflow-y: auto!important; 
+body {
+    overflow-y: auto!important;
 }
 
 /* ng-cloak default display */
@@ -179,7 +180,7 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	fill: white;
 }
 .mc-buttonchips md-chip-template {
-    padding-right: 20px; 
+    padding-right: 20px;
 }
 
 .mc-chip-autocomplete-tmpl {

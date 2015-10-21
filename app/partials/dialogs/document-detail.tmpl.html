@@ -35,6 +35,10 @@
         <p flex>{{ selectedDocument.doc_type || "None" }}</p>
       </div>
       <div layout="row">
+        <p flex="25" class="mc-right-align-column"><strong>Website</strong></p>
+        <p flex><a ng-href="{{selectedDocument.website}}">{{ selectedDocument.website || "None" }}</a></p>
+      </div>
+      <div layout="row">
         <p flex="25" class="mc-right-align-column"><strong>Keywords</strong></p>
         <ul ng-if="selectedDocument.keywords">
           <li
