@@ -151,7 +151,7 @@ function queryDocuments() {
                   docs += '<li>';
                   if(typeof data[i].title !== 'undefined') {
                     if(data[i].website) {
-                      docs += '<a href="' + data [i].website + '"><b>' + data[i].title + '</b></a>';
+                      docs += '<a target="_blank" href="' + data [i].website + '"><b>' + data[i].title + '</b></a>';
                     } else {
                       docs += '<b>' + data[i].title + '</b>';
                     }
