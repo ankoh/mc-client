@@ -6,6 +6,19 @@ var MC_BASE_HOST = ':base_host';
 var MC_BASE_PORT = ':base_port';
 
 /*
+  Month names
+*/
+function convertMonthNumber(monthNumber) { //1 = January
+    var monthNames = [ 'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December' ];
+    if(monthNumber < 1 || monthNumber > 12) {
+      return '';
+    } else {
+      return monthNames[monthNumber - 1];
+    }
+}
+
+/*
     Documents API
 */
 function DocumentsApi(Converter) {
@@ -150,14 +163,16 @@ function queryDocuments() {
               for (var i = 0; i < data.length; i++) {
                   docs += '<li>';
                   if(typeof data[i].title !== 'undefined') {
-                    if(data[i].website) {
-                      docs += '<a target="_blank" href="' + data [i].website + '"><b>' + data[i].title + '</b></a>';
+                    if(data[i].doc_website) {
+                      docs += '<a target="_blank" href="' + data[i].doc_website + '"><b>' + data[i].title + '</b></a>';
                     } else {
                       docs += '<b>' + data[i].title + '</b>';
                     }
-                    docs += '</br>';
                   }
+
+                  // Second line
                   if(typeof data[i].authors !== 'undefined') {
+                    docs += '</br>';
                     // Now try to find the profile pages for the different authors
                     // First prepare the authors string
                     var authors = data[i].authors.split(',');
@@ -168,7 +183,11 @@ function queryDocuments() {
                     for(var j = 0; j < authors.length; j++) {
                       var name = authors[j];
                       if(j > 0) {
-                        docs += ', ';
+                        if(j == authors.length - 1) {
+                          docs += ' and ';
+                        } else {
+                          docs += ', ';
+                        }
                       }
                       if(name in profilePages) {
                         docs += '<a href="' + profilePages[name] + '">' + name + '</a>';
@@ -177,13 +196,37 @@ function queryDocuments() {
                       }
                     }
                   }
+
+                  // Third line
                   if(typeof data[i].source !== "undefined" &&
-                          typeof data[i].pub_year !== "undefined" &&
-                          data[i].source != "" &&
-                          data[i].pub_year != "") {
-                      docs += '<br />' + data[i].source + ', ' + data[i].pub_year + '.</li>';
+                      data[i].source != "") {
+                    docs += '<br />'
+
+                    // Conference website
+                    if(typeof data[i].conf_website !== "undefined" &&
+                        data[i].conf_website != "") {
+                      docs += '<a target="_blank" href="' + data[i].conf_website + '">' + data[i].source + '</a>';
+                    } else {
+                      docs +=  data[i].source;
+                    }
+                    // Conference city
+                    if(typeof data[i].conf_city !== "undefined" &&
+                        data[i].conf_city != "") {
+                      docs += ', ' + data[i].conf_city;
+                    }
+                    // Year
+                    if(typeof data[i].pub_year !== "undefined" &&
+                        data[i].pub_year != "") {
+                      docs += ', ' + convertMonthNumber(data[i].conf_month) + ' ' + data[i].pub_year;
+                    }
+                    // Pages
+                    if(typeof data[i].conf_pages !== "undefined" &&
+                        data[i].conf_pages != "") {
+                      docs += ', pp. ' + data[i].conf_pages;
+                    }
+                    docs += '.</li>';
                   } else {
-                      docs += '.</li>';
+                    docs += '</li>';
                   }
               }
               docs += '</ul>';
