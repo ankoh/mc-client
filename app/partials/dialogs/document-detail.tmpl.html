@@ -24,19 +24,27 @@
       </div>
       <div layout="row">
         <p flex="25" class="mc-right-align-column"><strong>Source</strong></p>
-        <p flex>{{ selectedDocument.source || "None" }}</p>
+        <p flex>{{ selectedDocument.source || "Unknown" }}</p>
       </div>
       <div layout="row">
         <p flex="25" class="mc-right-align-column"><strong>Year</strong></p>
-        <p flex>{{ selectedDocument.pub_year || "None" }}</p>
+        <p flex>{{ selectedDocument.pub_year || "Unknown" }}</p>
+      </div>
+      <div layout="row">
+        <p flex="25" class="mc-right-align-column"><strong>Month</strong></p>
+        <p flex>{{ selectedDocument.conf_month | monthName }}</p>
       </div>
       <div layout="row">
         <p flex="25" class="mc-right-align-column"><strong>Type</strong></p>
-        <p flex>{{ selectedDocument.doc_type || "None" }}</p>
+        <p flex>{{ selectedDocument.doc_type || "Unknown" }}</p>
       </div>
       <div layout="row">
-        <p flex="25" class="mc-right-align-column"><strong>Website</strong></p>
-        <p flex><a ng-href="{{selectedDocument.website}}">{{ selectedDocument.website || "None" }}</a></p>
+        <p flex="25" class="mc-right-align-column"><strong>Document Website</strong></p>
+        <p flex><a ng-href="{{selectedDocument.doc_website}}">{{ selectedDocument.doc_website || "Unknown" }}</a></p>
+      </div>
+      <div layout="row">
+        <p flex="25" class="mc-right-align-column"><strong>Conference Website</strong></p>
+        <p flex><a ng-href="{{selectedDocument.conf_website}}">{{ selectedDocument.conf_website || "Unknown" }}</a></p>
       </div>
       <div layout="row">
         <p flex="25" class="mc-right-align-column"><strong>Keywords</strong></p>
@@ -47,7 +55,7 @@
           </li>
         </ul>
         <p ng-if="!selectedDocument.keywords">
-          None
+          Unknown
         </p>
       </div>
       <div layout="row">
@@ -59,7 +67,7 @@
           </li>
         </ul>
         <p ng-if="!selectedDocument.tags">
-          None
+          Unknown
         </p>
       </div>
       <div layout="row">
@@ -72,7 +80,7 @@
           readonly="true">
         </md-chips>
         <p ng-if="derivedFields.length == 0">
-          None
+          Unknown
         </p>
       </div>
     </div>
