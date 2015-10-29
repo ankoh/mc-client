@@ -1,4 +1,4 @@
-[![build status](http://gitlab-ci.kohn.io/projects/44/status.png?ref=master)](http://gitlab-ci.kohn.io/projects/44?ref=master)
+[![build status](https://gitlab.kohn.io/ci/projects/44/status.png?ref=master)](https://gitlab.kohn.io/ci/projects/44?ref=master)
 
 ## Mendeley Cache Client
 This project aims to build an Angular.js client for the [Mendeley Cache Server](https://github.com/ankoh/mendeley-cache-server)
