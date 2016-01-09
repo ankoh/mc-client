@@ -1,5 +1,3 @@
-[![build status](https://gitlab.kohn.io/ci/projects/44/status.png?ref=master)](https://gitlab.kohn.io/ci/projects/44?ref=master)
-
 # Mendeley-Cache Client
 
 The **Mendeley-Cache Client** is an AngularJS application that consumes the API served by a **Mendeley-Cache Server**.
