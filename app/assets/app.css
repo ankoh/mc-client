@@ -9,8 +9,8 @@ html, body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    margin-bottom: .8rem;
-    margin-top: .8rem;
+	margin-bottom: .8rem;
+	margin-top: .8rem;
 }
 h2 {
 	font-size: 18px;
@@ -32,7 +32,7 @@ Hide scrollbars as described here:
 http://stackoverflow.com/questions/3296644/hiding-the-scrollbar-on-an-html-page
  */
 body {
-    overflow-y: auto!important;
+	overflow-y: auto!important;
 }
 
 /* ng-cloak default display */
@@ -42,11 +42,11 @@ body {
 
 /* By default, hide the splash screen */
 .splash {
-    display: none;
+	display: none;
 }
 /* If ng-cloak is added, show splash screen */
 [ng-cloak].splash {
-    display: block!important;
+	display: block!important;
 }
 
 
@@ -145,42 +145,42 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 }
 .mc-buttonchips .md-chip-remove-container {
 	position: absolute;
-    right: 4px;
-    top: 4px;
-    margin-right: 0!important;
-    height: 24px;
+	right: 4px;
+	top: 4px;
+	margin-right: 0!important;
+	height: 24px;
 }
 .mc-buttonchips .md-chip-remove-container button {
 	position: relative;
-    height: 24px;
-    width: 24px;
-    line-height: 30px;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    margin: 0;
-    transition: background 0.15s linear;
-    display: block;
+	height: 24px;
+	width: 24px;
+	line-height: 30px;
+	text-align: center;
+	background: rgba(0, 0, 0, 0.3);
+	border-radius: 50%;
+	border: none;
+	box-shadow: none;
+	padding: 0;
+	margin: 0;
+	transition: background 0.15s linear;
+	display: block;
 }
 .mc-buttonchips .md-chip-remove-container button:focus, .mc-buttonchips .md-chip-remove-container button:hover {
 	background: #002143;
 }
 .mc-buttonchips .md-chip-remove-container button md-icon {
 	position: absolute;
-    right: 4px;
-    top: 4px;
-    left: 4px;
-    bottom: 4px;
-    width: auto;
-    height: auto;
+	right: 4px;
+	top: 4px;
+	left: 4px;
+	bottom: 4px;
+	width: auto;
+	height: auto;
 	color: white;
 	fill: white;
 }
 .mc-buttonchips md-chip-template {
-    padding-right: 20px;
+	padding-right: 20px;
 }
 
 .mc-chip-autocomplete-tmpl {
@@ -228,12 +228,6 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	font-weight: 500;
 }
 
-.mc-data-table {
-}
-
-.mc-data-table-row {
-}
-
 .mc-linechart {
 	padding-left: 30px;
 	padding-top: 12px;
@@ -261,8 +255,8 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 
 .mc-dialog-content p {
 	margin-top: 10px;
-    margin-bottom: 10px;
-    line-height: 14px;
+	margin-bottom: 10px;
+	line-height: 14px;
 }
 .mc-dialog-content strong {
 	font-weight: 500;
