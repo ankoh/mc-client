@@ -1,59 +1,59 @@
 <md-dialog flex-sm="80" flex-gt-sm="60" flex-gt-md="40" flex-gt-lg="30" aria-label="About Dialog">
   <md-toolbar>
-    <div class="md-toolbar-tools">
-      <h2>About</h2>
-      <span flex></span>
-      <md-button class="md-icon-button" ng-click="hide()" aria-label="Hide">
-        <md-icon md-svg-src="assets/svg/material-icons/ic_close_white_24px.svg"></md-icon>
-      </md-button>
-    </div>
+	<div class="md-toolbar-tools">
+	  <h2>About</h2>
+	  <span flex></span>
+	  <md-button class="md-icon-button" ng-click="hide()" aria-label="Hide">
+		<md-icon md-svg-src="assets/svg/material-icons/ic_close_white_24px.svg"></md-icon>
+	  </md-button>
+	</div>
   </md-toolbar>
   <md-dialog-content class="mc-dialog-content">
-    <div
-      layout="column"
-      layout-align="start center">
-      <h2>Mendeley Cache</h2>
-    </div>
+	<div
+	  layout="column"
+	  layout-align="start center">
+	  <h2>Mendeley Cache</h2>
+	</div>
 
-    <p class="mc-light-description">
-      The system is being developed by the Administrators at the TUM Chair of Applied Software Engineering.<br>
-      It aims improve the interaction with the Mendeley platform by identifying additional document correlations such as tag based research fields and duplicates.
-    </p>
+	<p class="mc-light-description">
+	  The system is being developed by the Administrators at the TUM Chair of Applied Software Engineering.<br>
+	  It aims improve the interaction with the Mendeley platform by identifying additional document correlations such as tag based research fields and duplicates.
+	</p>
 
-    <br>
+	<br>
 
-     <!-- Server version -->
-    <div layout="row" layout-align="center center">
-      <p flex="15"><strong>Server</strong></p>
-      <a
-        target="_blank"
-        flex="40"
-        href='https://github.com/ankoh/mendeley-cache-server'>
-        Source Code</a>
-      <a
-        target="_blank"
-        href='https://gitlab.kohn.io/ci/projects/52?ref=master'
-        layout="column"
-        layout-align="center center">
-        <img src='https://gitlab.kohn.io/ci/projects/52/status.png?ref=master' />
-      </a>
-    </div>
+	 <!-- Server version -->
+	<div class="mc-coderef-row" layout="row" layout-align="center center">
+	  <p flex="15"><strong>Server</strong></p>
+	  <a
+		target="_blank"
+		flex="40"
+		href='https://github.com/ankoh/mc-server'>
+		Source Code</a>
+	  <a
+		target="_blank"
+		href='https://gitlab.kohn.io/ci/projects/52?ref=master'
+		layout="column"
+		layout-align="center center">
+		<img alt="build status" src="https://gitlab.kohn.io/ankoh/mc-server/badges/master/build.svg" />
+	  </a>
+	</div>
 
-    <!-- Client version -->
-    <div layout="row" layout-align="center center">
-      <p flex="15"><strong>Client</strong></p>
-      <a
-        target="_blank"
-        flex="40"
-        href='https://github.com/ankoh/mendeley-cache-client'>
-        Source Code</a>
-      <a
-        target="_blank"
-        href='https://gitlab.kohn.io/ci/projects/44?ref=master'
-        layout="column"
-        layout-align="center center">
-        <img src='https://gitlab.kohn.io/ci/projects/44/status.png?ref=master' />
-        </a>
-    </div>
+	<!-- Client version -->
+	<div class="mc-coderef-row" layout="row" layout-align="center center">
+	  <p flex="15"><strong>Client</strong></p>
+	  <a
+		target="_blank"
+		flex="40"
+		href='https://github.com/ankoh/mc-client'>
+		Source Code</a>
+	  <a
+		target="_blank"
+		href='https://gitlab.kohn.io/ci/projects/44?ref=master'
+		layout="column"
+		layout-align="center center">
+		<img alt="build status" src="https://gitlab.kohn.io/ankoh/mc-client/badges/master/build.svg" />
+		</a>
+	</div>
   </md-dialog-content>
 </md-dialog>

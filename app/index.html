@@ -1,166 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Publication Cache</title>
+	<title>Publication Cache</title>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,400italic'>
+	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,400italic'>
 
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
-    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
-    <link rel="stylesheet" href="bower_components/angular-material-data-table/dist/md-data-table.min.css"/>
+	<link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
+	<link rel="stylesheet" href="bower_components/angular-material-data-table/dist/md-data-table.min.css"/>
 
-    <link rel="stylesheet" href="assets/app.css"/>
+	<link rel="stylesheet" href="assets/app.css"/>
   </head>
 
   <body
-    ng-app="mendeleyCache"
-    layout="column">
+	ng-app="mendeleyCache"
+	layout="column">
 
-    <!-- Splash loading screen begin -->
-    <div ng-cloak flex class="splash">
+	<!-- Splash loading screen begin -->
+	<div ng-cloak flex class="splash">
 
-    </div>
-    <!-- Splash loading screen end -->
-
-
-    <!-- Toolbar BEGIN -->
-    <md-toolbar ng-cloak layout="row" layout-align="center end" class="md-tall md-whiteframe-z2">
-      <!-- Center Container BEGIN -->
-      <div flex flex-sm="100" flex-gt-sm="95" flex-gt-md="75" flex-gt-lg="65" layout="column">
-        <!-- Top Row BEGIN -->
-        <span layout="row" class="md-toolbar-tools">
-          <md-icon md-svg-icon="assets/svg/logo_chair.svg" id="mc-logo" ></md-icon>
-          <h1>
-            <span>Mendeley Cache</span>
-          </h1>
-          <span flex></span>
-          <!-- Right Menu BEGIN -->
-          <md-menu
-          ng-controller="MoreController as more"
-          md-position-mode="target-right target" >
-            <md-button 
-              aria-label="Menu"
-              class="md-icon-button"
-              ng-click="$mdOpenMenu($event)">
-              <md-icon
-                md-menu-origin
-                md-svg-icon="assets/svg/material-icons/ic_more_vert_white_24px.svg"></md-icon>
-            </md-button>
-            <md-menu-content width="3">
-              <md-menu-item>
-                <md-button
-                  aria-label="Synchronize Cache"
-                  ng-click="more.syncCache($event)">
-                  Sync Cache
-                </md-button>
-              </md-menu-item>
-              <md-menu-item>
-                <md-button
-                  aria-label="About"
-                  ng-click="more.showAbout($event)">
-                  About
-                </md-button>
-              </md-menu-item> 
-            </md-menu-content>
-          </md-menu>
-          <!-- Right Menu END -->
-        </span>
-        <!-- Top Row END -->
-
-        <!-- Flex space -->
-        <span flex></span>
-
-        <!-- Bottom Row BEGIN -->
-        <md-tabs md-stretch-tabs="always" class="md-primary" md-selected="tabs.selectedIndex">
-          <md-tab ui-sref="tabs.cache">
-            <md-tab-label aria-label="Cache">Cache</md-tab-label>
-          </md-tab>
-          <md-tab ui-sref="tabs.documents">
-            <md-tab-label aria-label="Documents">Documents</md-tab-label>
-          </md-tab>
-          <md-tab ui-sref="tabs.api">
-            <md-tab-label aria-label="Api">Api</md-tab-label>
-          </md-tab>
-        </md-tabs>
-        <!-- Bottom Row END -->
-      </div>
-      <!-- Center Container END -->
-    </md-toolbar>
-    <!-- Toolbar END -->
-
-    <!-- TabContent BEGIN -->
-    <md-content ng-cloak flex class="mc-content" layout="row" layout-align="center start" layout-padding>
-        <div
-          ui-view flex flex-sm="100" flex-gt-sm="95" flex-gt-md="75" flex-gt-lg="65"></div>
-    </md-content>
-    <!-- TabContent END -->
-
-    <!-- I need the jQuery import for the embedded query -->
-    <script type="text/javascript" language="javascript"
-            src="bower_components/jquery/dist/jquery.min.js"></script>
-
-    <!-- Service configuration -->
-    <script type="text/javascript" language="javascript"
-            src="config.json"></script>
-
-    <!-- Imports -->
-    <script type="text/javascript" language="javascript"
-            src="bower_components/angular/angular.js"></script>
-    <script type="text/javascript" language="javascript"
-            src="bower_components/angular-animate/angular-animate.js"></script>
-    <script type="text/javascript" language="javascript"
-            src="bower_components/angular-aria/angular-aria.js"></script>
-    <script type="text/javascript" language="javascript"
-            src="bower_components/angular-material/angular-material.js"></script>
-    <script type="text/javascript" language="javascript"
-            src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script type="text/javascript" language="javascript"
-            src="bower_components/Chart.js/Chart.min.js"></script>
-    <script type="text/javascript" language="javascript"
-            src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
-    <script type="text/javascript" language="javascript"
-            src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
-    <script type="text/javascript" language="javascript"
-            src="bower_components/angular-timeago/dist/angular-timeago.min.js"></script>
-
-    <!-- Services -->
-    <script type="text/javascript" language="javascript"
-            src="src/services/local-cache.js"></script>
-    <script type="text/javascript" language="javascript"
-            src="src/services/service-config.js"></script>
-    <script type="text/javascript" language="javascript"
-            src="src/services/api-profiles.js"></script>
-    <script type="text/javascript" language="javascript"
-            src="src/services/api-fields.js"></script>
-    <script type="text/javascript" language="javascript"
-            src="src/services/api-documents.js"></script>
-    <script type="text/javascript" language="javascript"
-            src="src/services/api-cache.js"></script>
-    <script type="text/javascript" language="javascript"
-            src="src/services/converter.js"></script>
+	</div>
+	<!-- Splash loading screen end -->
 
 
-    <!-- Controllers -->
-    <script type="text/javascript" language="javascript"
-            src="src/controllers/cache.js"></script>
-    <script type="text/javascript" language="javascript"
-            src="src/controllers/documents.js"></script>
-    <script type="text/javascript" language="javascript"
-            src="src/controllers/more.js"></script>
+	<!-- Toolbar BEGIN -->
+	<md-toolbar ng-cloak layout="row" layout-align="center end" class="md-tall md-whiteframe-z2">
+	  <!-- Center Container BEGIN -->
+	  <div flex flex-sm="100" flex-gt-sm="95" flex-gt-md="75" flex-gt-lg="65" layout="column">
+		<!-- Top Row BEGIN -->
+		<span layout="row" class="md-toolbar-tools">
+		  <md-icon md-svg-icon="assets/svg/logo_chair.svg" id="mc-logo" ></md-icon>
+		  <h1>
+			<span>Mendeley Cache</span>
+		  </h1>
+		  <span flex></span>
+		  <!-- Right Menu BEGIN -->
+		  <md-menu
+		  ng-controller="MoreController as more"
+		  md-position-mode="target-right target" >
+			<md-button 
+			  aria-label="Menu"
+			  class="md-icon-button"
+			  ng-click="$mdOpenMenu($event)">
+			  <md-icon
+				md-menu-origin
+				md-svg-icon="assets/svg/material-icons/ic_more_vert_white_24px.svg"></md-icon>
+			</md-button>
+			<md-menu-content width="3">
+			  <md-menu-item>
+				<md-button
+				  aria-label="Synchronize Cache"
+				  ng-click="more.syncCache($event)">
+				  Sync Cache
+				</md-button>
+			  </md-menu-item>
+			  <md-menu-item>
+				<md-button
+				  aria-label="About"
+				  ng-click="more.showAbout($event)">
+				  About
+				</md-button>
+			  </md-menu-item> 
+			</md-menu-content>
+		  </md-menu>
+		  <!-- Right Menu END -->
+		</span>
+		<!-- Top Row END -->
 
-    <!-- Angular application -->
-    <script type="text/javascript" language="javascript"
-            src="src/app.js"></script>
+		<!-- Flex space -->
+		<span flex></span>
 
-    <!-- Other scripts -->
-    <script type="text/javascript" language="javascript"
-            src="src/js/filters.js"></script>
-    <script type="text/javascript" language="javascript"
-            src="src/js/directives.js"></script>
+		<!-- Bottom Row BEGIN -->
+		<md-tabs md-stretch-tabs="always" class="md-primary" md-selected="tabs.selectedIndex">
+		  <md-tab ui-sref="tabs.cache">
+			<md-tab-label aria-label="Cache">Cache</md-tab-label>
+		  </md-tab>
+		  <md-tab ui-sref="tabs.documents">
+			<md-tab-label aria-label="Documents">Documents</md-tab-label>
+		  </md-tab>
+		  <md-tab ui-sref="tabs.api">
+			<md-tab-label aria-label="Api">Api</md-tab-label>
+		  </md-tab>
+		</md-tabs>
+		<!-- Bottom Row END -->
+	  </div>
+	  <!-- Center Container END -->
+	</md-toolbar>
+	<!-- Toolbar END -->
+
+	<!-- TabContent BEGIN -->
+	<md-content ng-cloak flex class="mc-content" layout="row" layout-align="center start" layout-padding>
+		<div
+		  ui-view flex flex-sm="100" flex-gt-sm="95" flex-gt-md="75" flex-gt-lg="65"></div>
+	</md-content>
+	<!-- TabContent END -->
+
+	<!-- I need the jQuery import for the embedded query -->
+	<script type="text/javascript" language="javascript"
+			src="bower_components/jquery/dist/jquery.min.js"></script>
+
+	<!-- Service configuration -->
+	<script type="text/javascript" language="javascript"
+			src="config.json"></script>
+
+	<!-- Imports -->
+	<script type="text/javascript" language="javascript"
+			src="bower_components/angular/angular.js"></script>
+	<script type="text/javascript" language="javascript"
+			src="bower_components/angular-animate/angular-animate.js"></script>
+	<script type="text/javascript" language="javascript"
+			src="bower_components/angular-aria/angular-aria.js"></script>
+	<script type="text/javascript" language="javascript"
+			src="bower_components/angular-material/angular-material.js"></script>
+	<script type="text/javascript" language="javascript"
+			src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	<script type="text/javascript" language="javascript"
+			src="bower_components/Chart.js/dist/Chart.min.js"></script>
+	<script type="text/javascript" language="javascript"
+			src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
+	<script type="text/javascript" language="javascript"
+			src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
+	<script type="text/javascript" language="javascript"
+			src="bower_components/angular-timeago/dist/angular-timeago.min.js"></script>
+
+	<!-- Services -->
+	<script type="text/javascript" language="javascript"
+			src="src/services/local-cache.js"></script>
+	<script type="text/javascript" language="javascript"
+			src="src/services/service-config.js"></script>
+	<script type="text/javascript" language="javascript"
+			src="src/services/api-profiles.js"></script>
+	<script type="text/javascript" language="javascript"
+			src="src/services/api-fields.js"></script>
+	<script type="text/javascript" language="javascript"
+			src="src/services/api-documents.js"></script>
+	<script type="text/javascript" language="javascript"
+			src="src/services/api-cache.js"></script>
+	<script type="text/javascript" language="javascript"
+			src="src/services/converter.js"></script>
+
+
+	<!-- Controllers -->
+	<script type="text/javascript" language="javascript"
+			src="src/controllers/cache.js"></script>
+	<script type="text/javascript" language="javascript"
+			src="src/controllers/documents.js"></script>
+	<script type="text/javascript" language="javascript"
+			src="src/controllers/more.js"></script>
+
+	<!-- Angular application -->
+	<script type="text/javascript" language="javascript"
+			src="src/app.js"></script>
+
+	<!-- Other scripts -->
+	<script type="text/javascript" language="javascript"
+			src="src/js/filters.js"></script>
+	<script type="text/javascript" language="javascript"
+			src="src/js/directives.js"></script>
   </body>
 </html>
