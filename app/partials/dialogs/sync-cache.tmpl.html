@@ -1,65 +1,65 @@
 <md-dialog flex-sm="80" flex-gt-sm="60" flex-gt-md="40" flex-gt-lg="30" aria-label="Sync Cache Dialog">
   <md-toolbar>
-    <div class="md-toolbar-tools">
-      <h2>Sync Cache</h2>
-      <span flex></span>
-      <md-button class="md-icon-button" ng-click="hide()" aria-label="Hide">
-        <md-icon md-svg-src="assets/svg/material-icons/ic_close_white_24px.svg"></md-icon>
-      </md-button>
-    </div>
+	<div class="md-toolbar-tools">
+	  <h2>Sync Cache</h2>
+	  <span flex></span>
+	  <md-button class="md-icon-button" ng-click="hide()" aria-label="Hide">
+		<md-icon md-svg-src="assets/svg/material-icons/ic_close_white_24px.svg"></md-icon>
+	  </md-button>
+	</div>
   </md-toolbar>
 
   <!-- Attention screen -->
   <md-dialog-content ng-if="state == 1" class="mc-dialog-content" layout="column" layout-align="start center">
-    <div
-      layout="column"
-      layout-align="start center">
-      <h2>Attention</h2>
-    </div>
-    <p class="mc-light-description">
-      Whenever you synchronize the cache, you spawn about 20 threads that concurrently gather
-      data from Mendeley. An excessive use of that functionality will most probably lead to a blocked API key.
-      Additionally, the cache will update itself every midnight on its own so press this button with caution.
-      (We are logging your IP address)
-    </p>
+	<div
+	  layout="column"
+	  layout-align="start center">
+	  <h2>Attention</h2>
+	</div>
+	<p class="mc-light-description">
+	  Whenever you synchronize the cache, you spawn a bunch of threads that concurrently gather
+	  data from Mendeley. An excessive use of that functionality will most probably lead to a blocked API key.
+	  Additionally, the cache will update itself every midnight on its own so press this button with caution.
+	  (We are logging your IP address)
+	</p>
 
-    <br>
-    <md-button ng-click="syncAnyway();" aria-label="Synchronize">Synchronize anyway</md-button>
+	<br>
+	<md-button ng-click="syncAnyway();" aria-label="Synchronize">Synchronize anyway</md-button>
   </md-dialog-content>
 
   <!-- Working screen -->
   <md-dialog-content ng-if="state == 2" class="mc-dialog-content" layout="column" layout-align="start center">
-    <br>
-    <md-progress-circular
-      md-diameter="38"
-      md-mode="indeterminate"></md-progress-circular>
-    <br>
-    <h2>Working...</h2>
+	<br>
+	<md-progress-circular
+	  md-diameter="38"
+	  md-mode="indeterminate"></md-progress-circular>
+	<br>
+	<h2>Working...</h2>
   </md-dialog-content>
 
 
   <!-- Result screen -->
   <md-dialog-content ng-if="state == 3" class="mc-dialog-content" layout="column">    
-    <div
-      layout="column"
-      layout-align="start center">
-      <h2>{{workStatus}}</h2>
-    </div>
-    <!-- Profiles -->
-    <div layout="row" layout-align="center center">
-      <p flex="40" class="mc-right-align-column"><strong>Profiles</strong></p>
-      <p flex="40">{{profiles}} ({{unified_profiles}} unique)</p>
-    </div>
-    <!-- Documents -->
-    <div layout="row" layout-align="center center">
-      <p flex="40" class="mc-right-align-column"><strong>Documents</strong></p>
-      <p flex="40">{{documents}} ({{unified_documents}} unique)</p>
-    </div>
-    <!-- Fields -->
-    <div layout="row" layout-align="center center">
-      <p flex="40" class="mc-right-align-column"><strong>Fields</strong></p>
-      <p flex="40">{{fields}} ({{field_links}} links)</p>
-    </div>
+	<div
+	  layout="column"
+	  layout-align="start center">
+	  <h2>{{workStatus}}</h2>
+	</div>
+	<!-- Profiles -->
+	<div layout="row" layout-align="center center">
+	  <p flex="40" class="mc-right-align-column"><strong>Profiles</strong></p>
+	  <p flex="40">{{profiles}} ({{unified_profiles}} unique)</p>
+	</div>
+	<!-- Documents -->
+	<div layout="row" layout-align="center center">
+	  <p flex="40" class="mc-right-align-column"><strong>Documents</strong></p>
+	  <p flex="40">{{documents}} ({{unified_documents}} unique)</p>
+	</div>
+	<!-- Fields -->
+	<div layout="row" layout-align="center center">
+	  <p flex="40" class="mc-right-align-column"><strong>Fields</strong></p>
+	  <p flex="40">{{fields}} ({{field_links}} links)</p>
+	</div>
   </md-dialog-content>
 
 </md-dialog>
