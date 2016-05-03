@@ -1,15 +1,3 @@
-docker:
-  script:
-    - npm install --silent bower
-    - ./node_modules/.bin/bower install --quiet --allow-root
-    - docker build -q -t ankoh/mc-client .
-  tags:
-    - docker
-    - node
-  only:
-    - master
-    - testing
-
 github:
   type: deploy
   script:
