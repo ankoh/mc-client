@@ -37,25 +37,24 @@ The following screenshots show some nice features of the **Mendeley-Cache Client
 The status page tabs gives you informations about the overall server status.
 
 It shows the time of the last update (which is quite useful in case of automatic cron jobs) and the number of entities in the important SQL tables.
-
-![Screen_Shot_2015-11-10_at_23.07.34](https://gitlab.kohn.io/mendeley-cache/client/uploads/a14239bbbbac2b1019759f580ab03420/Screen_Shot_2015-11-10_at_23.07.34.png)
+![status](/shots/status.png?raw=true "Status")
 
 ### Intuitive Document Queries
 The document query tab lets you run queries against the **Mendeley-Cache Server** API with auto-completion and an prettified output.
 
 A user can filter members of the configured Mendeley Group and filter research fields that the crawler could identify.
-![Screen_Shot_2015-11-10_at_23.13.03](https://gitlab.kohn.io/mendeley-cache/client/uploads/3e7080fe29cbd182cfa6d8398f580172/Screen_Shot_2015-11-10_at_23.13.03.png)
+![autocompletion](/shots/autocompletion.png?raw=true "Autocompletion")
 
 ### Document Details
 The cache automatically collects important meta-data of the documents.
 
 Furthermore it uses tags for the identification of research fields and URLs for publication and conference hyperlinks.
-![Screen_Shot_2015-11-10_at_23.09.39](https://gitlab.kohn.io/mendeley-cache/client/uploads/7b8ecae51b5619467f155756b00ff961/Screen_Shot_2015-11-10_at_23.09.39.png)
+![details](/shots/details.png?raw=true "Details")
 
 ### Embedded Query Tags
 Once the needed documents have been found, they can be automatically embedded into every website with a provided jQuery script and a generated ```<div>``` tag.
-![Screen_Shot_2015-11-10_at_23.16.09](https://gitlab.kohn.io/mendeley-cache/client/uploads/cf8f106d2b7826a5d1d3105d1f9cdcc9/Screen_Shot_2015-11-10_at_23.16.09.png)
+![querytags](/shots/query-tags.png?raw=true "Query Tags")
 
 ### Embedded Query Example
 The embedded query will then allow you to display the most recent version of you publication list on your website.
-![Screen_Shot_2015-11-10_at_23.20.00](https://gitlab.kohn.io/mendeley-cache/client/uploads/45d025e44951a1e8c25b8ce3c658fc1c/Screen_Shot_2015-11-10_at_23.20.00.png)
+![queryexample](/shots/query-example.png?raw=true "Query Example")
