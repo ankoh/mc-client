@@ -235,17 +235,6 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	font-weight: 500;
 }
 
-.mc-linechart {
-	padding-left: 30px;
-	padding-top: 12px;
-	padding-bottom: 8px;
-	padding-right: 0px;
-	height: 225px!important;
-}
-.mc-linechart canvas {
-	height: 180px!important;
-}
-
 .mc-color-primary {
 	color: #002143!important;
 }
@@ -257,7 +246,10 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 }
 
 .mc-dialog-content {
-
+	padding-top: 24px;
+	padding-bottom: 24px;
+	padding-right: 12px;
+	padding-left: 12px;
 }
 
 .mc-dialog-content p {
@@ -287,6 +279,10 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	overflow-y: hidden;
 }
 
+.mc-coderef-row {
+	max-width: 400px;
+	margin: auto;
+}
 
 
 .mc-right-align-column {
