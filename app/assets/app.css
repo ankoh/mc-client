@@ -144,9 +144,9 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	font-weight:500;
 }
 .mc-buttonchips .md-chip-remove-container {
-	position: absolute;
-	right: 4px;
-	top: 4px;
+	position: absolute!important;
+	right: 4px!important;
+	top: 4px!important;
 	margin-right: 0!important;
 	height: 24px;
 }
@@ -180,7 +180,14 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 	fill: white;
 }
 .mc-buttonchips md-chip-template {
-	padding-right: 20px;
+	padding-right: 12px;
+}
+.mc-buttonchips .md-chip-input-container {
+	width: 100%;
+}
+
+.mc-buttonchips .md-chip-input-container md-autocomplete md-autocomplete-wrap {
+	width: 100%;
 }
 
 .mc-chip-autocomplete-tmpl {
