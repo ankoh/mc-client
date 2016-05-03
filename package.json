@@ -6,25 +6,12 @@
   "repository": "https://gitlab.kohn.io/ankoh/mendeley-cache-client",
   "license": "MIT",
   "devDependencies": {
-    "bower": "^1.4.1",
-    "bower-update": "^0.1.0",
-    "http-server": "^0.8.0",
-    "jasmine": "^2.3.2",
-    "jasmine-spec-reporter": "^1.2.0",
-    "karma": "^0.13.9",
-    "karma-cli": "^0.1.0",
-    "karma-jasmine": "^0.3.6",
-    "karma-junit-reporter": "^0.3.3",
-    "karma-selenium-webdriver-launcher": "0.0.3",
-    "karma-webdriver-launcher": "^1.0.4",
-    "protractor": "^2.1.0",
-    "selenium-webdriver": "^2.46.1",
-    "shelljs": "^0.5.3"
+	"bower": "^1.4.1",
+	"bower-update": "^0.2.0",
+	"http-server": "^0.9.0"
   },
   "scripts": {
-    "prestart": "npm update",
-    "protractor": "node_modules/.bin/protractor ./e2e/protractor.conf.js",
-    "karma": "node_modules/.bin/karma start karma.conf.js --no-auto-watch --single-run",
-    "server": "node_modules/.bin/http-server -p 8080 ./app"
+	"prestart": "npm update",
+	"server": "node_modules/.bin/http-server -p 8080 ./app"
   }
 }

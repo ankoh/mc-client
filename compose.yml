@@ -1,5 +1,5 @@
 server:
-  image: ankoh/mendeleycache-client:latest
+  image: ankoh/mc-client:latest
   restart: always
   ports:
     - ":port:8080"

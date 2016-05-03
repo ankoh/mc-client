@@ -7,7 +7,7 @@ var mcConfig = {
 	},
 
 	"cache": {
-		"hostname": "http://mc-server.kohn.io",
-		"port": "80"
+		"hostname": "https://dockerbruegge1.informatik.tu-muenchen.de",
+		"port": "22760"
 	}
 }
