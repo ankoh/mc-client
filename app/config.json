@@ -7,7 +7,7 @@ var mcConfig = {
     },
 
     "cache": {
-        "hostname": "https://dockerbruegge1.informatik.tu-muenchen.de",
-        "port": "22760"
+        "hostname": "https://mendeleybruegge.informatik.tu-muenchen.de",
+        "port": "443"
     }
 }
