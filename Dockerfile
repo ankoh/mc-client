@@ -10,7 +10,7 @@ COPY ./app /usr/share/nginx/html
 
 # Fix permissions
 RUN chmod -R 755 /usr/share/nginx/html && \
-	chown -R root:root /usr/share/nginx/html
+    chown -R root:root /usr/share/nginx/html
 
 # Only expose 80
 EXPOSE 80

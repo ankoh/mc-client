@@ -1,90 +1,90 @@
 <div class="mc-card md-whiteframe-z1">
-	<md-toolbar layout="row" class="mc-header md-toolbar-tools">
-		<h2>
-	        <span>Status</span>
-	    </h2>
-	    <span flex></span>
-	    <div class="mc-card-loading-wrapper">
-		    <md-progress-circular
-		    	ng-if="cache.loadingData"
-		    	md-diameter="16"
-		    	md-mode="indeterminate"></md-progress-circular>
-	    </div>
-	    <md-button
-	    	class="md-icon-button"
-	    	ng-click="cache.reloadData()"
-	    	aria-label="Reload">
+    <md-toolbar layout="row" class="mc-header md-toolbar-tools">
+        <h2>
+            <span>Status</span>
+        </h2>
+        <span flex></span>
+        <div class="mc-card-loading-wrapper">
+            <md-progress-circular
+                ng-if="cache.loadingData"
+                md-diameter="16"
+                md-mode="indeterminate"></md-progress-circular>
+        </div>
+        <md-button
+            class="md-icon-button"
+            ng-click="cache.reloadData()"
+            aria-label="Reload">
             <md-icon md-svg-icon="assets/svg/material-icons/ic_refresh_black_24px.svg"></md-icon>
         </md-button>
     </md-toolbar>
 
-	<md-content class="mc-table" layout="column">
-		<!-- Mendeley API -->
-		<div class="mc-row" layout="row">
-			<div class="mc-icon-text-column" flex="50" flex-align="start center" layout="row">
-				<md-icon md-svg-icon="assets/svg/material-icons/ic_extension_black_24px.svg"></md-icon>
-				<p flex>Mendeley API</p>
-			</div>
-			<p flex>{{ cache.mendeleyStatus }}</p>
-		</div>
-		<md-divider md-inset></md-divider>
+    <md-content class="mc-table" layout="column">
+        <!-- Mendeley API -->
+        <div class="mc-row" layout="row">
+            <div class="mc-icon-text-column" flex="50" flex-align="start center" layout="row">
+                <md-icon md-svg-icon="assets/svg/material-icons/ic_extension_black_24px.svg"></md-icon>
+                <p flex>Mendeley API</p>
+            </div>
+            <p flex>{{ cache.mendeleyStatus }}</p>
+        </div>
+        <md-divider md-inset></md-divider>
 
-		<!-- Last update -->
-		<div class="mc-row" layout="row">
-			<div class="mc-icon-text-column" flex="50" flex-align="start center" layout="row">
-				<md-icon md-svg-icon="assets/svg/material-icons/ic_timelapse_black_24px.svg"></md-icon>
-				<p flex>Last update</p>
-			</div>
-			<p flex>{{ cache.lastUpdate | timeAgo }}</p>
-		</div>
-		<md-divider></md-divider>
+        <!-- Last update -->
+        <div class="mc-row" layout="row">
+            <div class="mc-icon-text-column" flex="50" flex-align="start center" layout="row">
+                <md-icon md-svg-icon="assets/svg/material-icons/ic_timelapse_black_24px.svg"></md-icon>
+                <p flex>Last update</p>
+            </div>
+            <p flex>{{ cache.lastUpdate | timeAgo }}</p>
+        </div>
+        <md-divider></md-divider>
 
-		<!-- Profiles -->
-		<div class="mc-row" layout="row">
-			<div class="mc-icon-text-column" flex="50" flex-align="start center" layout="row">
-				<md-icon md-svg-icon="assets/svg/material-icons/ic_person_black_24px.svg"></md-icon>
-				<p flex>Profiles</p>
-			</div>
-			<p flex>{{ cache.profiles }}</p>
-			<p flex>{{ cache.uniqueProfiles }}</p>
-		</div>
-		<md-divider md-inset></md-divider>
-		
-		<!-- Profile to Document links -->
-		<div class="mc-row" layout="row">
-			<div class="mc-icon-text-column" flex="50" flex-align="start center" layout="row">
-				<md-icon md-svg-icon="assets/svg/material-icons/ic_link_black_24px.svg"></md-icon>
-				<p flex>Profile &rarr; Document</p>
-			</div>
-			<p flex>{{ cache.profileToDocumentLinks }}</p>
-		</div>
-		<md-divider md-inset></md-divider>
-		<!-- Documents -->
-		<div class="mc-row" layout="row">
-			<div class="mc-icon-text-column" flex="50" flex-align="start center" layout="row">
-				<md-icon md-svg-icon="assets/svg/material-icons/ic_description_black_24px.svg"></md-icon>
-				<p flex>Documents</p>
-			</div>
-			<p flex>{{ cache.documents }}</p>
-			<p flex>{{ cache.uniqueDocuments }}</p>
-		</div>
-		<md-divider md-inset></md-divider>
-		<!-- Document to Field -->
-		<div class="mc-row" layout="row">
-			<div class="mc-icon-text-column" flex="50" flex-align="start center" layout="row">
-				<md-icon md-svg-icon="assets/svg/material-icons/ic_link_black_24px.svg"></md-icon>
-				<p flex>Document &rarr; Field</p>
-			</div>
-			<p flex>{{ cache.documentToFieldLinks }}</p>
-		</div>
-		<md-divider md-inset></md-divider>
-		<!-- Research Fields -->
-		<div class="mc-row" layout="row">
-			<div class="mc-icon-text-column" flex="50" flex-align="start center" layout="row">
-				<md-icon md-svg-icon="assets/svg/material-icons/ic_label_black_24px.svg"></md-icon>
-				<p flex>Research Fields</p>
-			</div>
-			<p flex>{{ cache.researchFields }}</p>
-		</div>
-	</md-content>
+        <!-- Profiles -->
+        <div class="mc-row" layout="row">
+            <div class="mc-icon-text-column" flex="50" flex-align="start center" layout="row">
+                <md-icon md-svg-icon="assets/svg/material-icons/ic_person_black_24px.svg"></md-icon>
+                <p flex>Profiles</p>
+            </div>
+            <p flex>{{ cache.profiles }}</p>
+            <p flex>{{ cache.uniqueProfiles }}</p>
+        </div>
+        <md-divider md-inset></md-divider>
+
+        <!-- Profile to Document links -->
+        <div class="mc-row" layout="row">
+            <div class="mc-icon-text-column" flex="50" flex-align="start center" layout="row">
+                <md-icon md-svg-icon="assets/svg/material-icons/ic_link_black_24px.svg"></md-icon>
+                <p flex>Profile &rarr; Document</p>
+            </div>
+            <p flex>{{ cache.profileToDocumentLinks }}</p>
+        </div>
+        <md-divider md-inset></md-divider>
+        <!-- Documents -->
+        <div class="mc-row" layout="row">
+            <div class="mc-icon-text-column" flex="50" flex-align="start center" layout="row">
+                <md-icon md-svg-icon="assets/svg/material-icons/ic_description_black_24px.svg"></md-icon>
+                <p flex>Documents</p>
+            </div>
+            <p flex>{{ cache.documents }}</p>
+            <p flex>{{ cache.uniqueDocuments }}</p>
+        </div>
+        <md-divider md-inset></md-divider>
+        <!-- Document to Field -->
+        <div class="mc-row" layout="row">
+            <div class="mc-icon-text-column" flex="50" flex-align="start center" layout="row">
+                <md-icon md-svg-icon="assets/svg/material-icons/ic_link_black_24px.svg"></md-icon>
+                <p flex>Document &rarr; Field</p>
+            </div>
+            <p flex>{{ cache.documentToFieldLinks }}</p>
+        </div>
+        <md-divider md-inset></md-divider>
+        <!-- Research Fields -->
+        <div class="mc-row" layout="row">
+            <div class="mc-icon-text-column" flex="50" flex-align="start center" layout="row">
+                <md-icon md-svg-icon="assets/svg/material-icons/ic_label_black_24px.svg"></md-icon>
+                <p flex>Research Fields</p>
+            </div>
+            <p flex>{{ cache.researchFields }}</p>
+        </div>
+    </md-content>
 </div>

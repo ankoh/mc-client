@@ -9,22 +9,22 @@ html, body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	margin-bottom: .8rem;
-	margin-top: .8rem;
+    margin-bottom: .8rem;
+    margin-top: .8rem;
 }
 h2 {
-	font-size: 18px;
-	font-weight: 400;
+    font-size: 18px;
+    font-weight: 400;
 }
 h3 {
-	font-size: 17px;
-	font-weight: 400;
+    font-size: 17px;
+    font-weight: 400;
 }
 
 a {
-	color: #002143;
+    color: #002143;
   /* color: #11639d; */
-	text-decoration: none;
+    text-decoration: none;
 }
 
 /*
@@ -32,275 +32,275 @@ Hide scrollbars as described here:
 http://stackoverflow.com/questions/3296644/hiding-the-scrollbar-on-an-html-page
  */
 body {
-	overflow-y: auto!important;
+    overflow-y: auto!important;
 }
 
 /* ng-cloak default display */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-	display: none!important;
+    display: none!important;
 }
 
 /* By default, hide the splash screen */
 .splash {
-	display: none;
+    display: none;
 }
 /* If ng-cloak is added, show splash screen */
 [ng-cloak].splash {
-	display: block!important;
+    display: block!important;
 }
 
 
 
 md-content {
-	background-color: transparent;
+    background-color: transparent;
 }
 md-tabs.md-primary md-tab-item:not([disabled]) {
-	color: #b0b0b0;
+    color: #b0b0b0;
 }
 
 #mc-logo {
-	height: 50px;
-	width: 50px;
-	margin-right: 15px;
+    height: 50px;
+    width: 50px;
+    margin-right: 15px;
 }
 .mc-content {
-	background-color: transparent;
-	z-index:10;
+    background-color: transparent;
+    z-index:10;
 }
 
 
 .mc-card {
-	margin-left: 8px;
-	margin-right: 8px;
-	margin-top: 8px;
-	margin-bottom: 24px;
-	border-bottom-left-radius: 4px;
-	border-bottom-right-radius: 4px;
-	border-top-left-radius: 4px;
-	border-top-right-radius: 4px;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 24px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 .mc-card .mc-header {
-	/* {{primary-color}} */
-	background-color: #fcfcfc;
-	/* {{primary-contrast}} */
-	color: #757575;
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
-	border-top-left-radius: 3px;
-	border-top-right-radius: 3px;
-	border-bottom: 1px solid #e3e3e3;
+    /* {{primary-color}} */
+    background-color: #fcfcfc;
+    /* {{primary-contrast}} */
+    color: #757575;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom: 1px solid #e3e3e3;
 }
 .mc-card .mc-header md-icon { /* {{primary-contrast}} */ color: #444; }
 .mc-card .md-button { /* {{primary-contrast}} */ color: #444; }
 .mc-card md-content {
-	background-color: #ffffff;
+    background-color: #ffffff;
 }
 .mc-card .mc-actionbar {
-	/* background-color: #002143; */
-	background-color: #fcfcfc;
-	border-top: 1px solid #e3e3e3;
+    /* background-color: #002143; */
+    background-color: #fcfcfc;
+    border-top: 1px solid #e3e3e3;
 }
 .mc-card .mc-actionbar-transparent {
-	border-top: 1px rgba(0,0,0,.12) solid;
+    border-top: 1px rgba(0,0,0,.12) solid;
 }
 .mc-card .mc-actionbar-transparent .mc-icon-button {
-	position: relative;
-	margin-left: 24px;
-	min-height: 0px;
-	min-width: 0px;
-	height: 24px;
-	width: 28px;
-	padding: 0px;
+    position: relative;
+    margin-left: 24px;
+    min-height: 0px;
+    min-width: 0px;
+    height: 24px;
+    width: 28px;
+    padding: 0px;
 }
 .mc-card .mc-actionbar-transparent .mc-icon-button md-icon {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	padding: 2px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 2px;
 }
 
 .mc-card .mc-card-loading-wrapper {
 }
 
 .mc-card .mc-dropdown {
-	background-color: #666;
-	color: #fff;
-	padding: 20px;
+    background-color: #666;
+    color: #fff;
+    padding: 20px;
 }
 .mc-card .mc-dropdown pre {
-	margin:0px;
+    margin:0px;
 }
 
 .mc-buttonchips md-chips-wrap {
-	margin-top: 16px;
+    margin-top: 16px;
 }
 .mc-buttonchips-fst md-chips-wrap {
-	margin-top: 0px !important;
+    margin-top: 0px !important;
 }
 .mc-buttonchips md-chip {
-	position: relative;
-	font-weight:500;
+    position: relative;
+    font-weight:500;
 }
 .mc-buttonchips .md-chip-remove-container {
-	position: absolute!important;
-	right: 4px!important;
-	top: 4px!important;
-	margin-right: 0!important;
-	height: 24px;
+    position: absolute!important;
+    right: 4px!important;
+    top: 4px!important;
+    margin-right: 0!important;
+    height: 24px;
 }
 .mc-buttonchips .md-chip-remove-container button {
-	position: relative;
-	height: 24px;
-	width: 24px;
-	line-height: 30px;
-	text-align: center;
-	background: rgba(0, 0, 0, 0.3);
-	border-radius: 50%;
-	border: none;
-	box-shadow: none;
-	padding: 0;
-	margin: 0;
-	transition: background 0.15s linear;
-	display: block;
+    position: relative;
+    height: 24px;
+    width: 24px;
+    line-height: 30px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    transition: background 0.15s linear;
+    display: block;
 }
 .mc-buttonchips .md-chip-remove-container button:focus, .mc-buttonchips .md-chip-remove-container button:hover {
-	background: #002143;
+    background: #002143;
 }
 .mc-buttonchips .md-chip-remove-container button md-icon {
-	position: absolute;
-	right: 4px;
-	top: 4px;
-	left: 4px;
-	bottom: 4px;
-	width: auto;
-	height: auto;
-	color: white;
-	fill: white;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    left: 4px;
+    bottom: 4px;
+    width: auto;
+    height: auto;
+    color: white;
+    fill: white;
 }
 .mc-buttonchips md-chip-template {
-	padding-right: 12px;
+    padding-right: 12px;
 }
 .mc-buttonchips .md-chip-input-container {
-	width: 100%;
+    width: 100%;
 }
 
 .mc-buttonchips .md-chip-input-container md-autocomplete md-autocomplete-wrap {
-	width: 100%;
+    width: 100%;
 }
 
 .mc-chip-autocomplete-tmpl {
 }
 .mc-chip-autocomplete-tmpl .item-title {
-	white-space: nowrap;
-	padding-right: 50px;
+    white-space: nowrap;
+    padding-right: 50px;
 }
 .mc-chip-autocomplete-tmpl li {
-	height: auto;
-	white-space: normal;
-	padding-bottom: 8px;
-	padding-top: 8px;
+    height: auto;
+    white-space: normal;
+    padding-bottom: 8px;
+    padding-top: 8px;
 }
 .mc-chip-autocomplete-tmpl li md-icon {
-	width: 20px;
-	height: 20px;
-	margin-left: 12px;
+    width: 20px;
+    height: 20px;
+    margin-left: 12px;
 }
 
 
 .mc-table {
-	padding-bottom: 8px;
-	padding-top: 8px;
+    padding-bottom: 8px;
+    padding-top: 8px;
 }
 .mc-table .mc-description {
-	line-height: 21px;
+    line-height: 21px;
 }
 .mc-table p {
-	line-height: 18px;
+    line-height: 18px;
 }
 .mc-table code {
 }
 .mc-table .mc-row {
-	padding-right: 24px;
-	padding-left: 0px;
+    padding-right: 24px;
+    padding-left: 0px;
 }
 .mc-table .mc-icon-text-column md-icon {
-	height: 22px;
-	width: 80px;
+    height: 22px;
+    width: 80px;
 }
 .mc-table .mc-icon-text-column p {
-	vertical-align: center;
-	margin-left: 0px;
-	font-weight: 500;
+    vertical-align: center;
+    margin-left: 0px;
+    font-weight: 500;
 }
 
 .mc-color-primary {
-	color: #002143!important;
+    color: #002143!important;
 }
 .mc-color-warning {
-	color: #cccccc!important;
+    color: #cccccc!important;
 }
 .mc-color-unfocused {
-	color: #cccccc!important;
+    color: #cccccc!important;
 }
 
 .mc-dialog-content {
-	padding-top: 24px;
-	padding-bottom: 24px;
-	padding-right: 12px;
-	padding-left: 12px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-right: 12px;
+    padding-left: 12px;
 }
 
 .mc-dialog-content p {
-	margin-top: 10px;
-	margin-bottom: 10px;
-	line-height: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: 14px;
 }
 .mc-dialog-content strong {
-	font-weight: 500;
+    font-weight: 500;
 }
 
 .mc-dialog-content ul {
-	padding-left: 20px;
+    padding-left: 20px;
 }
 
 .mc-dialog-content .md-chips {
-	box-shadow:  none!important;
+    box-shadow:  none!important;
 }
 
 .mc-dialog-content .mc-light-description {
-	line-height:18px;
-	color: #777;
-	text-align: center;
+    line-height:18px;
+    color: #777;
+    text-align: center;
 }
 .mc-dialog-content pre {
-	padding-left: 24px;
-	overflow-y: hidden;
+    padding-left: 24px;
+    overflow-y: hidden;
 }
 
 .mc-coderef-row {
-	max-width: 400px;
-	margin: auto;
+    max-width: 400px;
+    margin: auto;
 }
 
 
 .mc-right-align-column {
-	text-align: right;
-	padding-right: 24px;
+    text-align: right;
+    padding-right: 24px;
 }
 
 /* md-data-table "Rows per page" dropdown background */
 .md-select-menu-container {
-	background-color: #ffffff;
+    background-color: #ffffff;
 }
 
 
 .mc-documents ul {
-	line-height: 18px;
+    line-height: 18px;
 }
 .mc-documents li {
-	padding: 4px 0px;
+    padding: 4px 0px;
 }
 
 
@@ -319,8 +319,8 @@ md-tabs.md-primary md-tab-item:not([disabled]) {
 .mc-text-align-center { text-align: center; }
 
 .mc-kill-borders {
-	border-width: 0px!important;
+    border-width: 0px!important;
 }
 .mc-kill-borders div {
-	border-width: 0px!important;
+    border-width: 0px!important;
 }

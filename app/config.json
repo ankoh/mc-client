@@ -2,12 +2,12 @@
 // This will be overridden in the entrypoint.sh of the Docker container
 
 var mcConfig = {
-	"client": {
-		"version": "0.1.0"
-	},
+    "client": {
+        "version": "0.1.0"
+    },
 
-	"cache": {
-		"hostname": "https://dockerbruegge1.informatik.tu-muenchen.de",
-		"port": "22760"
-	}
+    "cache": {
+        "hostname": "https://dockerbruegge1.informatik.tu-muenchen.de",
+        "port": "22760"
+    }
 }
