@@ -2,7 +2,7 @@ server:
   image: ankoh/mc-client:latest
   restart: always
   ports:
-    - ":port:8080"
+    - "8080:8080"
   environment:
-    - MC_SERVER_HOSTNAME=:mchost
-    - MC_SERVER_PORT=:mcport
+    - MC_SERVER_HOSTNAME=https://mendeleybruegge.in.tum.de
+    - MC_SERVER_PORT=443
